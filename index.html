@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black And White</title>
+
+    <style>
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        .blind {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+        }
+  
+        header {
+          border-bottom: 1px solid #000;
+        }
+        a {
+          text-decoration: none;
+        }
+        .side_toggle_btn::before {
+          content: ">";
+          display: inline-block;
+          width: 50px;
+          line-height: 50px;
+          font-size: 24px;
+          text-align: center;
+          border-right: 1px solid #000;
+        }
+  
+        .side_input:checked + .side_toggle_btn::before {
+          content: "<";
+        }
+  
+        .side_input:checked ~ .side_list {
+          left: 0;
+        }
+  
+        .side_list {
+          position: absolute;
+          left: -200px;
+          top: 50px;
+          bottom: 0;
+          border-right: 1px solid #000;
+          width: 200px;
+          font-size: 24px;
+          transition: 0.3s ease-in;
+          background-color: white;
+        }
+  
+        .side_link {
+          display: block;
+          text-align: center;
+          padding: 40px 0;
+          border-bottom: 1px solid #000;
+        }
+      </style>
+</head>
+<body>
+    
+    <header>
+        <input type="checkbox" id="side_btn" class="side_input blind" />
+        <label for="side_btn" class="side_toggle_btn"></label>
+        <div class="side_list">
+          <a href="#" class="side_link" style="height: 100px;">메인페이지</a>
+          <a href="#" class="side_link">마이페이지</a>
+          <a href="#" class="side_link">게임하기</a>
+          <a href="#" class="side_link">게시판</a>
+          <a href="#" class="side_link">소개글</a>
+        </div>
+        <a>Black And White</a>
+        <button style="float: right; margin-right: 10px;" @v-on: >회원가입</button>
+        <button style="float: right; margin-right: 10px;" @v-on: >로그인(로그아웃)</button>
+    </header>
+    
+    <div style="padding-left: 200px; background-color: rgb(248, 214, 248);">
+        
+        <!-- 게임페이지 -->
+        <h3>게임페이지</h3>
+        <button>튜토리얼</button><br>
+        <button>혼자하기</button><br>
+        <button>대전하기</button><br>
+        <button>남의 게임 관전하기 랜덤...? 채팅api-챗봇?socket?</button><br>
+        <br><hr><br>
+        
+        <!-- 게시판 -->
+        <h3>게시판</h3>
+        실시간 인기글?<br>
+        나라별?<br>
+        게임별?(나중)<br>
+        <br><hr><br>
+        
+        <!-- 사이트 현황 -->
+        <h3>사이트 현황</h3>
+        세계지도 - 유저수(비율로) 시각화<br>
+        전체 유저수, 승률50%이상 유저수, Top 10<br>
+        <br><hr><br>
+
+        <!-- 소개글 -->
+        <h3>소개글</h3>
+        팀원 6명 프로필 + 깃허브<br>
+        사이트 소개글<br>
+        프로젝트 소개글<br>
+        <br><hr><br>
+    </div>
+    <footer style="height: 70px;">
+        <h4>푸터입니다</h4>
+        나중에 : 다크모드 스위치, 영어모드<br>
+    </footer>
+
+</body>
+</html>
