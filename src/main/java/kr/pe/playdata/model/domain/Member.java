@@ -2,61 +2,98 @@ package kr.pe.playdata.model.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.DynamicInsert;
+import com.sun.istack.NotNull;
 
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @Entity
-@DynamicInsert
 @Table(name = "member")
 public class Member {
 	
 	@Id
-	@Column(name = "idx")
-	private Long midx;
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)			//mysql에서 사용하기!! oracle은 불가
+	@Column(name = "member_idx")
+	private Long memberIdx;
 	
-	//@NonNull
-	@Column(name = "id")
-	private String mid;
+	@NotNull
+	@Column(name = "member_id")
+	private String memberId;
 	
-	//@NonNull
+	@NotNull
 	@Column(name = "pw")
 	private String pw;
 	
-	//@NonNull
+	@NotNull
 	@Column(name = "nickname")
 	private String nickname;
 	
-	//@NonNull
+	@NotNull
+	@Column(name = "birth_year")
+	private String birthYear;
+	
+	@NotNull
 	@Column(name = "email")
 	private String email;
 	
-	//@NonNull
-	@Column(name = "tier")
-	private String tier;
-	
-	//@NonNull
-	@Column(name = "birthDate")
-	private String birthDate;
-	
-	//@NonNull
+	@NotNull
 	@Column(name = "gender") 
 	private String gender;
 	
-	//@NonNull
+	@NotNull
 	@Column(name = "region")
 	private String region;
+	
+	@NotNull
+	@Column(name = "tier")
+	private String tier;
+	
+	@NotNull
+	@Column(name = "role")
+	private String role;
+	
+	@NotNull
+	@Column(name = "out")
+	private String out;
+	
+	@Builder
+	public Member(String memberId, String pw, String nickname, String birthYear, String email, String gender, String region, String tier, String role, String out) {
+		this.memberId = memberId;
+		this.pw = pw;
+		this.nickname = nickname;
+		this.birthYear = birthYear;
+		this.email = email;
+		this.gender = gender;
+		this.region = region;
+		this.tier = tier;
+		this.role = role;
+		this.out = out;
+	}
+	
+	public Member update(String pw, String nickname, String email, String region) {
+		this.pw = pw;
+		this.nickname = nickname;
+		this.email = email;
+		this.region = region;
+		
+		return this;
+	}
+	
+	public Member delete(String out) {
+		this.out = out;
+		
+		return this;
+	}
+	
 	
 //	@Override
 //	public String toString() {

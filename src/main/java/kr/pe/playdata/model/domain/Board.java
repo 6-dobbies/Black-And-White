@@ -4,49 +4,53 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.AllArgsConstructor;
+import com.sun.istack.NotNull;
+
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @Entity
-@DynamicInsert
 @Table(name = "board")
 public class Board {
 	
 	@Id
-	@Column(name="id")
-	private Long bid;
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)			//mysql에서 사용하기!! oracle은 불가
+	@Column(name="board_idx")
+	private Long boardIdx;
 	
-	//@NonNull
-	@Column(name="idx")
-	private Long midx;
+	@NotNull
+	@Column(name="writer")
+	private String writer;
 	
-	//@NonNull
+	@NotNull
+	@Column(name="title")
+	private String title;
+	
+	@Lob
+	@NotNull
+	@Column(name="content")
+	private String content;
+	
 	@CreationTimestamp
 	@Column(name="created")
 	private LocalDateTime created;
 	
-	//@NonNull
 	@UpdateTimestamp
 	@Column(name="updated")
 	private LocalDateTime updated;
-	
-	//@NonNull
-	@Column(name="content")
-	private String content;
 	
 //	@Override
 //	public String toString() {
