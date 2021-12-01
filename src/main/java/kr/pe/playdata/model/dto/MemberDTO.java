@@ -9,6 +9,8 @@ public class MemberDTO {
 	public static class Create {
 		private String memberId;
 		private String pw;
+		private String pwQuestion;
+		private String pwAnswer;
 		private String nickname;
 		private String birthYear;
 		private String email;
@@ -19,9 +21,11 @@ public class MemberDTO {
 		private String out;
 		
 		@Builder
-		public Create(String memberId, String pw, String nickname, String birthYear, String email, String gender, String region, String tier, String role, String out) {
+		public Create(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear, String email, String gender, String region, String tier, String role, String out) {
 			this.memberId = memberId;
 			this.pw = pw;
+			this.pwQuestion = pwQuestion;
+			this.pwAnswer = pwAnswer;
 			this.nickname = nickname;
 			this.birthYear = birthYear;
 			this.email = email;

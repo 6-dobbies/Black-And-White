@@ -34,6 +34,14 @@ public class Member {
 	private String pw;
 	
 	@NotNull
+	@Column(name = "pw_question")
+	private String pwQuestion;
+	
+	@NotNull
+	@Column(name = "pw_answer")
+	private String pwAnswer;
+	
+	@NotNull
 	@Column(name = "nickname")
 	private String nickname;
 	
@@ -66,9 +74,11 @@ public class Member {
 	private String out;
 	
 	@Builder
-	public Member(String memberId, String pw, String nickname, String birthYear, String email, String gender, String region, String tier, String role, String out) {
+	public Member(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear, String email, String gender, String region, String tier, String role, String out) {
 		this.memberId = memberId;
 		this.pw = pw;
+		this.pwQuestion = pwQuestion;
+		this.pwAnswer = pwAnswer;
 		this.nickname = nickname;
 		this.birthYear = birthYear;
 		this.email = email;
