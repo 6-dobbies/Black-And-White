@@ -18,10 +18,10 @@ public class MemberDTO {
 		private String region;
 		private String tier;
 		private String role;
-		private String out;
+		private int out;
 		
 		@Builder
-		public Create(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear, String email, String gender, String region, String tier, String role, String out) {
+		public Create(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear, String email, String gender, String region, String tier, String role, int out) {
 			this.memberId = memberId;
 			this.pw = pw;
 			this.pwQuestion = pwQuestion;
@@ -33,7 +33,7 @@ public class MemberDTO {
 			this.region = region;
 			this.tier = tier;
 			this.role = role;
-			this.out = out;
+			this.out = 0;
 		}
 	}
 	
@@ -60,11 +60,11 @@ public class MemberDTO {
 	
 	@Getter
 	public static class Delete {
-		private String out;
+		private int out;
 		
 		@Builder
-		public Delete(String out) {
-			this.out = out;
+		public Delete(int out) {
+			this.out = 1;
 		}
 	}
 	
