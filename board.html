@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black And White</title>
+    <title>게시판</title>
 
+    
     <style>
         html,
         body {
@@ -66,9 +67,11 @@
           border-bottom: 1px solid #000;
         }
       </style>
+
 </head>
+
 <body>
-    
+
     <header>
         <input type="checkbox" id="side_btn" class="side_input blind" />
         <label for="side_btn" class="side_toggle_btn"></label>
@@ -83,36 +86,67 @@
         <button style="float: right; margin-right: 10px;" @v-on: >회원가입</button>
         <button style="float: right; margin-right: 10px;" @v-on: >로그인(로그아웃)</button>
     </header>
-    
-    <div style="padding-left: 200px; background-color: rgb(248, 214, 248);">
-        
-        <!-- 게임페이지 -->
-        <h3>게임페이지</h3>
-        <button>튜토리얼</button><br>
-        <button>혼자하기</button><br>
-        <button>대전하기</button><br>
-        <button>남의 게임 관전하기 랜덤...? 채팅api-챗봇?socket?</button><br>
-        <br><hr><br>
-        
-        <!-- 게시판 -->
-        <h3>게시판</h3>
-        실시간 인기글?<br>
-        나라별?<br>
-        게임별?(나중)<br>
-        <br><hr><br>
-        
-        <!-- 사이트 현황 -->
-        <h3>사이트 현황</h3>
-        세계지도 - 유저수(비율로) 시각화<br>
-        전체 유저수, 승률50%이상 유저수, Top 10<br>
-        <br><hr><br>
 
-        <!-- 소개글 -->
-        <h3>소개글</h3>
-        팀원 6명 프로필 + 깃허브<br>
-        사이트 소개글<br>
-        프로젝트 소개글<br>
-        <br><hr><br>
+    <div style="padding-left: 200px; background-color: rgb(248, 214, 248);">
+
+    <h3>게시판</h3>
+        <div>
+            <select name="sel">
+                <option value="1">제목</option>
+                <option value="2">작성자</option>
+                <option value="3">내용</option>
+            </select>
+            <input type="text">
+            <button>검색</button>
+        </div>
+
+        <table border="1">
+            <tr>
+                <th colspan="2">제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>수정일</th>
+                
+            </tr>
+            <tr>
+                <td>공지</td>
+                <td>[모바일] 12월 둘째 주 : 금주의 세계 체스 대회 리스트</td>
+                <td>케미킹</td>
+                <td>2021.12.20</td>
+                <td>99</td>
+                
+            </tr>
+            <tr>
+                <td>533931</td>
+                <td>[추천공모전] 체스 공모전 (~12/9)</td>
+                <td>폰이되고싶은</td>
+                <td>13:49</td>
+                <td>0</td>
+                
+            </tr>
+            <tr>
+                <td colspan="6"><button onclick="location.href='write.html'">글쓰기</button></td>
+            </tr>
+            <tr>
+                <td colspan="6"><center>
+                <a href="#">1</a> 
+                <a href="#">2</a> 
+                <a href="#">3</a> 
+                <a href="#">4</a> 
+                <a href="#">5</a> 
+                <a href="#">다음▶</a>
+                </center></td>
+            </tr>
+            
+        </table>
+        
+        
+    
+    
+    
+
+
+
     </div>
     <footer style="height: 70px;">
         <h4>푸터입니다</h4>
