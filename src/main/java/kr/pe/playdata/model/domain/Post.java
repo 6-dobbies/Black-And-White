@@ -48,12 +48,10 @@ public class Post {
 	private Board category;
 	
 	@NotNull
-	@Column(name="title")
 	private String title;
 	
 	@Lob
 	@NotNull
-	@Column(name="content")
 	private String content;
 	
 	@Column(name="post_image")
@@ -68,9 +66,9 @@ public class Post {
 	private LocalDateTime updated;
 	
 	@Builder
-	public Post(Board category, Member writer, String title, String content, String postImage) {
-		this.category = category;
+	public Post(Member writer, Board category, String title, String content, String postImage) {
 		this.writer = writer;
+		this.category = category;
 		this.title = title;
 		this.content = content;
 		this.postImage = postImage;

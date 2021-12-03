@@ -8,8 +8,8 @@ import kr.pe.playdata.model.domain.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 	
-	Member findBynickname(String nickname);
-	Optional<Member> findBynicknameContaining(String nickname);
+	Member findByNickname(String nickname);
+	Optional<Member> findByNicknameContaining(String nickname);
 	Optional<Member> findByOut(int out);
 
 }
