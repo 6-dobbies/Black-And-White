@@ -19,12 +19,12 @@ public class MemberDTO {
 		private String region;
 		private String tier;
 		private String role;
-		private int out;
+		private int del;
 
 		@Builder
 		public Create(String memberId, String pw, String pwQuestion, String pwAnswer, 
 					  String nickname, String birthYear, String email, String gender,
-					  String region, String tier, String role, int out) {
+					  String region, String tier, String role, int del) {
 			this.memberId = memberId;
 			this.pw = pw;
 			this.pwQuestion = pwQuestion;
@@ -36,7 +36,7 @@ public class MemberDTO {
 			this.region = region;
 			this.tier = tier;
 			this.role = role;
-			this.out = 0;
+			this.del = 0;
 		}
 
 		public Member toEntity() {
@@ -52,7 +52,7 @@ public class MemberDTO {
 						 .region(region)
 						 .tier(tier)
 						 .role(role)
-						 .out(out)
+						 .del(del)
 						 .build();
 		}
 	}
@@ -80,11 +80,11 @@ public class MemberDTO {
 
 	@Getter
 	public static class Delete {
-		private int out;
+		private int del;
 
 		@Builder
-		public Delete(int out) {
-			this.out = 1;
+		public Delete(int del) {
+			this.del = 1;
 		}
 	}
 
