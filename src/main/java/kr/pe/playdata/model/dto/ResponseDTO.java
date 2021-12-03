@@ -1,5 +1,6 @@
 package kr.pe.playdata.model.dto;
 
+import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
 import lombok.Getter;
 
@@ -29,5 +30,23 @@ public class ResponseDTO {
             this.region = entity.getRegion();
         }
     }
+	
+	@Getter
+	public static class BoardResponse {
+		private String category;
+		
+		public BoardResponse(Board entity) {
+			this.category = entity.getCategory();
+		}
+	}
+	@Getter
+	public static class BoardListResponse {
+		private String category;
+		
+		public BoardListResponse(Board entity) {
+			this.category = entity.getCategory();
+		}
+	}
+	
 	
 }
