@@ -1,37 +1,35 @@
 package kr.pe.playdata.model.dto;
 
-import java.time.LocalDateTime;
-
-import lombok.Data;
+import kr.pe.playdata.model.domain.Board;
+import lombok.Builder;
 import lombok.Getter;
 
 public class BoardDTO {
 	
 	@Getter
-	public class Create {
-		private Long bid;
-		private Long midx;
-		private LocalDateTime created;
-		private LocalDateTime updated;
-		private String content;
+	public static class Create {
+		private String category;
+		
+		@Builder
+		public Create(String category) {
+			this.category = category;
+		}
+		
+		public Board toEntity() {
+			return Board.builder()
+						.category(category)
+						.build();
+		}
 	}
 	
 	@Getter
-	public class Update {
-		private Long midx;
-		private String content;
+	public static class Update {
+		private String category;
 	}
 	
 	@Getter
-	public class Get {
-		private Long bid;
-		private Long midx;
+	public static class Get {
+		private String category;
 	}
-	
-//	Delete는 필요 없음 - 기본으로 있고, id만 받아서 삭제하면 됨
-//	@Getter
-//	public class Delete {
-//		private Long bid;
-//	}
 	
 }

@@ -39,7 +39,6 @@ public class Member {
 	private String memberId;
 	
 	@NotNull
-	@Column(name = "pw")
 	private String pw;
 	
 	@NotNull
@@ -51,7 +50,6 @@ public class Member {
 	private String pwAnswer;
 	
 	@NotNull
-	@Column(name = "nickname")
 	private String nickname;
 	
 	@NotNull
@@ -59,27 +57,21 @@ public class Member {
 	private String birthYear;
 	
 	@NotNull
-	@Column(name = "email")
 	private String email;
 	
 	@NotNull
-	@Column(name = "gender") 
 	private String gender;
 	
 	@NotNull
-	@Column(name = "region")
 	private String region;
 	
 	@NotNull
-	@Column(name = "tier")
 	private String tier;
 	
 	@NotNull
-	@Column(name = "role")
 	private String role;
 	
 	@NotNull
-	@Column(name = "out")
 	private int out;
 	
 	@OneToMany(mappedBy = "writer", cascade = CascadeType.ALL)

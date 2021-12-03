@@ -1,5 +1,8 @@
 package kr.pe.playdata.model.dto;
 
+import kr.pe.playdata.model.domain.Board;
+import kr.pe.playdata.model.domain.Member;
+import kr.pe.playdata.model.domain.Post;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -21,24 +24,49 @@ public class PostDTO {
 			this.content = content;
 			this.postImage = postImage;
 		}
+		
+		public Post toEntity(Member writer, Board category) {
+			return Post.builder()
+					   .writer(writer)
+					   .category(category)
+					   .title(title)
+					   .content(content)
+					   .postImage(postImage)
+					   .build();
+		}
 	}
 	
 	@Getter
 	public static class Update {
-		private Long midx;
+		private Long category;
+		private String title;
 		private String content;
+		private String postImage;
+		
+		@Builder
+		public Update(Long category, String title, String content, String postImage) {
+			this.category = category;
+			this.title = title;
+			this.content = content;
+			this.postImage = postImage;
+		}
 	}
 	
 	@Getter
 	public static class Get {
-		private Long bid;
-		private Long midx;
+		private Member writer;
+		private Board category;
+		private String title;
+		private String content;
+		private String postImage;
+		
+		public Get(Post entity) {
+			this.writer = entity.getWriter();
+			this.category = entity.getCategory();
+			this.title = entity.getTitle();
+			this.content = entity.getContent();
+			this.postImage = entity.getPostImage();
+		}
 	}
-	
-//	Delete는 필요 없음 - 기본으로 있고, id만 받아서 삭제하면 됨
-//	@Getter
-//	public class Delete {
-//		private Long bid;
-//	}
-	
+
 }
