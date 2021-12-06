@@ -97,6 +97,7 @@ public class ResponseDTO {
 			this.title = entity.getTitle();
 			this.content = entity.getContent();
 			this.postImage = entity.getPostImage();
+
 		}
 	}
 	

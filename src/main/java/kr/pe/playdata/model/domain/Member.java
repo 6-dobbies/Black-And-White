@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -24,13 +23,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 // oracle이라서 @SequenceGenerator 사용해야함. mysql로 바꾸면 삭제하기
-@SequenceGenerator(name="member_seq", sequenceName="member_seq", initialValue=1, allocationSize=1)
+//@SequenceGenerator(name="member_seq", sequenceName="member_seq", initialValue=1, allocationSize=1)
 @Table(name = "member")
 public class Member {
 	
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)			//mysql에서 사용하기!! oracle은 불가
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="member_seq")	//나중에 삭제하기
+	@GeneratedValue(strategy = GenerationType.IDENTITY)			//mysql에서 사용하기!! oracle은 불가
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="member_seq")	//나중에 삭제하기
 	@Column(name = "member_idx")
 	private Long memberIdx;
 	
@@ -72,14 +71,14 @@ public class Member {
 	private String role;
 	
 	@NotNull
-	private int out;
+	private int del;
 	
 	@OneToMany(mappedBy = "writer", cascade = CascadeType.ALL)
 	@JsonBackReference
 	private List<Post> postList;
 	
 	@Builder
-	public Member(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear, String email, String gender, String region, String tier, String role, int out) {
+	public Member(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear, String email, String gender, String region, String tier, String role, int del) {
 		this.memberId = memberId;
 		this.pw = pw;
 		this.pwQuestion = pwQuestion;
@@ -91,7 +90,7 @@ public class Member {
 		this.region = region;
 		this.tier = tier;
 		this.role = role;
-		this.out = 0;
+		this.del = 0;
 	}
 	
 	public Member update(String pw, String nickname, String email, String region) {
@@ -103,8 +102,8 @@ public class Member {
 		return this;
 	}
 	
-	public Member delete(int out) {
-		this.out = 1;
+	public Member delete(int del) {
+		this.del = 1;
 		
 		return this;
 	}
