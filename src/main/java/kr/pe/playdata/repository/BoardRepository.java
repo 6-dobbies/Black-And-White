@@ -8,4 +8,5 @@ import kr.pe.playdata.model.domain.Board;
 
 public interface BoardRepository extends JpaRepository<Board, Long> {
 	Optional<Board> findByCategory(String category);
+	Optional<Board> findByBoardIdx(Long boardIdx);
 }

@@ -2,6 +2,7 @@ package kr.pe.playdata.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,14 +16,18 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class BoardController {
 	
+	@Autowired
 	private BoardService boardService;
+	
 	
 	@GetMapping("/Board/category")
 	public List<ResponseDTO.BoardListResponse> getBoardAll(){
 		return boardService.findCategoryAll();
 	}
 	
-	//=====================자유게시판의 글 리스트 불러오기=================================//
+
+	
+	
 	
 	
 	
