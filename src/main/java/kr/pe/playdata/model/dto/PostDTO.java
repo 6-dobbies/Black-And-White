@@ -15,6 +15,7 @@ public class PostDTO {
 		private String title;
 		private String content;
 		private String postImage;
+		private int del;
 		
 		@Builder
 		public Create(Long memberIdx, Long boardIdx, String title, String content, String postImage) {
@@ -23,6 +24,7 @@ public class PostDTO {
 			this.title = title;
 			this.content = content;
 			this.postImage = postImage;
+			this.del = 0;
 		}
 		
 		public Post toEntity(Member writer, Board category) {
@@ -32,6 +34,7 @@ public class PostDTO {
 					   .title(title)
 					   .content(content)
 					   .postImage(postImage)
+					   .del(del)
 					   .build();
 		}
 	}
@@ -48,7 +51,7 @@ public class PostDTO {
 			this.category = category;
 			this.title = title;
 			this.content = content;
-			this.postImage = postImage;
+			this.postImage = postImage; 
 		}
 	}
 	
@@ -66,6 +69,16 @@ public class PostDTO {
 			this.title = entity.getTitle();
 			this.content = entity.getContent();
 			this.postImage = entity.getPostImage();
+		}
+	}
+	
+	@Getter
+	public static class Delete {
+		private int del;
+
+		@Builder
+		public Delete(int del) {
+			this.del = 1;
 		}
 	}
 

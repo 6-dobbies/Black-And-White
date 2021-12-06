@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.dto.ResponseDTO;
+import kr.pe.playdata.model.dto.ResponseDTO.BoardResponse;
 import kr.pe.playdata.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -25,16 +26,16 @@ public class BoardService {
 	
 	//================================에러==================================//
 	
-	public Board findOne(Long boardIdx) throws NotFoundException {
+	public ResponseDTO.BoardResponse findOneByIdx(Long boardIdx) throws NotFoundException {
 		Board review = boardRepository.findByBoardIdx(boardIdx).orElseThrow(() -> new IllegalArgumentException("Board with idx: " + boardIdx + " is not valid"));
 		
-		return review;
+		return new ResponseDTO.BoardResponse(review);
 	}
 	
 	
-	public Board findOne(String category) throws NotFoundException {
+	public ResponseDTO.BoardResponse findOneByCategory(String category) throws NotFoundException {
 		Board review = boardRepository.findByCategory(category).orElseThrow(() -> new IllegalArgumentException("Board with category: " + category + " is not valid"));
 		
-		return review;
+		return new ResponseDTO.BoardResponse(review);
 	}
 }

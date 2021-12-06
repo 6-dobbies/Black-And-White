@@ -6,10 +6,15 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.pe.playdata.model.dto.PostDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
 import kr.pe.playdata.model.dto.ResponseDTO.PostListResponse;
+import kr.pe.playdata.model.dto.ResponseDTO.PostResponse;
 import kr.pe.playdata.service.PostService;
 import lombok.RequiredArgsConstructor;
 
@@ -26,23 +31,34 @@ public class PostController {
 	}
 	
 	@GetMapping("/post/title/{title}")
-	public Optional<ResponseDTO.PostListResponse> getPostListTitle(@PathVariable String title) {
+	public List<PostListResponse> getPostListTitle(@PathVariable String title) {
 		return psv.findByTitleContaining(title);
 	}
 	
 	@GetMapping("/post/writer/{writer}")
-	public ResponseDTO.PostResponse getPostOneWriter(@PathVariable String Nickname) {
+	public List<PostListResponse> getPostOneWriter(@PathVariable String Nickname) {
 		return psv.findByWriter(Nickname);
 	}
 	
 	@GetMapping("/post/cate/{category}")
-	public Optional<PostListResponse> getPostListCategory(@PathVariable String category) {
+	public List<PostListResponse> getPostListCategory(@PathVariable String category) {
 		return psv.findByCategory(category);
 	}
 	
 	@GetMapping("/post/content/{content}")
-	public Optional<PostListResponse> getPostListContent(@PathVariable String content) {
+	public List<PostListResponse> getPostListContent(@PathVariable String content) {
 		return psv.findByContentContaining(content);
 	}
+	
+	@PostMapping("/post")
+	public Long savePost(@RequestBody PostDTO.Create dto) {
+		return psv.savePost(dto);
+	}
+	
+	@PutMapping("/post/update")
+	public Long updatePost(@PathVariable Long postIdx, @RequestBody PostDTO.Update dto) {
+		return psv.updatePost(postIdx, dto);
+	}
+	
 	
 }
