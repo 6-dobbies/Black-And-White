@@ -1,5 +1,6 @@
 package kr.pe.playdata.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,9 +12,9 @@ import kr.pe.playdata.model.domain.Post;
 public interface PostRepository extends JpaRepository<Post, Long> {
 
 	Optional<Post> findByPostIdx(Long postIdx);
-	Optional<Post> findByCategory(Board category);
-	Optional<Post> findByWriter(Member writer);
-	Optional<Post> findByTitleContaining(String title);
-	Optional<Post> findByContentContaining(String content);
+	List<Post> findByCategory(Board category);
+	List<Post> findByWriter(Member writer);
+	List<Post> findByTitleContaining(String title);
+	List<Post> findByContentContaining(String content);
 	
 }

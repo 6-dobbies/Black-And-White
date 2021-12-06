@@ -9,11 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -23,14 +22,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-//oracle이라서 @SequenceGenerator 사용해야함. mysql로 바꾸면 삭제하기
-//@SequenceGenerator(name="board_seq", sequenceName="board_seq", initialValue=1, allocationSize=1)
 @Table(name = "board")
 public class Board {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)			//mysql에서 사용하기!! oracle은 불가
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="board_seq")	//나중에 삭제하기
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="board_idx")
 	private Long boardIdx;
 	
