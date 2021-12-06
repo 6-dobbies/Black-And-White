@@ -27,6 +27,7 @@ public class BoardDTO {
 		private String category;
 	}
 	
+	
 	@Getter
 	public static class Get {
 		private String category;

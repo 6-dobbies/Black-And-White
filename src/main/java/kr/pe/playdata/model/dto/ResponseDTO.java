@@ -1,6 +1,8 @@
 package kr.pe.playdata.model.dto;
 
+import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
+import kr.pe.playdata.model.domain.Post;
 import lombok.Getter;
 
 public class ResponseDTO {
@@ -30,6 +32,29 @@ public class ResponseDTO {
         }
     }
 	
+
+//	@Getter
+//	public static class BoardResponse {
+//		private String category;
+//		
+//		public BoardResponse(Board entity) {
+//			this.category = entity.getCategory();
+//		}
+//	}
+	@Getter
+	public static class BoardListResponse {
+		private String category;
+		
+		public BoardListResponse(Board entity) {
+			this.category = entity.getCategory();
+		}
+	}
+	
+  @Getter	
+	public static class BoardResponse {
+		Boolean success;
+		private Board board;
+
 	@Getter
 	public static class MemberListResponse {
 		private Long memberIdx;
@@ -63,4 +88,41 @@ public class ResponseDTO {
 		}
 	}
 	
+	@Getter
+    public static class PostResponse {
+		private Long memberIdx;
+		private Long postIdx;
+		private String category;
+		private String title;
+		private String content;
+		private String postImage;
+		
+		public PostResponse(Post entity) {
+			this.memberIdx = entity.getWriter().getMemberIdx();
+			this.postIdx = entity.getPostIdx();
+			this.category = entity.getCategory().getCategory();
+			this.title = entity.getTitle();
+			this.content = entity.getContent();
+			this.postImage = entity.getPostImage();
+		}
+	}
+	
+	@Getter
+	public static class PostListResponse {
+		private Long memberIdx;
+		private Long postIdx;
+		private String title;
+		private String content;
+		private String postImage;
+			
+		public PostListResponse(Post entity) {
+			this.memberIdx = entity.getWriter().getMemberIdx();
+			this.postIdx = entity.getPostIdx();
+			this.title = entity.getTitle();
+			this.content = entity.getContent();
+			this.postImage = entity.getPostImage();
+
+		}
+	}
+
 }
