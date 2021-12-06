@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>게시판</title>
+
+    
+    <style>
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        .blind {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+        }
+  
+        header {
+          border-bottom: 1px solid #000;
+        }
+        a {
+          text-decoration: none;
+        }
+        .side_toggle_btn::before {
+          content: ">";
+          display: inline-block;
+          width: 50px;
+          line-height: 50px;
+          font-size: 24px;
+          text-align: center;
+          border-right: 1px solid #000;
+        }
+  
+        .side_input:checked + .side_toggle_btn::before {
+          content: "<";
+        }
+  
+        .side_input:checked ~ .side_list {
+          left: 0;
+        }
+  
+        .side_list {
+          position: absolute;
+          left: -200px;
+          top: 50px;
+          bottom: 0;
+          border-right: 1px solid #000;
+          width: 200px;
+          font-size: 24px;
+          transition: 0.3s ease-in;
+          background-color: white;
+        }
+  
+        .side_link {
+          display: block;
+          text-align: center;
+          padding: 40px 0;
+          border-bottom: 1px solid #000;
+        }
+
+        #list {width: 600px; border: 1px solid black; border-collapse: collapse;}
+        /* #list td, #list th { border:1px solid black; text-align: center;} */
+        #list > thead tr{ color: yellow; background-color: purple;}
+        
+      </style>
+
+</head>
+
+<body>
+
+    <header>
+        <input type="checkbox" id="side_btn" class="side_input blind" />
+        <label for="side_btn" class="side_toggle_btn"></label>
+        <div class="side_list">
+          <a href="index.html" class="side_link" style="height: 100px;">메인페이지</a>
+          <a href="#" class="side_link">마이페이지</a>
+          <a href="#" class="side_link">게임하기</a>
+          <a href="board.html" class="side_link">게시판</a>
+          <a href="#" class="side_link">소개글</a>
+        </div>
+        <a href="index.html">Black And White</a>
+        <button style="float: right; margin-right: 10px;" @v-on: >회원가입</button>
+        <button style="float: right; margin-right: 10px;" @v-on: >로그인(로그아웃)</button>
+    </header>
+
+    <div style="padding-left: 200px; background-color: rgb(248, 214, 248);">
+
+    <h3>게시판</h3>
+      
+      <div id="board">
+        <div>
+            <select name="sel">
+                <option value="1">제목</option>
+                <option value="2">작성자</option>
+                <option value="3">내용</option>
+            </select>
+            <input type="text" size="60">
+            <button>검색</button> <br><br>
+        </div>
+
+        <table id="list">
+          <thead>  
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>수정일</th>
+                
+            </tr>
+          </thead>
+
+          <tbody id="content">
+            <!-- <tr :key="index" v-for="(content, index) in contents" @click="detail(index)">
+                <td>{{content.no}}</td>
+                <td>{{content.title}}</td>
+                <td>{{content.writer}}</td>
+                <td>{{content.created}}</td>
+                <td>{{content.modified}}</td>
+            </tr>   -->
+            <tr>
+                <td>공지</td>
+                <td>
+                  <a href="read.html">[모바일] 금주의 세계체스대회 리스트</a>
+
+                </td>
+                <td>케미킹</td>
+                <td>2021.12.20</td>
+                <td>2021.12.21</td>
+                
+            </tr>
+            <tr>
+                <td>533931</td>
+                <td>
+                  <a href="">[추천공모전] 체스 공모전 (~12/9)</a>
+
+                </td>
+                <td>퀸이되고싶은폰</td>
+                <td>2021.12.22</td>
+                <td>2021.12.23</td>
+                
+            </tr>
+          </tbody>
+        
+          <tfoot>
+            <div>
+            <tr>
+                <td colspan="5">
+                  
+                  <button onclick="location.href='write.html'">글쓰기</button>
+                  
+                </td>
+            </tr>
+            </div>
+            <tr>
+                <td colspan="6">
+                 <center>
+                  <a href="#">◀◀처음</a> 
+                  <a href="#">◀이전</a> 
+                  <a href="#">1</a> 
+                  <a href="#">2</a> 
+                  <a href="#">3</a> 
+                  <a href="#">다음▶</a>
+                  <a href="#">마지막▶▶</a>
+                 </center>
+                </td>
+            </tr>
+          </tfoot>
+            
+        </table><br><br>
+      </div>
+
+    <!-- <script>
+
+      new Vue({
+        el: '#board',
+        data:{
+
+        },
+        write: function(){
+          
+        }
+
+
+      })
+
+    </script>     -->
+        
+        
+
+    </div>
+    <footer style="height: 70px;">
+        <h4>푸터입니다</h4>
+        나중에 : 다크모드 스위치, 영어모드<br>
+    </footer>
+
+</body>
+</html>
