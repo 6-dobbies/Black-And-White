@@ -22,15 +22,11 @@ public class BoardService {
 		return boardRepository.findAll().stream().map(ResponseDTO.BoardListResponse::new).collect(Collectors.toList());
 	}
 	
-	
-	//================================에러==================================//
-	
 	public Board findOne(Long boardIdx) throws NotFoundException {
 		Board review = boardRepository.findByBoardIdx(boardIdx).orElseThrow(() -> new IllegalArgumentException("Board with idx: " + boardIdx + " is not valid"));
 		
 		return review;
 	}
-	
 	
 	public Board findOne(String category) throws NotFoundException {
 		Board review = boardRepository.findByCategory(category).orElseThrow(() -> new IllegalArgumentException("Board with category: " + category + " is not valid"));

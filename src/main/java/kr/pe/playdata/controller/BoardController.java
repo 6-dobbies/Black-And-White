@@ -25,10 +25,4 @@ public class BoardController {
 		return boardService.findCategoryAll();
 	}
 	
-
-	
-	
-	
-	
-	
 }

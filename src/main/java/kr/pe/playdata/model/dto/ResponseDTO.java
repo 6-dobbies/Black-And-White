@@ -54,7 +54,7 @@ public class ResponseDTO {
 	public static class BoardResponse {
 		Boolean success;
 		private Board board;
-
+  }
 	@Getter
 	public static class MemberListResponse {
 		private Long memberIdx;
