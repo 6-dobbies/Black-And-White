@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -36,7 +37,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/post/writer/{writer}")
-	public List<PostListResponse> getPostOneWriter(@PathVariable String Nickname) {
+	public List<PostListResponse> getPostListWriter(@PathVariable String Nickname) {
 		return psv.findByWriter(Nickname);
 	}
 	
@@ -60,5 +61,17 @@ public class PostController {
 		return psv.updatePost(postIdx, dto);
 	}
 	
+	@PatchMapping("/post/dellist")
+	public List<Long> deletePostList(@RequestBody List<Long> dellist) {
+		for (Long i:  dellist) {
+			psv.DeletePost(i);
+		}
+		return dellist;
+	}
+	
+	@PatchMapping("/post/del")
+	public Long deletePost(@RequestBody Long del) {
+		return psv.DeletePost(del);
+	}
 	
 }
