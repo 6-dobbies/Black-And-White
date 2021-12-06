@@ -11,11 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import javax.validation.constraints.NotNull;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -25,14 +24,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-//oracle이라서 @SequenceGenerator 사용해야함. mysql로 바꾸면 삭제하기
-//@SequenceGenerator(name="post_seq", sequenceName="post_seq", initialValue=1, allocationSize=1)
 @Table(name = "post")
 public class Post {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)			//mysql에서 사용하기!! oracle은 불가
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="post_seq")	//나중에 삭제하기
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="post_idx")
 	private Long postIdx;
 	
@@ -64,13 +60,17 @@ public class Post {
 	@Column(name="updated", nullable = false)
 	private LocalDateTime updated;
 	
+	@NotNull
+	private int del;
+	
 	@Builder
-	public Post(Member writer, Board category, String title, String content, String postImage) {
+	public Post(Member writer, Board category, String title, String content, String postImage, int del) {
 		this.writer = writer;
 		this.category = category;
 		this.title = title;
 		this.content = content;
 		this.postImage = postImage;
+		this.del = del;
 	}
 	
 	public Post update(Board category, String title, String content, String postImage) {
@@ -78,6 +78,12 @@ public class Post {
 		this.title = title;
 		this.content = content;
 		this.postImage = postImage;
+		
+		return this;
+	}
+
+	public Post delete(Long postIdx) {
+		this.del = 1;
 		
 		return this;
 	}

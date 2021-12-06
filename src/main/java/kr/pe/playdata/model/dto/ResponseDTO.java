@@ -43,18 +43,26 @@ public class ResponseDTO {
 //	}
 	@Getter
 	public static class BoardListResponse {
+		private Long boardIdx;
 		private String category;
 		
 		public BoardListResponse(Board entity) {
+			this.boardIdx = entity.getBoardIdx();
 			this.category = entity.getCategory();
 		}
 	}
 	
-  @Getter	
+	@Getter	
 	public static class BoardResponse {
-		Boolean success;
-		private Board board;
-  }
+		private Long boardIdx;
+		private String category;
+		
+		public BoardResponse(Board entity) {
+			this.boardIdx = entity.getBoardIdx();
+			this.category = entity.getCategory();
+		}
+	}
+	
 	@Getter
 	public static class MemberListResponse {
 		private Long memberIdx;
