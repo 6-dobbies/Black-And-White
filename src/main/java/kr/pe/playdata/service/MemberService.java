@@ -74,7 +74,7 @@ public class MemberService {
 	// 회원 탈퇴
 	@Transactional
     public void deleteMember(Long memberIdx) {
-        Member member = memberRepository.findById(memberIdx)
+        Member member = memberRepository.findByMemberIdx(memberIdx)
                 						.orElseThrow(() -> new IllegalArgumentException("Member with memberIdx: " + memberIdx + " is not valid"));
 
         member.delete(1);
