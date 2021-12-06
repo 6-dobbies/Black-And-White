@@ -22,14 +22,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-// oracle이라서 @SequenceGenerator 사용해야함. mysql로 바꾸면 삭제하기
-//@SequenceGenerator(name="member_seq", sequenceName="member_seq", initialValue=1, allocationSize=1)
 @Table(name = "member")
 public class Member {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)			//mysql에서 사용하기!! oracle은 불가
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="member_seq")	//나중에 삭제하기
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "member_idx")
 	private Long memberIdx;
 	
@@ -93,9 +90,8 @@ public class Member {
 		this.del = 0;
 	}
 	
-	public Member update(String pw, String nickname, String email, String region) {
+	public Member update(String pw, String email, String region) {
 		this.pw = pw;
-		this.nickname = nickname;
 		this.email = email;
 		this.region = region;
 		

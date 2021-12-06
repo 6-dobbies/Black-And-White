@@ -44,7 +44,7 @@ public class ResponseDTO {
 		private String region;
 		private String tier;
 		private String role;
-		private int out;
+		private int del;
 		
 		public MemberListResponse(Member entity) {
 			this.memberIdx = entity.getMemberIdx();
@@ -59,7 +59,7 @@ public class ResponseDTO {
 			this.region = entity.getRegion();
 			this.tier = entity.getTier();
 			this.role = entity.getRole();
-			this.out = entity.getOut();
+			this.del = entity.getDel();
 		}
 	}
 	
