@@ -1,6 +1,7 @@
 package kr.pe.playdata.model.dto;
 
 import kr.pe.playdata.model.domain.Member;
+import kr.pe.playdata.model.domain.Post;
 import lombok.Getter;
 
 public class ResponseDTO {
@@ -44,7 +45,7 @@ public class ResponseDTO {
 		private String region;
 		private String tier;
 		private String role;
-		private int out;
+		private int del;
 		
 		public MemberListResponse(Member entity) {
 			this.memberIdx = entity.getMemberIdx();
@@ -59,7 +60,44 @@ public class ResponseDTO {
 			this.region = entity.getRegion();
 			this.tier = entity.getTier();
 			this.role = entity.getRole();
-			this.out = entity.getOut();
+			this.del = entity.getDel();
+		}
+	}
+	
+	@Getter
+    public static class PostResponse {
+		private Long memberIdx;
+		private Long postIdx;
+		private String category;
+		private String title;
+		private String content;
+		private String postImage;
+		
+		public PostResponse(Post entity) {
+			this.memberIdx = entity.getWriter().getMemberIdx();
+			this.postIdx = entity.getPostIdx();
+			this.category = entity.getCategory().getCategory();
+			this.title = entity.getTitle();
+			this.content = entity.getContent();
+			this.postImage = entity.getPostImage();
+		}
+	}
+	
+	@Getter
+	public static class PostListResponse {
+		private Long memberIdx;
+		private Long postIdx;
+		private String title;
+		private String content;
+		private String postImage;
+			
+		public PostListResponse(Post entity) {
+			this.memberIdx = entity.getWriter().getMemberIdx();
+			this.postIdx = entity.getPostIdx();
+			this.title = entity.getTitle();
+			this.content = entity.getContent();
+			this.postImage = entity.getPostImage();
+
 		}
 	}
 	
