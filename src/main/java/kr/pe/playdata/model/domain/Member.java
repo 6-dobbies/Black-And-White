@@ -1,6 +1,9 @@
 package kr.pe.playdata.model.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +17,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,8 +30,14 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @Table(name = "member")
-public class Member {
+public class Member implements UserDetails {
 	
+	/**
+	 * UID값이 달라질경우 같은 클래스라도 호출이 되지 않으므로 지정
+	 */
+	private static final long serialVersionUID = 7863300068250868438L;
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "member_idx")
@@ -102,6 +115,54 @@ public class Member {
 		this.del = 1;
 		
 		return this;
+	}
+
+	//// 문제 생길수도 있음
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
+		List<String> roles = new ArrayList<>();
+		roles.add(this.role);
+		
+		return roles.stream()
+                .map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }
