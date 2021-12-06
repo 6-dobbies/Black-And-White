@@ -10,7 +10,7 @@ INSERT INTO MEMBER(birth_year, del, email, gender, member_id, nickname, pw, pw_a
 INSERT INTO MEMBER(birth_year, del, email, gender, member_id, nickname, pw, pw_answer, pw_question, region, role, tier) values('2000', 0, 'elizabeth.choi.smith@gmail.com', '여', 'cccc', 'cccc1111', 'cccc', '플레이데이터', '현재 소속은?', '인천검단', 'normal', '1승 1무 1패 (상0% 중100% 하0%)');
 INSERT INTO MEMBER(birth_year, del, email, gender, member_id, nickname, pw, pw_answer, pw_question, region, role, tier) values('2000', 0, 'twfno2017@gmail.com', '남', 'dddd', 'dddd1111', 'dddd', '플레이데이터', '현재 소속은?', '서울역', 'normal', '1승 1무 1패 (상0% 중0% 하100%)');
 INSERT INTO MEMBER(birth_year, del, email, gender, member_id, nickname, pw, pw_answer, pw_question, region, role, tier) values('2000', 0, 'ahrakim329@gmail.com', '여', 'eeee', 'eeee1111', 'eeee', '플레이데이터', '현재 소속은?', '장지역', 'normal', '1승 1무 1패 (상33% 중33% 하33%)');
-INSERT INTO MEMBER(birth_year, del, email, gender, member_id, nickname, pw, pw_answer, pw_question, region, role, tier) values('2000', 0, 'ptkeb46@gmail.com', '남', 'ffff', 'eeee1111', 'ffff', '플레이데이터', '현재 소속은?', '수원', 'normal', '1승 1무 1패 (상33% 중33% 하33%)');
+INSERT INTO MEMBER(birth_year, del, email, gender, member_id, nickname, pw, pw_answer, pw_question, region, role, tier) values('2000', 0, 'ptkeb46@gmail.com', '남', 'ffff', 'eeee1111', 'ffff', '플레이데이터', '현재 소속은?', '화성봉담', 'normal', '1승 1무 1패 (상33% 중33% 하33%)');
 
 INSERT INTO BOARD(category) values('자유 게시판');
 INSERT INTO BOARD(category) values('공략 게시판');
