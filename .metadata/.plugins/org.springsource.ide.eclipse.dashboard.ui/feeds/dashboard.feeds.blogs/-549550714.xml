@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Spring</title>
+  <link rel="alternate" href="https://spring.io/blog" />
+  <link rel="self" href="https://spring.io/blog.atom" />
+  <id>http://spring.io/blog.atom</id>
+  <icon>https://spring.io/favicon.ico</icon>
+  <updated>2021-12-01T18:00:00Z</updated>
+  <entry>
+    <title>Accelerate Spring Apps to Cloud at Scale - Discussion with Azure Spring Cloud Customers</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/12/01/accelerate-spring-apps-to-cloud-at-scale-discussion-with-azure-spring-cloud-customers" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-12-01:4628</id>
+    <updated>2021-12-01T18:00:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! I love the Azure Spring Cloud platform - jointly developed with the Spring team and Microsoft - and I&amp;rsquo;m not alone! So do its users! Check out this panel discussion moderated by Adib Sakali and Asir Selvasingh with Morgan Stanley, Bosch, and Digital Realty Trust. &lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/wdwjqXTFFZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Authorization Server 0.2.1 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/12/01/spring-authorization-server-0-2-1-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Joe Grandja</name>
+    </author>
+    <id>tag:spring.io,2021-12-01:4627</id>
+    <updated>2021-12-01T14:00:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;On behalf of the team and everyone who has contributed, it is my pleasure to announce the general availability of Spring Authorization Server 0.2.1.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You can download it from Maven Central by using the module coordinates:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="groovy"&gt;compile 'org.springframework.security:spring-security-oauth2-authorization-server:0.2.1'&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;See the &lt;a href="https://github.com/spring-projects/spring-authorization-server/releases/tag/0.2.1"&gt;release notes&lt;/a&gt; for complete details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To get started using Spring Authorization Server, see the &lt;a href="https://github.com/spring-projects/spring-authorization-server/tree/main/samples"&gt;sample&lt;/a&gt; to become familiar with setup and configuration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We would love to gather your feedback as we strive to improve and build upon this release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-authorization-server"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-authorization-server/issues"&gt;GitHub Issues&lt;/a&gt; |  &lt;a href="https://app.zenhub.com/workspaces/authorization-server-5e8f3182b5e8f5841bfc4902/board?repos=248032165"&gt;ZenHub Board&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Tips: @Controllers and RSocket</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/12/01/spring-tips-controllers-and-rsocket" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-12-01:4626</id>
+    <updated>2021-12-01T08:00:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! In this installment of &lt;a href="https://twitter.com/SpringTipsLive"&gt;Spring Tips (@SpringTipsLive)&lt;/a&gt;, we continue our tour of all things @Controller, this time focusing on the Spring support for RSocket. You might also want to watch the expanded discussion of RSocket in earlier &lt;a href="https://twitter.com/bit.ly/spring-tips-playlist"&gt;Spring Tips &lt;/a&gt; videos: &lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/08/13/premiering-the-rsocket-revolution"&gt;The RSocket Revolution&lt;/a&gt; - watch this next!&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/01/02/spring-tips-rsocket"&gt;Raw RSocket support&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/04/15/spring-tips-rsocket-messaging-in-spring-boot-2-2"&gt;RSocket Messaging and the &lt;code&gt;@Controller&lt;/code&gt; component model&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/02/20/spring-tips-rsocket-and-spring-security"&gt;RSocket and Spring Security&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/06/30/spring-tips-spring-retrosocket"&gt;Spring Retrosocket&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/d4HAqS_VfkQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - November 30th, 2021</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/30/this-week-in-spring-november-30th-2021" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-11-30:4625</id>
+    <updated>2021-11-30T19:00:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This last week&amp;rsquo;s been nutty! Here in the US, we just celebrated the Thanksgiving holiday, and I am fat with turkey and pie, and lazy. But happy. I hope you&amp;rsquo;re well fed and happy, too. Time&amp;rsquo;s flying. (Also: can you believe we&amp;rsquo;re a month away from the new year? I think there&amp;rsquo;s like four or five weeks (and thus _This Week in Spring_s!) left in the year!) &lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve got a ton of stuff to get into this week, so let&amp;rsquo;s go:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/29/security-report-for-spring-amqp-spring-for-rabbitmq"&gt;Security Report for Spring AMQP (Spring for RabbitMQ)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/29/spring-boot-2-6-1-is-now-available"&gt;Spring Boot 2.6.1 is now available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/29/spring-data-mongodb-relation-modelling"&gt;Spring Data MongoDB - Relation Modelling&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/thymeleaf/status/1465598870113689600?s=12"&gt;Thymeleaf 3.0.13 now available! This new version includes security improvements, make sure to check the release notes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;In last week&amp;rsquo;s installmetn of &lt;em&gt;A Bootiful Podcast&lt;/em&gt;, I talked about &lt;a href="https://spring.io/blog/2021/11/25/a-bootiful-podcast-reactive-system-and-functional-programming-legend-debasish-ghosh"&gt;reactive-systems with functional programming legend Debasish Ghosh&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The Apache Cassandra project is working hard to &lt;a href="https://twitter.com/cassandra/status/1463814735451901961?s=12"&gt;officially support JDK 17 in the next Apache Cassandra major release.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I love to see how far the JVM has come. One great indicator of its progress: its garbage collector. Check out this post on &lt;a href="https://kstefanj.github.io/2021/11/24/gc-progress-8-17.html"&gt;garbage collection progress from JDK 8 to JDK 17&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;This is so cool! There&amp;rsquo;s now an &lt;a href="https://ronekins.com/2021/11/11/getting-started-with-the-oracle-database-kubernetes-operator-part-1/"&gt;Oracle Database Kubernetes Operator&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://openjdk.java.net/jeps/420"&gt;JEP 420: Pattern Matching for switch (Second Preview)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://devblogs.microsoft.com/java/java-on-visual-studio-code-update-october-2021/"&gt;Java on Visual Studio Code Update ? October 2021&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;For a lot of folks, the days of using Docker Desktop for free are numbered. You might be interested in this blog on &lt;a href="http://kodeworx.net/posts/rancher_desktop_a_docker_desktop_replacement/"&gt;Rancher Desktop - A Docker Desktop Replacement &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Security Report for Spring AMQP (Spring for RabbitMQ)</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/29/security-report-for-spring-amqp-spring-for-rabbitmq" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Gary Russell</name>
+    </author>
+    <id>tag:spring.io,2021-11-29:4624</id>
+    <updated>2021-11-29T17:11:25Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;The recently released versions of Spring AMQP (2.4.0, 2.3.12, 2.2.20) contain a fix for &lt;a href="https://tanzu.vmware.com/security/cve-2021-22095"&gt;CVE-2021-22095&lt;/a&gt;, which can cause a potential &lt;code&gt;OutOfMemoryError&lt;/code&gt; for very large messages.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Spring Boot version 2.6.0 and 2.5.7 will bring in the 2.4.0 and 2.3.12 versions of spring-amqp respectively. Users of Boot 2.4.x should override the &lt;code&gt;spring-amqp&lt;/code&gt; and &lt;code&gt;spring-rabbit&lt;/code&gt; versions to 2.3.12; users of Spring Boot 2.3.x should override the versions to 2.2.20.&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 2.6.1 is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/29/spring-boot-2-6-1-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2021-11-29:4623</id>
+    <updated>2021-11-29T13:49:03Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I&amp;rsquo;m happy to announce that Spring Boot &lt;code&gt;2.6.1&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.6.1"&gt;11 bug fixes and documentation improvements&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="https://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="https://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-boot/docs/2.6.1/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Data MongoDB - Relation Modelling</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/29/spring-data-mongodb-relation-modelling" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Christoph Strobl</name>
+    </author>
+    <id>tag:spring.io,2021-11-05:4595</id>
+    <updated>2021-11-29T09:30:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;MongoDB&amp;#8217;s flexible schema allows for multiple patterns when it comes to modeling relationships between entities. Also, for many use cases, a denormalized data model (storing related data right within a single document) might be the best choice, because all information is kept in one place, so that the application requires fewer queries to fetch all data. However, this approach also has its downsides, such as potential data duplication, larger documents, and the maximum document size.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In general, MongoDB recommends using normalized data models when the advantages of embedding are neglected by the implications of duplication. In this blog post, we take a look at the different possibilities of linking documents with &lt;em&gt;manual references&lt;/em&gt; and &lt;em&gt;DBRefs&lt;/em&gt; when the need occurs to work with relations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;DBRef&lt;/em&gt; is MongoDB&amp;#8217;s native element to express references to other documents with an explicit format &lt;code&gt;{ $db : ・, $ref : ・, $id : ・ }&lt;/code&gt; that holds information about the target &lt;em&gt;database&lt;/em&gt;, &lt;em&gt;collection&lt;/em&gt;, and &lt;em&gt;id&lt;/em&gt; value of the references element, best suited to link to documents distributed across different collections.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;Manual references&lt;/em&gt;, on the other hand, are simpler in structure (by storing only the &lt;em&gt;id&lt;/em&gt; of the referenced document), but are, therefore, not as flexible when it comes to mixed collection references.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Having set the terminology, let¨s introduce well known domain types, such as &lt;code&gt;Book&lt;/code&gt; and &lt;code&gt;Publisher&lt;/code&gt;, and their obvious relation to one another:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;class Book {
+    private String isbn13;
+    private String title;
+    private int pages;
+}
+
+class Publisher {
+    private String name;
+    private String arconym;
+    private int foundationYear;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Embedding the &lt;code&gt;Publisher&lt;/code&gt; within each and every &lt;code&gt;Book&lt;/code&gt; is not an appealing option, as it would lead to data duplication and put an unnecessary burden on storage and maintainability:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;class Book {
+    // ...
+    private Publisher publisher;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Though this storage format allows for atomic updates and offers the most flexibility when it comes to querying for specific attributes, the repetition of the &lt;code&gt;Publisher&lt;/code&gt; information, as shown in the snippet below, might not be worth this cost:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="javascript"&gt;{
+    "_id" : "617cfb",
+    "isbn13" : "978-0345503800",
+    "title" : "The Warded Man",
+    "pages" : 432,
+    "publisher" : {
+        "name" : "Del Rey Books",
+        "arconym" : "DRB",
+        "foundationYear" : 1977
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The same goes for embedding a collection of &lt;code&gt;Books&lt;/code&gt; within the &lt;code&gt;Publisher&lt;/code&gt;, which causes unnecessarily large documents.
+Normalizing the model and working with linked documents can mitigate the issue.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A first step is to determine the direction of the relation, to figure out which part of the relation needs to hold the reference, if not both. This decision will influence our lookup, storage, and query options available later on.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="linking-with-dbrefs"&gt;&lt;a class="anchor" href="#linking-with-dbrefs"&gt;&lt;/a&gt;Linking with DBRefs&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In this case, the &lt;code&gt;Publisher&lt;/code&gt; holds references to the associated &lt;code&gt;Books&lt;/code&gt;. The idea is to store those references as an array within the &lt;code&gt;Publisher&lt;/code&gt; document:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;class Publisher {
+    // ...
+    @DBRef
+    List&amp;lt;Book&amp;gt; books;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In the above snippet, the books property is annotated with &lt;code&gt;@DBRef&lt;/code&gt;. This advises the Spring Data mapping layer to store elements of the property as MongoDB native &lt;code&gt;$dbref&lt;/code&gt; elements, which looks like the following:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="javascript"&gt;{
+    "_id" : "833f7d",
+    "name" : "Del Rey Books",
+    "arconym" : "DRB",
+    "foundationYear" : 1977,
+    "books" : [
+        {
+            "$ref" : "book",
+            "$id" : "617cfb"
+        },
+        {
+            "$ref" : "book",
+            "$id" : "23e78f"
+        }
+    ]
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Using the &lt;code&gt;@DBRef&lt;/code&gt; annotation lets us reduce storage size by not repeating all &lt;code&gt;Publisher&lt;/code&gt; information within the Book, which is good. Still, this approach has its downsides.
+The &lt;code&gt;Book&lt;/code&gt; no longer holds information about the publisher, which may impact queries that look up &lt;code&gt;Books&lt;/code&gt; by attributes of the &lt;code&gt;Publisher&lt;/code&gt;. The lack of back reference from the &lt;code&gt;Book&lt;/code&gt; to the publisher will also affect performance when looking up the &lt;code&gt;Publisher&lt;/code&gt; for a given &lt;code&gt;Book&lt;/code&gt;, since we now have to issue a query against the &lt;code&gt;Publisher&lt;/code&gt; collection that matches a &lt;code&gt;Book.id&lt;/code&gt; against the &lt;code&gt;books&lt;/code&gt; field of a publisher, instead of heading directly for its &lt;em&gt;id&lt;/em&gt;. Additionally the &lt;code&gt;books&lt;/code&gt; array in &lt;code&gt;Publisher&lt;/code&gt; uses a complex object that stores more information than necessary, whereas a &lt;em&gt;manual reference&lt;/em&gt; that uses the &lt;em&gt;id&lt;/em&gt; alone would have been sufficient, since all references objects are held in the same target collection.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Fortunately, there are ways to improve, starting with adding a back reference to the &lt;code&gt;Publisher&lt;/code&gt;, (for example, by its &lt;code&gt;id&lt;/code&gt;):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;class Book {
+    // ・
+    private String publisherId;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="linking-with-manual-references"&gt;&lt;a class="anchor" href="#linking-with-manual-references"&gt;&lt;/a&gt;Linking with Manual References&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Next, let¨s switch from &lt;em&gt;DBRef&lt;/em&gt; to &lt;em&gt;manual references&lt;/em&gt; for storing the collection of &lt;code&gt;Book&lt;/code&gt; references. The obvious step would be to remove the &lt;code&gt;@DBRef&lt;/code&gt; annotation and replace the &lt;code&gt;List&amp;lt;Book&amp;gt;&lt;/code&gt; with a &lt;code&gt;List&amp;lt;String&amp;gt;&lt;/code&gt;, as in the snippet below:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;class Publisher {
+    // ・
+    List&amp;lt;String&amp;gt; bookIds;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="javascript"&gt;{
+    ・
+    "bookIds" : ["617cfb", "23e78f", ・ ]
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To add a new &lt;code&gt;Book&lt;/code&gt; to the &lt;code&gt;bookIds&lt;/code&gt; field of &lt;code&gt;Publisher&lt;/code&gt;, we could use the following statement.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;template.update(Publisher.class)
+    .matching(where("id").is(publisher.id))
+    .apply(new Update().push("bookIds", book.id))
+    .first();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Following this approach optimizes for storage format and makes a very explicit statement about the data type used in both the domain model as well as the database. Nevertheless, just &lt;code&gt;bookIds&lt;/code&gt; does not give you the context of the collection in which to look up the values contained in the &lt;code&gt;bookIds&lt;/code&gt; field.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="linking-using-declarative-manual-references"&gt;&lt;a class="anchor" href="#linking-using-declarative-manual-references"&gt;&lt;/a&gt;Linking using Declarative Manual References&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Starting with &lt;a href="https://spring.io/blog/2021/11/12/spring-data-2021-1-0-goes-ga"&gt;Spring Data MongoDB 3.3.0&lt;/a&gt;, &lt;em&gt;manual references&lt;/em&gt; can be expressed in a declarative way by using the &lt;code&gt;@DocumentReference&lt;/code&gt; annotation:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;class Publisher {
+    // ・
+    @DocumentReference
+    List&amp;lt;Book&amp;gt; books;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;By default, this tells the mapping layer to extract the &lt;code&gt;id&lt;/code&gt; value of the referenced entity for storage, loading the referenced document itself on read.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="javascript"&gt;{
+    ・
+    "books" : ["617cfb", ・ ]
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Because the mapping layer is aware of the link between the documents, update statements, such as the one shown earlier, detect the association and extract the &lt;em&gt;id&lt;/em&gt; for storage:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;template.update(Publisher.class)
+    .matching(where("id").is(publisher.id))
+    .apply(new Update().push("books", book))
+    .first();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Also, the back reference from &lt;code&gt;Book&lt;/code&gt; to &lt;code&gt;Publisher&lt;/code&gt; could be modeled this way. In this case, it might make sense to delay the retrieval of the publisher until first access of the property to avoid eager loading delays:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;class Book {
+    // ・
+    @DocumentReference(lazy=true)
+    private Publisher publisher;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;By using declarative links, we can now preserve mapping functionality while optimizing for storage. Still, we need to be careful when adding new &lt;code&gt;Book&lt;/code&gt; instances, as those also need to be added to the &lt;code&gt;books&lt;/code&gt; field of the &lt;code&gt;Publisher&lt;/code&gt;, to establish the link:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;template.save(newBook);
+
+template.update(Publisher.class)
+    .matching(where("id").is(newBook.publisher.id))
+    .apply(new Update().push("books", newBook))
+    .first();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The above snippet outlines very well the non-atomic nature of working with links between documents, which may require to run operations within a &lt;a href="https://docs.mongodb.com/manual/core/transactions/"&gt;Transaction&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="one-to-many-style-references"&gt;&lt;a class="anchor" href="#one-to-many-style-references"&gt;&lt;/a&gt;One-To-Many Style References&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Depending on your application&amp;#8217;s needs, it can be feasible to invert the relation between &lt;code&gt;Book&lt;/code&gt; and &lt;code&gt;Publisher&lt;/code&gt; so that the linking element is solely stored within the &lt;code&gt;Book&lt;/code&gt; documents. This lets you store &lt;code&gt;Books&lt;/code&gt; without having to think about updating the &lt;code&gt;Publisher&lt;/code&gt; document, as we saw in the last snippet.
+To do so, we need to do two things. First, we need to tell the mapping layer to omit storing links from &lt;code&gt;Publisher&lt;/code&gt; to &lt;code&gt;Book&lt;/code&gt; and second, update the &lt;em&gt;lookup query&lt;/em&gt; when retrieving linked &lt;code&gt;Books&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The initial part is rather easy, applying an additional &lt;code&gt;@ReadOnlyPorperty&lt;/code&gt; annotation to the &lt;code&gt;books&lt;/code&gt; property. The other part requires us to update the &lt;code&gt;lookup&lt;/code&gt; attribute of the &lt;code&gt;@DocumentReference&lt;/code&gt; annotation with a custom query:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;class Publisher {
+    // ・
+    @ReadOnlyProperty
+    @DocumentReference(lookup="{'publisher':?#{#self._id} }")
+    List&amp;lt;Book&amp;gt; books;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In the snippet above, we make use of the expression  support within the query parser of Spring Data. In doing so, we can access the raw &lt;code&gt;Publisher&lt;/code&gt; document by using the &lt;code&gt;#self&lt;/code&gt; attribute and can extract its identifier to then use it when querying the &lt;code&gt;Book&lt;/code&gt; collection for matching elements.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="final-remarks"&gt;&lt;a class="anchor" href="#final-remarks"&gt;&lt;/a&gt;Final Remarks&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Having a single aggregate root with embedded data has many advantages. Still, it is important to understand how to model relations once those advantages are superseded by other concerns, such as storage size or operability.
+We have seen that, by moving from an &lt;em&gt;embedded&lt;/em&gt; approach to &lt;em&gt;DBRefs&lt;/em&gt; and on to &lt;em&gt;manual references&lt;/em&gt;, we can reduce storage size. However, we have to deal with other problems, such as changes that affect multiple documents and limited query options.
+&lt;code&gt;@DocumentReference&lt;/code&gt; can be a powerful tool that lets you express and customize links between documents. You can learn more about it in our &lt;a href="https://docs.spring.io/spring-data/mongodb/docs/3.3.0/reference/html/#mapping-usage.document-references"&gt;Reference Documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Nevertheless, before you leave, please always keep in mind that links between documents require additional server roundtrips. Therefore, make sure to have indexes available that support your lookup. A collection of linked documents is bulk loaded, restoring ordering on a best effort basis within the memory of your application.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Also, always ask yourself which is best for your application? Is the default embedding approach the better solution? Do you really need the cyclic back reference? Should a link be lazy? How will non-atomic updates affect your application? And finally, which queries do you need to run?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>A Bootiful Podcast: Reactive-System and Functional Programming legend Debasish Ghosh</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/25/a-bootiful-podcast-reactive-system-and-functional-programming-legend-debasish-ghosh" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-11-25:4622</id>
+    <updated>2021-11-25T09:00:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! In this installment, &lt;a href="https://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks to functional programming- and reactive systems-legend &lt;a href="https://twitter.com/debasishg"&gt;Debasish Ghosh (@debasishg)&lt;/a&gt;. And Happy Thanksgiving, if you celebrate! &lt;/p&gt;
+&lt;iframe title="Reactive-System and Functional Programming legend Debasish Ghosh" allowtransparency="true" height="150" width="100%" style="border: none; min-width: min(100%, 430px);" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=dm7ax-113e665-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;btn-skin=7"&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring (Happy Thanksgiving!) - November 23rd, 2021</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/23/this-week-in-spring-happy-thanksgiving-november-23rd-2021" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-11-23:4621</id>
+    <updated>2021-11-23T09:00:00Z</updated>
+    <content type="html">&lt;img style = "width : 100%; margin-top : 2em"  src="https://raw.githubusercontent.com/joshlong/blog-images/master/bootiful-thanksgiving-2021/bootiful-thanksgiving.png" /&gt;
+&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! &lt;/p&gt;
+&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;. This Thursday is Thanksgiving here in the US, where I live. it&amp;rsquo;s a time during which we Americans try to be thankful for what we have. And me, personally? I&amp;rsquo;ve got a lot of things for which I am grateful, this week and always. &lt;/p&gt;
+&lt;p&gt;I am thankful for my family and friends. A person is the company they keep, and I am lucky to have excellent company in my life. &lt;/p&gt;
+&lt;p&gt;I am thankful for my health. Right now, pandemic be danged, I&amp;rsquo;m healthy and happy, something for which I am endlessly grateful because I know what it&amp;rsquo;s like not to be healthy. &lt;/p&gt;
+&lt;p&gt;I am thankful for the fantastic Spring ecosystem. It&amp;rsquo;s an endlessly replenishing fount of awesomeness. Have you tried the new Spring Native 0.11 preview support (now available on the &lt;a href="https://start.spring.io"&gt;Spring Initializr&lt;/a&gt;!)? It&amp;rsquo;s amazing. My GraalVM native-image applications are about 30% faster in startup and take even less memory at runtime. It&amp;rsquo;s amazing! It&amp;rsquo;s trivial to get native images for of many kinds of workloads - Spring Integration, Spring Batch, Spring Data, Spring Security, Spring Webflux, JPA, RSocket, Spring Webflux, R2DBC, Spring Cloud, and so much more. &lt;/p&gt;
+&lt;p&gt;And we, dear community, are kind of like a big ol&amp;rsquo; virtual family. So I know I speak for the entire Spring team when I say that we are very, very, very thankful for you, too. &lt;em&gt;Thank you&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;And lastly, I am thankful for the new and novel. That&amp;rsquo;s a massive part of the reason I put this roundup together every week. Idle hands are the devil&amp;rsquo;s playthings, as they say. But, this community is so vibrant that there&amp;rsquo;s always something fun to explore! And, on that note, let&amp;rsquo;s get to this week&amp;rsquo;s roundup&amp;hellip; &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/18/a-bootiful-podcast-fellow-java-champion-kate-stanley-on-kubernetes-and-apache-kafka"&gt;A Bootiful Podcast: Fellow Java Champion Kate Stanley on Kubernetes and Apache Kafka&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Hi, Spring fans! I hope you&amp;rsquo;ll check out the recent talk I did, &lt;a href="https://www.youtube.com/watch?v=5tdHHsDiiWc"&gt;&lt;em&gt;Bootiful Kotlin&lt;/em&gt;, at the Kotlin Hyderabad event&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.steadybit.com/blog/continuously-verify-startup-times/"&gt;Continuously Verify Your Startup Times, so You Won&amp;rsquo;t Be Surprised Badly.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/19/get-to-know-a-kubernetes-operator"&gt;Get to Know a Kubernetes Operator!&lt;/a&gt; I wrote this post as a sort of guided tour of some of my favorite operators for Kubernetes.&lt;/li&gt;
+  &lt;li&gt;The RSocket Routing Broker has been renamed to RSocket Broker. The new Github organization and &lt;a href="https://github.com/rsocket-broker"&gt;projects are here&lt;/a&gt;. Maven coordinates and java packages have been updated. Updated &lt;a href="https://github.com/spencergibb/rsocket-broker-sample"&gt;samples are here&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/18/spring-amqp-spring-for-rabbitmq-2-4-is-now-available"&gt;Spring AMQP (Spring for RabbitMQ) 2.4 is Now Available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/18/spring-boot-2-4-13-available-now"&gt;Spring Boot 2.4.13 available now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/18/spring-boot-2-5-7-is-now-available"&gt;Spring Boot 2.5.7 is now available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/19/spring-boot-2-6-is-now-available"&gt;Spring Boot 2.6 is now available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/17/spring-cloud-netflix-version-2-2-10-release-is-now-available"&gt;Spring Cloud Netflix version 2.2.10.RELEASE is now available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/22/spring-hateoas-1-4-released"&gt;Spring HATEOAS 1.4 released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/17/spring-tips-controllers-websockets"&gt;Spring Tips: @Controllers: WebSockets&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/11/18/spring-for-apache-kafka-2-8-is-now-available"&gt;Spring for Apache Kafka 2.8 is Now Available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Speaking of &lt;em&gt;Spring Tips&lt;/em&gt;, it&amp;rsquo;s Thanksgiving here in the US, so I won&amp;rsquo;t be producing an episode this week. C&amp;rsquo;ya next week!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Happy Thanksgiving! And &lt;em&gt;thank you&lt;/em&gt;! &lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring HATEOAS 1.4 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/22/spring-hateoas-1-4-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Oliver Drotbohm</name>
+    </author>
+    <id>tag:spring.io,2021-11-22:4619</id>
+    <updated>2021-11-22T21:00:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;I am excited to announce that Spring HATEOAS 1.4 GA has been part of the cascade of releases that lead to the Spring Boot 2.6 last week.
+The release ships a couple of new features and all bug fixes we have incorporated in the 1.3.x line.
+The most notable new features are:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Full support for level 4 URI templates&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Support for non-composite request parameter rendering&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Improved HAL-FORMS support (additional property constraints, custom media types)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Additional HTML input types (checkbox, radio, file)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;General dependency upgrades, including Spring Framework 5.3.13 and Jackson 2.13.9.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Find more detailed information about all changes made in the 1.4 line in the release&amp;#8217;s &lt;a href="https://docs.spring.io/spring-hateoas/docs/1.4.0/changelog.txt"&gt;change log&lt;/a&gt;.
+The release was included in the Spring Boot 2.6 release &lt;a href="https://spring.io/blog/2021/11/19/spring-boot-2-6-is-now-available"&gt;announced last week&lt;/a&gt;.
+In other words, if you have upgraded to that, you&amp;#8217;ve already successfully upgraded to Spring HATEOAS 1.4.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We have also released maintenance versions for the &lt;a href="https://github.com/spring-projects/spring-hateoas/releases/tag/1.3.6"&gt;1.3&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-hateoas/releases/tag/1.2.11"&gt;1.2&lt;/a&gt; lines.
+Please note, that &lt;a href="https://github.com/spring-projects/spring-hateoas/releases/tag/1.2.11"&gt;1.2.11&lt;/a&gt; is the last release of that branch and 1.2 is going out of OSS maintenance.
+Find more about the support timelines for each branch in the &lt;a href="https://spring.io/projects/spring-hateoas#support"&gt;newly introduced tab&lt;/a&gt; of our project homepage.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Also note, that due to a typo during the release procedure for 1.2.11, a 1.12.11 release has made it onto Maven Central.
+The binaries are logically equivalent to 1.2.11, but their presence is likely to cause trouble with tools automating library upgrades.
+We&amp;#8217;re currently working with Sonatype to investigate options to potentially remove the invalid artifacts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 2.6 is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/19/spring-boot-2-6-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Madhura Bhave</name>
+    </author>
+    <id>tag:spring.io,2021-11-19:4617</id>
+    <updated>2021-11-19T08:39:41Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the Spring Boot team and everyone that has contributed, I am pleased to announce that Spring Boot 2.6.0 has been released and is available from Maven Central. &lt;/p&gt;
+&lt;p&gt;This release adds a significant number of new features and improvements. For full &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.6-Release-Notes#upgrading-from-spring-boot-25"&gt;upgrade instructions&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.6-Release-Notes#new-and-noteworthy"&gt;new and noteworthy&lt;/a&gt; features please see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.6-Release-Notes"&gt;release notes&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-new-in-2-6" class="anchor" name="what-rsquo-s-new-in-2-6"&gt;&lt;/a&gt;What&amp;rsquo;s new in 2.6&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Support for &lt;code&gt;SameSite&lt;/code&gt; attributes on session cookies for servlet applications&lt;/li&gt;
+  &lt;li&gt;Support for configuring health groups on the main or management port&lt;/li&gt;
+  &lt;li&gt;Enhanced &lt;code&gt;/info&lt;/code&gt; endpoint with Java Runtime information&lt;/li&gt;
+  &lt;li&gt;Support for testing Spring MVC using &lt;code&gt;WebTestClient&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Auto-configuration for &lt;code&gt;spring-rabbit-stream&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Support for pluggable rules for sanitizing properties in &lt;code&gt;/env&lt;/code&gt; and &lt;code&gt;configprops&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h3&gt;&lt;a href="#dependency-upgrades" class="anchor" name="dependency-upgrades"&gt;&lt;/a&gt;Dependency upgrades&lt;/h3&gt;
+&lt;p&gt;Spring Boot 2.6 moves to new versions of several Spring projects:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-2021.1-%28Q%29-Release-Notes"&gt;Spring Data 2021.1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-hateoas/releases/tag/1.4.0"&gt;Spring HATEOAS 1.4&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://docs.spring.io/spring-amqp/docs/2.4.x/reference/html/#changes-in-2-4-since-2-3"&gt;Spring AMQP 2.4&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://docs.spring.io/spring-kafka/docs/2.8.x/reference/html/#spring-kafka-intro-new"&gt;Spring Kafka 2.8&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://docs.spring.io/spring-security/reference/5.6.0/whats-new.html"&gt;Spring Security 5.6&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session-bom/wiki/Spring-Session-2021.1-Release-Notes"&gt;Spring Session 2021.1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We¨ve also upgraded to the latest stable releases of other third-party libraries wherever possible. Please see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.6-Release-Notes#dependency-upgrades"&gt;release notes&lt;/a&gt; for details.&lt;/p&gt;&lt;h3&gt;&lt;a href="#other-changes" class="anchor" name="other-changes"&gt;&lt;/a&gt;Other changes&lt;/h3&gt;
+&lt;p&gt;There&amp;rsquo;s a whole host of other changes and improvements that are documented in the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.6-Release-Notes"&gt;release notes&lt;/a&gt;. You can also find a list of deprecated classes and methods that we plan to remove in the next version.&lt;/p&gt;
+&lt;p&gt;Additionally, Spring Boot 2.4.0 has now reached end of OSS support. More information on Spring Boot&amp;rsquo;s support dates can be found &lt;a href="https://spring.io/projects/spring-boot#support"&gt;here.&lt;/a&gt;&lt;/p&gt;&lt;h2&gt;&lt;a href="#thank-you" class="anchor" name="thank-you"&gt;&lt;/a&gt;Thank you&lt;/h2&gt;
+&lt;p&gt;We want to take this opportunity to again thank all our users and contributors.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask at &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;on Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.6.0/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Get to Know a Kubernetes Operator!</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/19/get-to-know-a-kubernetes-operator" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-11-13:4604</id>
+    <updated>2021-11-19T08:00:00Z</updated>
+    <content type="html">&lt;style style = "text/css"&gt;&#xD;
+ &#xD;
+&#xD;
+.logo {&#xD;
+ --gutter: 10px;  &#xD;
+ --logo-width : 200px;&#xD;
+ grid-area: logo ;&#xD;
+ border: 1px solid white ;&#xD;
+ width: var(--logo-width) ;&#xD;
+ background-color: white ; &#xD;
+ padding: var(--gutter);&#xD;
+ border-radius: var(--gutter);  &#xD;
+&#xD;
+} &#xD;
+&lt;/style&gt;
+&lt;p&gt;Hi, Spring fans! It&amp;rsquo;s Friday, and you know what that means? Some poor schlub somewhere is trying fruitlessly to get something deployed to production, or at least rolled back consistently, in time for dinner. And it&amp;rsquo;s not working. I&amp;rsquo;ve been there. Deployments are hard. There&amp;rsquo;s nuance in deployment. I love Kubernetes as much as the next Operator, but let&amp;rsquo;s not pretend it&amp;rsquo;s the pinnacle of productivity. Quite the contrary. There&amp;rsquo;s a whole cottage industry around simplifying application deployments with Kubernetes. See for example &lt;a href="https://knative.dev/docs/"&gt;KNative&lt;/a&gt;, &lt;a href="https://tanzu.vmware.com/developer/guides/cf4k8s-gs/"&gt; Cloud Foundry on Kubernetes&lt;/a&gt;, or &lt;a href="https://azure.microsoft.com/en-us/services/spring-cloud/#overview"&gt;Azure Spring Cloud&lt;/a&gt;. These tools are awesome - they provide opinions about how to quickly deploy and manage typical 12-factor style online web applications. They have strong opinions that are loosely held. They&amp;rsquo;re rails for particular workloads - rails that lead to production, &lt;em&gt;if&lt;/em&gt; you can fit your workload into a particular, PaaS-friendly shape. That&amp;rsquo;s great for so much of the workloads we run out there, but not &lt;em&gt;all&lt;/em&gt; of them. Our applications will invariably want to talk to something more substantial, like Apache Kafka, and those things are never so easy to deploy.&lt;/p&gt;
+&lt;p&gt;Kubernetes has an answer for this: &lt;a href="https://coreos.com/operators/"&gt;the Operator&lt;/a&gt;. It&amp;rsquo;s hard to say what a typical distributed database looks like, let alone a standard message queue, or a regular mail server, or whatever. They&amp;rsquo;re all pretty unique and have their usage patterns. So Kubernetes offers primitives, like the Kubernetes &lt;code&gt;StatefulSet&lt;/code&gt; CRD, that - taken together - can be used to successfully deploy a service with replication and backups and quorums and what all. But it&amp;rsquo;s no fun to figure out when and in which we should deploy things. Nobody wants to do that or try to debug it when something goes wrong. &lt;/p&gt;&lt;h2&gt;&lt;a href="#operators" class="anchor" name="operators"&gt;&lt;/a&gt;Operators&lt;/h2&gt;
+&lt;p&gt;Vendors of various services have taken great pains to package up their wares as Kubernetes operators. Operators are, basically, just programs that live in your Kubernetes cluster and interact with the Kubernetes API to programmatically deploy and - should something go wrong - redeploy the various moving parts of a service. &lt;/p&gt;
+&lt;p&gt;Most vendors extend three options to us, the wayward application developers that want to get to the happiest place on earth, production:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;deploy the OSS bits yourself. I call this the YOLO option.&lt;/li&gt;
+  &lt;li&gt;deploy the vendor&amp;rsquo;s (more often than not OSS) Operator for Kubernetes&lt;/li&gt;
+  &lt;li&gt;use the vendor&amp;rsquo;s hosted, cloudy SaaS thing. I tend to do this option whenever I can. Of course, it costs a few bucks, but the peace of mind? Priceless.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you don&amp;rsquo;t want to take the plunge and go for the third option, then the second option is your best bet if you know where to look. So, let&amp;rsquo;s look at some operators that I like and use in my day-to-day work building Spring applications. &lt;/p&gt;
+&lt;p&gt;The installation of these is usually some combination of the following steps, in roughly the next order:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;set up the appropriate and requisite cluster permissions for your Kubernetes installation&lt;/li&gt;
+  &lt;li&gt;Get the various operator resource definitions installed by either &lt;code&gt;kubectl applying&lt;/code&gt; some definitions, OR, using a Helm chart&lt;/li&gt;
+  &lt;li&gt;Provisioning/configuring an instance of the CRD managed by the Operator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After a while, you&amp;rsquo;ll want to upgrade to the newer versions of that infrastructure, so you&amp;rsquo;ll typically either use Helm or apply the updated definitions. In addition, many (but not all!) have built-in support for failover and replication.&lt;/p&gt;&lt;h3&gt;&lt;a href="#rabbitmq" class="anchor" name="rabbitmq"&gt;&lt;/a&gt;RabbitMQ&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/rabbitmq.png"/&gt;
+&lt;p&gt;Many messaging brokers are on this list because they have some of the more exciting and potentially fragile deployments. RabbitMQ is no exception. RabbitMQ is, of course, the AMQP-spec-implementing, queue-centric message broker developed primarily by Tanzu (I work on the Spring team, as part of Tanzu), a part of VMWare. I loved RabbitMQ before VMWare ever owned it, and I use it routinely. Heck, I even pay for hosted RabbitMQ with services &lt;a href="https://www.cloudamqp.com/"&gt;from Cloud AMQP&lt;/a&gt;. But now I don&amp;rsquo;t need to. &lt;a href="https://www.rabbitmq.com/kubernetes/operator/operator-overview.html"&gt;There&amp;rsquo;s an operator from the RabbitMQ team itself&lt;/a&gt;. &lt;/p&gt;&lt;h3&gt;&lt;a href="#apache-kafka" class="anchor" name="apache-kafka"&gt;&lt;/a&gt;Apache Kafka&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/kafka.png"/&gt;
+&lt;p&gt;Alrighty, I&amp;rsquo;ll bet you were looking for this one. Apache Kafka is a topic-centric message queue that fell out of the work that Linkedin and others were doing to Apache Kafka is notoriously hard to operationalize. Heck, it&amp;rsquo;s even had components, like Apache Zookeeper, that themselves are notoriously hard to operationalize! As I write this, Apache Zookeeper is out the door, and so you may not have to deal with it when you one day read this, but it&amp;rsquo;s still a thing now. &lt;/p&gt;
+&lt;p&gt;You have two excellent choices here. First, there&amp;rsquo;s the Confluent Operator for Kubernetes, which is &lt;a href="https://docs.confluent.io/operator/current/overview.html"&gt;not opensource but is easy enough to test and try&lt;/a&gt;. It&amp;rsquo;s also made and supported by Confluent, the folks who drive the growth of Apache Kafka and its ecosystem. It&amp;rsquo;s inarguably the more sophisticated project &lt;em&gt;and&lt;/em&gt; it helps the folks who work on the code. So, if you can do this, you should. &lt;/p&gt;
+&lt;p&gt;Otherwise, there&amp;rsquo;s a top-rated OSS operator for Apache Kafka &lt;a href="https://github.com/strimzi/strimzi-kafka-operator"&gt;called Strimzi&lt;/a&gt;. This open-source project powers commercial offerings from various vendors like IBM, too. I like this one, as well, for a few reasons, including that the code is itself in Java, not Go, so it&amp;rsquo;s fertile ground for people who want to learn how to write an operator. (You do want to learn how to write an operator, don&amp;rsquo;t ya&amp;rsquo;?)&lt;/p&gt;&lt;h3&gt;&lt;a href="#artemis" class="anchor" name="artemis"&gt;&lt;/a&gt;Artemis&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/activemq.png"/&gt;
+&lt;p&gt;Remember &lt;a href="https://en.wikipedia.org/wiki/HornetQ"&gt;JBoss HornetQ&lt;/a&gt;? It was &lt;em&gt;awesome&lt;/em&gt; and offered game-changing, world-class leading performance (at the time) centered around the JMS API. The HornetQ project eventually ended up being folded into Apache ActiveMQ, another super popular JMS message broker of the time. A new project that was more than the sum of the parts was released: Apache Artemis. &lt;a href="https://artemiscloud.io/"&gt;And, lo, there&amp;rsquo;s an OSS operator&lt;/a&gt;! Want a very fast, outstanding, world-class JMS broker at OSS prices? Now you&amp;rsquo;ve got one. &lt;/p&gt;&lt;h3&gt;&lt;a href="#cassandra" class="anchor" name="cassandra"&gt;&lt;/a&gt;Cassandra&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/cassandra.png"/&gt;
+&lt;p&gt;Apache Cassandra is a super-popular columnar database that engineers created at Facebook. It prioritizes &lt;em&gt;Availability&lt;/em&gt; and &lt;em&gt;Partitionability&lt;/em&gt; over consistency in the CAP theorem. It also powers some of the largest sites on the planet. And you can use it, too. There&amp;rsquo;s a delightful operator called &lt;a href="https://k8ssandra.io/"&gt;K8ssandra&lt;/a&gt; by the good folks over at DataStax, the company behind Apache Cassandra and its emerging ecosystem. From the website, it builds on &amp;ldquo;the rock-solid Apache Cassandra∝ NoSQL database&amp;rdquo; and &amp;ldquo;brings together a complete operational data platform for Kubernetes including APIs, monitoring, and backups.&amp;rdquo; Sounds good to me! &lt;/p&gt;&lt;h3&gt;&lt;a href="#yugabytedb" class="anchor" name="yugabytedb"&gt;&lt;/a&gt;YugabyteDB&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/yugabyte.png"/&gt;
+&lt;p&gt;Hey, remember how we talked about Apache Cassandra, &lt;em&gt;way back&lt;/em&gt; in the paragraph that precedes this one, and I said that it prioritized AP over C in the CAP theorem? What if you had a distributed database that &lt;em&gt;felt&lt;/em&gt; like a single-node PostgreSQL instance and was compatible with PostgreSQL while reducing the extent to which you needed to compromise for C so much that it&amp;rsquo;s effectively not a compromise anymore? That&amp;rsquo;s what YugabyteDB, created by some of the same folks who designed Apache Cassandra in the first place, sets out to do. I love it. &lt;a href="https://docs.yugabyte.com/latest/deploy/kubernetes/single-zone/oss/yugabyte-operator/"&gt;And I love that there&amp;rsquo;s an operator&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;&lt;a href="#elasticsearch" class="anchor" name="elasticsearch"&gt;&lt;/a&gt;ElasticSearch&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/elasticsearch.png"/&gt;
+&lt;p&gt;Elastic is the company behind ElasticSearch, the popular search engine. It&amp;rsquo;s incredible and can be used to add natural language search capabilities to an application instantly. It&amp;rsquo;s also, as you can imagine, compromised of a lot of moving parts and the perfect candidate for an operator. Elastic will sell you Elastic Cloud access if you like. That&amp;rsquo;s as easy as it gets. Or, you could use Elastic Cloud on Kubernetes (ECK), which is their Operator for &lt;a href="https://www.elastic.co/downloads/elastic-cloud-kubernetes"&gt;your particular Kubernetes installation&lt;/a&gt;. It installs ElasticSearch and Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, and Elastic Maps Server. Either way, enjoy being able to find that needle in your organization&amp;rsquo;s haystack again! &lt;/p&gt;&lt;h3&gt;&lt;a href="#prometheus" class="anchor" name="prometheus"&gt;&lt;/a&gt;Prometheus&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/prometheus.png"/&gt;
+&lt;p&gt;Prometheus is a popular time-series database that scales with your Kubernetes workloads. It was developed in the cradle of the Kubernetes ecosystem and works well for Kubernetes-deployed services. No surprise: there&amp;rsquo;s an excellent &lt;a href="https://github.com/coreos/prometheus-operator"&gt;Prometheus Operator, too&lt;/a&gt;. &lt;/p&gt;&lt;h3&gt;&lt;a href="#mysql" class="anchor" name="mysql"&gt;&lt;/a&gt;MySQL&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/mysql.png"/&gt;
+&lt;p&gt;Do you want to run MySQL? You&amp;rsquo;re not alone! Oracle has even built &lt;a href="https://github.com/mysql/mysql-operator"&gt;an OSS Kubernetes operator to run MySQL in your cluster&lt;/a&gt;. This Operator manages the entire lifecycle, including backups and restorations. &lt;/p&gt;&lt;h3&gt;&lt;a href="#mongodb" class="anchor" name="mongodb"&gt;&lt;/a&gt;MongoDB&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/mongodb.png"/&gt;
+&lt;p&gt;MongoDB is a popular NoSQL datastore that&amp;rsquo;s, &lt;em&gt;ahem&lt;/em&gt;, &amp;ldquo;web scale.&amp;rdquo; &lt;/p&gt;
+&lt;p&gt;There are two options. The &lt;a href="https://github.com/mongodb/mongodb-enterprise-kubernetes"&gt;MongoDB Enterprise Kubernetes Operator&lt;/a&gt; is an Enterprise product, available under the Enterprise Advanced license. The Operator enables easy deployment of the following applications into Kubernetes clusters: &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;MongoDB&lt;/em&gt; - Replica Sets, Sharded Clusters, and Standalones - with authentication, TLS, and many more options.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Ops Manager&lt;/em&gt; - the enterprise management, monitoring, and backup platform for MongoDB. The Operator can install and manage Ops Manager in Kubernetes for you. In addition, Ops Manager can manage MongoDB instances both inside and outside Kubernetes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You might also try &lt;a href="https://github.com/mongodb/mongodb-kubernetes-operator"&gt;the MongoDB Community Operator&lt;/a&gt;, which deploys MongoDB community into Kubernetes clusters.&lt;/p&gt;&lt;h3&gt;&lt;a href="#postgresql" class="anchor" name="postgresql"&gt;&lt;/a&gt;PostgreSQL&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/postgresql.png"/&gt;
+&lt;p&gt;Want to run PostgreSQL at scale? Me too! And, evidently, so do a good many others, as well! Unfortunately, I couldn&amp;rsquo;t find a single, well-known, and endorsed Operator for PostgreSQL - I found many, but none that seemed &amp;ldquo;official,&amp;rdquo; whatever that means. I&amp;rsquo;ve used this one &lt;a href="https://github.com/zalando/postgres-operator"&gt;from German online fashion platform Zalando&lt;/a&gt; before, and it works well. &lt;/p&gt;&lt;h3&gt;&lt;a href="#couchbase" class="anchor" name="couchbase"&gt;&lt;/a&gt;Couchbase&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/couchbase.png"/&gt;
+&lt;p&gt;A long time ago, in a galaxy far away, CouchDB and Membase merged, and the result was Couchbase. Couchbase is a key-value store that can store lots of different kinds of data. There&amp;rsquo;s &lt;a href="https://www.couchbase.com/products/cloud/kubernetes"&gt;an enterprise (read: paid) Kubernetes operator&lt;/a&gt;. &lt;/p&gt;&lt;h3&gt;&lt;a href="#fluxcd" class="anchor" name="fluxcd"&gt;&lt;/a&gt;FluxCD&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/flux.png"/&gt;
+&lt;p&gt;Alright, I grant you. However, this one is a bit of a freebie. It&amp;rsquo;s FluxCD. It manages continuous delivery in your Kubernetes cluster for your Kubernetes cluster. That is, there&amp;rsquo;s no natural way to run it &lt;em&gt;without&lt;/em&gt; running it in Kubernetes. Nonetheless, &lt;a href="https://github.com/weaveworks/flux"&gt;it does technically have an operator&lt;/a&gt;! &lt;/p&gt;&lt;h3&gt;&lt;a href="#nats" class="anchor" name="nats"&gt;&lt;/a&gt;NATS&lt;/h3&gt;
+&lt;img  style = "background-color : black;" class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/nats.png"/&gt;
+&lt;p&gt;&lt;a href="https://nats.io/"&gt;NATS&lt;/a&gt; is a messaging (another one!) technology that Derek Collison developed to support the message-bus requirements of Cloud Foundry more than a decade ago. It&amp;rsquo;s a very lightweight, super-fast message broker that is great for scaling systems. In addition, there&amp;rsquo;s a Spring Cloud Stream binder, a Java client, and - obviously - &lt;a href="https://github.com/nats-io/nats-operator"&gt;there&amp;rsquo;s a Kubernetes operator&lt;/a&gt;. &lt;/p&gt;&lt;h3&gt;&lt;a href="#arangodb" class="anchor" name="arangodb"&gt;&lt;/a&gt;ArangoDB&lt;/h3&gt;
+&lt;img class ="logo" src="https://raw.githubusercontent.com/joshlong/blog-images/master/get-to-know-an-operator/arangodb.png"/&gt;
+&lt;p&gt;ArangoDB is a multi-model distributed database. I haven&amp;rsquo;t used it much. The one time I did, it was easy enough to get going on my local machine and - importantly - &lt;a href="https://github.com/arangodb/kube-arangodb"&gt;on Kubernetes, thanks to this Operator&lt;/a&gt;&lt;/p&gt;&lt;h2&gt;&lt;a href="#next-steps" class="anchor" name="next-steps"&gt;&lt;/a&gt;Next Steps&lt;/h2&gt;
+&lt;p&gt;In my experience, the first thing I tried to do when I got into Kubernetes was to deploy a stateless microservice using Spring Boot. I knew that these kinds of stateless microservices were the happy path for Kubernetes, and I didn&amp;rsquo;t want to go uphill. This experience was satisfying and got me hooked. &amp;ldquo;This thing has potential!&amp;rdquo; I exclaimed. Then I spent time trying to optimize for stateless microservices. I learned Istio, KNative, and so on. The Tanzu Application Platform seems like the best fit for deploying applications of all the things I&amp;rsquo;ve learned. (I only wish it&amp;rsquo;d existed then as it does now! I would&amp;rsquo;ve undoubtedly saved myself scads of time!)&lt;/p&gt;
+&lt;p&gt;Then, I wondered how I would get my data on the platform. And that&amp;rsquo;s where the optimism dwindles. 90% of my journey on Kubernetes has been figuring out how to make infrastructure work reliably on the platform. Things like message queues, databases, and more. It took learning how to work with Helm charts, operators, and StatefulSets before I started even understanding the problem space. If I had to do it over again, I&amp;rsquo;d spend less time treading water with microservices and dive almost immediately into getting my favorite database working reliably. Start small. Then learn Helm. Then discover the operator pattern. Once you&amp;rsquo;ve got those arrows in your quill, anything&amp;rsquo;s possible. Then the force-multiplying effect of composition and reuse starts to kick in at the platform level. &lt;/p&gt;
+&lt;p&gt;In this post, we&amp;rsquo;ve looked at a few operators that I found pleasant enough to use and powerful enough to be worth using. I&amp;rsquo;d love to know what other operators you&amp;rsquo;ve found to be helpful in your experiences.&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring AMQP (Spring for RabbitMQ) 2.4 is Now Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/18/spring-amqp-spring-for-rabbitmq-2-4-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Gary Russell</name>
+    </author>
+    <id>tag:spring.io,2021-11-18:4616</id>
+    <updated>2021-11-19T01:36:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;I am pleased to announce that Spring AMQP 2.4.0 is now available.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="notable-changes"&gt;&lt;a class="anchor" href="#notable-changes"&gt;&lt;/a&gt;Notable Changes&lt;/h3&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Initial support for the &lt;a href="https://docs.spring.io/spring-amqp/docs/2.8.x/reference/html/#stream-support"&gt;RabbitMQ Stream Plugin&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Support for remoting using Spring Framework&amp;#8217;s RMI support is deprecated&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For information about all changes in this release, see &lt;a href="https://docs.spring.io/spring-amqp/docs/2.4.x/reference/html/#whats-new-part"&gt;What&amp;#8217;s New&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-amqp/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-amqp"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-amqp/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-amqp/docs/2.4.x/reference/html/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-amqp"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-amqp"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring for Apache Kafka 2.8 is Now Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/18/spring-for-apache-kafka-2-8-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Gary Russell</name>
+    </author>
+    <id>tag:spring.io,2021-11-18:4615</id>
+    <updated>2021-11-19T01:28:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;I am pleased to announce that Spring for Apache Kafka 2.8.0 is now available.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="notable-changes"&gt;&lt;a class="anchor" href="#notable-changes"&gt;&lt;/a&gt;Notable Changes&lt;/h3&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This version uses the 3.0.0 &lt;code&gt;kafka-clients&lt;/code&gt; version&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Out of order manual commits are now supported&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The same container factory can now be used for both batch and record listeners&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Separate record and batch error handlers have been replaced with common error handlers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;KafkaTemplate&lt;/code&gt; can now be used to receive specific records from known partitions/offsets&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For information about all changes in this release, see &lt;a href="https://docs.spring.io/spring-kafka/docs/2.8.x/reference/html/#whats-new-part"&gt;What&amp;#8217;s New&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-kafka/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-kafka"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-kafka/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-kafka/docs/2.8.x/reference/html/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-kafka"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-kafka"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>A Bootiful Podcast: Fellow Java Champion Kate Stanley on Kubernetes and Apache Kafka</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/18/a-bootiful-podcast-fellow-java-champion-kate-stanley-on-kubernetes-and-apache-kafka" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-11-19:4618</id>
+    <updated>2021-11-18T21:00:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of A Bootiful Podcast! This week - a week before Thanksgiving here in the US - &lt;a href="https://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; wants you to know he and the Spring team are_thankful_ for you, and then he talks to newly minted Java Champion and Java ecosystem legend &lt;a href="https://twitter.com/KateStanley91"&gt;Kate Stanley (@KateStanley91)&lt;/a&gt; about Kubernetes and Apache Kafka.&lt;/p&gt;
+&lt;iframe title="Fellow Java Champion Kate Stanley on Kubernetes and Apache Kafka " allowtransparency="true" height="150" width="100%" style="border: none; min-width: min(100%, 430px);" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=3fzs9-1136033-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;btn-skin=7"&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 2.5.7 is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/18/spring-boot-2-5-7-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2021-11-18:4613</id>
+    <updated>2021-11-18T11:53:54Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I&amp;rsquo;m happy to announce that Spring Boot &lt;code&gt;2.5.7&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.5.7"&gt;35 bug fixes, documentation improvements, and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="https://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="https://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-boot/docs/2.5.7/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 2.4.13 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/18/spring-boot-2-4-13-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>St?phane Nicoll</name>
+    </author>
+    <id>tag:spring.io,2021-11-18:4611</id>
+    <updated>2021-11-18T09:12:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I&amp;rsquo;m happy to announce that Spring Boot &lt;code&gt;2.4.13&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.4.13"&gt;26 bug fixes, documentation improvements, and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#end-of-oss-support" class="anchor" name="end-of-oss-support"&gt;&lt;/a&gt;End of OSS Support&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;2.4.x&lt;/code&gt; has now reached the end of its OSS support period and regular releases will no longer be made. If you are still on this version, please consider upgrading at your earliest convenience. If you cannot upgrade at this time, &lt;a href="https://tanzu.vmware.com/spring-runtime"&gt;commercial support is available&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="https://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="https://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-boot/docs/2.4.13/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Batch 4.3.4 and 4.2.8 available now!</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/17/spring-batch-4-3-4-and-4-2-8-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Mahmoud Ben Hassine</name>
+    </author>
+    <id>tag:spring.io,2021-11-18:4612</id>
+    <updated>2021-11-17T19:36:00Z</updated>
+    <content type="html">&lt;p&gt;I am pleased to announce that Spring Batch 4.2.8 and 4.3.4 have been released and are available now from Maven Central repository. These patch releases come with a number of bug fixes and dependency updates. You can find the complete change logs here: &lt;a href="https://github.com/spring-projects/spring-batch/releases/tag/4.2.8.RELEASE"&gt;4.2.8&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-batch/releases/tag/4.3.4"&gt;4.3.4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank all contributors who had a role in these releases!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-batch"&gt;Spring Batch Home&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-batch"&gt;Source on GitHub&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-batch/docs/current/reference/html/"&gt;Reference Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Netflix version 2.2.10.RELEASE is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/17/spring-cloud-netflix-version-2-2-10-release-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Olga Maciaszek-Sharma</name>
+    </author>
+    <id>tag:spring.io,2021-11-17:4607</id>
+    <updated>2021-11-17T16:00:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the community, I am pleased to announce that Spring Cloud Netflix version 2.2.10.RELEASE has been released.&lt;/p&gt;
+&lt;p&gt;This is primarily a security release that fixes the &lt;a href="https://tanzu.vmware.com/security/cve-2021-22053"&gt;CVE-2021-22053&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Applications using both &lt;code&gt;spring-cloud-netflix-hystrix-dashboard&lt;/code&gt; and &lt;code&gt;spring-boot-starter-thymeleaf&lt;/code&gt; exposed a way to execute code submitted within the request URI path during the resolution of view templates. When a request was made at &lt;code&gt;/hystrix/monitor;[user-provided-data]&lt;/code&gt;, the path elements following &lt;code&gt;hystrix/monitor&lt;/code&gt; were being evaluated as SpringEL expressions, which could lead to code execution.&lt;/p&gt;
+&lt;p&gt;This release fixes the issue.&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Tips: @Controllers: WebSockets</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/11/17/spring-tips-controllers-websockets" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-11-17:4606</id>
+    <updated>2021-11-17T08:00:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! In this installment of Spring Tips, we&amp;rsquo;re going to resume our series on Spring&amp;rsquo;s @Controller annotation, this time diving into Spring&amp;rsquo;s WebSocket support.&lt;/p&gt;
+&lt;p&gt;The code &lt;a href="github.com/spring-tips/controllers"&gt;is here&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/m0K3ElazGE0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+</feed>
