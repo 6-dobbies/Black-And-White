@@ -19,6 +19,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
+@Component
 public class JwtLoginToken {
 	
 	@RequiredArgsConstructor
@@ -30,7 +32,7 @@ public class JwtLoginToken {
 	    // 토큰 유효시간 하루
 	    private long tokenValidTime = 24 * 60 * 60 * 1000L;
 	    
-	    private final UserDetailsService userDetailsService;
+	    private UserDetailsService userDetailsService;
 
 	    // 객체 초기화, secretKey를 Base64로 인코딩한다.
 	    @PostConstruct
