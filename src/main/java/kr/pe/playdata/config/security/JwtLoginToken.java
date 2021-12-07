@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -32,7 +31,7 @@ public class JwtLoginToken {
 	    // 토큰 유효시간 하루
 	    private long tokenValidTime = 24 * 60 * 60 * 1000L;
 	    
-	    private UserDetailsService userDetailsService;
+	    private final UserServiceDetail userDetailsService;
 
 	    // 객체 초기화, secretKey를 Base64로 인코딩한다.
 	    @PostConstruct
