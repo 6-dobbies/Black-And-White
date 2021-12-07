@@ -1,4 +1,4 @@
-package kr.pe.playdata.config.Security;
+package kr.pe.playdata.config.security;
 
 import java.util.Base64;
 import java.util.Date;
@@ -12,7 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

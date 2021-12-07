@@ -1,8 +1,7 @@
-package kr.pe.playdata.config.Security;
-
-import javax.servlet.Filter;
+package kr.pe.playdata.config.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,13 +11,14 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import kr.pe.playdata.config.Security.JwtLoginToken.JwtTokenProvider;
+import kr.pe.playdata.config.security.JwtLoginToken.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
+@Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+	 
 	 private final JwtTokenProvider jwtTokenProvider;
 
 	    // 암호화에 필요한 PasswordEncoder 를 Bean 등록합니다.
@@ -42,11 +42,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 토큰 기반 인증이므로 세션 역시 사용하지 않습니다.
 	                .and()
 	                .authorizeRequests() // 요청에 대한 사용권한 체크
-	                .antMatchers("/admin/**").hasRole("ADMIN")
-	                .antMatchers("/user/**").hasRole("USER")
+	                .antMatchers("/admin/**").hasRole("Admin")
+	                .antMatchers("/user/**").hasRole("User")
 	                .anyRequest().permitAll() // 그외 나머지 요청은 누구나 접근 가능
 	                .and()
-	                .addFilterBefore((Filter) new JwtAuthenticationFilter(jwtTokenProvider),
+	                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
 	                        UsernamePasswordAuthenticationFilter.class);
 	                // JwtAuthenticationFilter를 UsernamePasswordAuthenticationFilter 전에 넣는다
 	   }

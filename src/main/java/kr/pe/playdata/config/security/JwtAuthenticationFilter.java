@@ -1,4 +1,4 @@
-package kr.pe.playdata.config.Security;
+package kr.pe.playdata.config.security;
 
 import java.io.IOException;
 
@@ -10,18 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.filter.GenericFilterBean;
 
-import kr.pe.playdata.config.Security.JwtLoginToken.JwtTokenProvider;
+import kr.pe.playdata.config.security.JwtLoginToken.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class JwtAuthenticationFilter {
+public class JwtAuthenticationFilter  extends GenericFilterBean {
 	
 	 private final JwtTokenProvider jwtTokenProvider ;
 // =========================================================================
 	 // 서블릿 변경
 	 public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-	        // 헤더에서 JWT 를 받아옵니다.
+	       	System.out.println("filter");
+		 	// 헤더에서 JWT 를 받아옵니다.
 	        String token = jwtTokenProvider.resolveToken((HttpServletRequest) request);
 	        // 유효한 토큰인지 확인합니다.
 	        if (token != null && jwtTokenProvider.validateToken(token)) {

@@ -24,7 +24,7 @@ public class MemberDTO {
 		@Builder
 		public Create(String memberId, String pw, String pwQuestion, String pwAnswer, 
 					  String nickname, String birthYear, String email, String gender,
-					  String region, String tier, String role, int del) {
+					  String region, String tier) {
 			this.memberId = memberId;
 			this.pw = pw;
 			this.pwQuestion = pwQuestion;
@@ -35,7 +35,7 @@ public class MemberDTO {
 			this.gender = gender;
 			this.region = region;
 			this.tier = tier;
-			this.role = role;
+			this.role = "User";
 			this.del = 0;
 		}
 
