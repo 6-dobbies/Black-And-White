@@ -1,46 +1,39 @@
 package kr.pe.playdata.controller;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import kr.pe.playdata.model.dto.ResponseDTO;
+import kr.pe.playdata.model.response.ListResult;
+import kr.pe.playdata.model.response.SingleResult;
 import kr.pe.playdata.service.BoardService;
+import kr.pe.playdata.service.ResponseService;
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 @RequiredArgsConstructor
 @RestController
 public class BoardController {
-	
-	@Autowired
-	private BoardService boardService;
-	
-	
+
+	private final BoardService boardService;
+	private final ResponseService rs;
+
 	@GetMapping("/Board/categoryAll")
-	public List<ResponseDTO.BoardListResponse> getBoardAll(){
-		return boardService.findCategoryAll();
+	public ListResult<ResponseDTO.BoardListResponse> getBoardAll() {
+		return rs.getListResult(boardService.findCategoryAll());
 	}
-	
+
 	@GetMapping("/Board/category")
-	public ResponseDTO.BoardResponse getBoard(String categoryname){
+	public SingleResult<ResponseDTO.BoardResponse> getBoard(String categoryname) {
 		try {
-			return boardService.findOneByCategory(categoryname);
+			return rs.getSingleResult(boardService.findOneByCategory(categoryname));
 		} catch (NotFoundException e) {
 			e.printStackTrace();
 			return null;
 		}
-		
-	}
-	
 
-	
-	
-	
-	
-	
+	}
 }
