@@ -1,5 +1,7 @@
 package kr.pe.playdata.model.dto;
 
+import java.util.List;
+
 import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.domain.Post;
@@ -76,7 +78,7 @@ public class ResponseDTO {
 		private String gender;
 		private String region;
 		private String tier;
-		private String role;
+		private List<String>role;
 		private int del;
 		
 		public MemberListResponse(Member entity) {

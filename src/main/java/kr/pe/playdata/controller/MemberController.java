@@ -1,8 +1,6 @@
 package kr.pe.playdata.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.pe.playdata.config.security.JwtLoginToken.JwtTokenProvider;
-import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.dto.MemberDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
 import kr.pe.playdata.repository.MemberRepository;
@@ -77,17 +74,17 @@ public class MemberController {
         return memberIdx;
     }
 	
-	// 로그인
-    @PostMapping("/login")
-    public String login(@RequestBody Map<String, String> user) {
-        Member member = memberRepo.findByMemberId(user.get("email"))
-                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 E-MAIL 입니다."));
-        if (!passwordEncoder.matches(user.get("password"), member.getPassword())) {
-            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
-        }
-        List<String> roles = new ArrayList<>();
-		roles.add(member.getRole());
-        return jwtTokenProvider.createToken(member.getUsername(), roles );
-    }
-	
+//	// 로그인
+//    @PostMapping("/login")
+//    public String login(@RequestBody Map<String, String> user) {
+//        Member member = memberRepo.findByMemberId(user.get("email"))
+//                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 E-MAIL 입니다."));
+//        if (!passwordEncoder.matches(user.get("password"), member.getPassword())) {
+//            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
+//        }
+//        List<String> roles = new ArrayList<>();
+//		roles.add(member.getRole());
+//        return jwtTokenProvider.createToken(member.getUsername(), roles );
+//    }
+//	
 }
