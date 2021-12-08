@@ -1,5 +1,8 @@
 package kr.pe.playdata.model.dto;
 
+import java.util.Collections;
+import java.util.List;
+
 import kr.pe.playdata.model.domain.Member;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +21,7 @@ public class MemberDTO {
 		private String gender;
 		private String region;
 		private String tier;
-		private String role;
+		private List<String> role;
 		private int del;
 
 		@Builder
@@ -35,7 +38,7 @@ public class MemberDTO {
 			this.gender = gender;
 			this.region = region;
 			this.tier = tier;
-			this.role = "User";
+			this.role = Collections.singletonList("ROLE_USER");
 			this.del = 0;
 		}
 

@@ -78,7 +78,7 @@ public class Member implements UserDetails {
 	private String tier;
 	
 	@NotNull
-	private String role;
+	private List<String> role = new ArrayList<>();
 	
 	@NotNull
 	private int del;
@@ -88,7 +88,7 @@ public class Member implements UserDetails {
 	private List<Post> postList;
 	
 	@Builder
-	public Member(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear, String email, String gender, String region, String tier, String role, int del) {
+	public Member(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear, String email, String gender, String region, String tier, List<String> role, int del) {
 		this.memberId = memberId;
 		this.pw = pw;
 		this.pwQuestion = pwQuestion;
@@ -117,52 +117,42 @@ public class Member implements UserDetails {
 		return this;
 	}
 
-	//// 문제 생길수도 있음
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
-		List<String> roles = new ArrayList<>();
-		roles.add(this.role);
-		
-		return roles.stream()
+		return this.role.stream()
                 .map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 	}
 
 	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.memberId;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
+	}
+
+	@Override
+	public String getPassword() {
+		return null;
 	}
 	
 }
