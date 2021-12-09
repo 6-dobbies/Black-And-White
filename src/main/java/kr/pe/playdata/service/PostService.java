@@ -3,21 +3,16 @@ package kr.pe.playdata.service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.pe.playdata.controller.BoardController;
 import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.domain.Post;
 import kr.pe.playdata.model.dto.PostDTO;
-import kr.pe.playdata.model.dto.PostDTO.Create;
 import kr.pe.playdata.model.dto.ResponseDTO;
-import kr.pe.playdata.model.dto.ResponseDTO.BoardResponse;
-import kr.pe.playdata.model.dto.ResponseDTO.PostListResponse;
-import kr.pe.playdata.model.dto.ResponseDTO.PostResponse;
 import kr.pe.playdata.repository.BoardRepository;
 import kr.pe.playdata.repository.MemberRepository;
 import kr.pe.playdata.repository.PostRepository;
@@ -26,9 +21,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class PostService {
-
+	
+	@Autowired
 	private final PostRepository prp;
+	@Autowired
 	private final BoardRepository brp;
+	@Autowired
 	private final MemberRepository mrp;
 	
 	// postIdx로 post 하나 조회

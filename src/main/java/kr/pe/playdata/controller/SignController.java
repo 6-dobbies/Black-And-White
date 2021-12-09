@@ -18,9 +18,10 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping(value = "/v1")
 public class SignController {
-	private final MemberRepository userJpaRepo;
-	private final JwtTokenProvider jwtTokenProvider;
-	private final PasswordEncoder passwordEncoder;
+
+    private final MemberRepository userJpaRepo;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final PasswordEncoder passwordEncoder;
 
 //    @ApiOperation(value = "로그인", notes = "이메일 회원 로그인을 한다.")
 //    @PostMapping(value = "/signin")
@@ -32,17 +33,19 @@ public class SignController {
 //        return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getMsrl()), user.getRoles()));
 //
 // }
-	@PostMapping("/members/login")
-	public String login(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
-			@ApiParam(value = "비밀번호", required = true) @RequestParam String password) {
-		Member member = userJpaRepo.findByMemberId(id)
-				.orElseThrow(() -> new IllegalArgumentException("가입되지 않은 E-MAIL 입니다."));
-		if (!passwordEncoder.matches(password, member.getPassword())) {
-			throw new IllegalArgumentException("잘못된 비밀번호입니다.");
-		}
+    
+    @PostMapping("/members/login")
+    public String login(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
+            			@ApiParam(value = "비밀번호", required = true) @RequestParam String password) {
+        Member member = userJpaRepo.findByMemberId(id)
+                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 E-MAIL 입니다."));
+        if (!passwordEncoder.matches(password, member.getPassword())) {
+            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
+        }
 		List<String> role = member.getRole();
-		return jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole());
-	}
+        return jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole());
+    }
+
 // @ApiOperation(value = "가입", notes = "회원가입을 한다.")
 // @PostMapping(value = "/signup")
 // public CommonResult signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
@@ -53,8 +56,9 @@ public class SignController {
 //                .uid(id)
 //                .password(passwordEncoder.encode(password))
 //                .name(name)
-//
+//                
 //                .build());
-//
+//        
 //    }
+
 }

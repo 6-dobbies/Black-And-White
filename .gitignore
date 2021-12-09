@@ -1,6 +1,10 @@
 HELP.md
 target/
 bin/
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

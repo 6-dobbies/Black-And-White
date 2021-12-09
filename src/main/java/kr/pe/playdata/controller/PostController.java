@@ -23,10 +23,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RestController
 public class PostController {
-	@Autowired(required = false)
+
+	@Autowired(required=false)
 	private final PostService psv;
 	private final ResponseService rs;
 
+	
 	@GetMapping("/post/idx/{postIdx}")
 	public SingleResult<ResponseDTO.PostResponse> getPostOneIdx(@PathVariable Long postIdx) {
 		return rs.getSingleResult(psv.findByPostIdx(postIdx));
@@ -64,7 +66,7 @@ public class PostController {
 
 	@PatchMapping("/post/dellist")
 	public ListResult<Long> deletePostList(@RequestBody List<Long> dellist) {
-		for (Long i : dellist) {
+		for (Long i:  dellist) {
 			psv.DeletePost(i);
 		}
 		return rs.getListResult(dellist);

@@ -78,7 +78,7 @@ public class ResponseDTO {
 		private String gender;
 		private String region;
 		private String tier;
-		private List<String>role;
+		private List<String> role;
 		private int del;
 		
 		public MemberListResponse(Member entity) {

@@ -7,5 +7,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ListResult<T> extends CommonResult {
-	private List<T> list;
+    private List<T> list;
 }

@@ -17,10 +17,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RestController
 public class BoardController {
-
+	
 	private final BoardService boardService;
 	private final ResponseService rs;
 
+	
 	@GetMapping("/Board/categoryAll")
 	public ListResult<ResponseDTO.BoardListResponse> getBoardAll() {
 		return rs.getListResult(boardService.findCategoryAll());
@@ -34,6 +35,5 @@ public class BoardController {
 			e.printStackTrace();
 			return null;
 		}
-
 	}
 }
