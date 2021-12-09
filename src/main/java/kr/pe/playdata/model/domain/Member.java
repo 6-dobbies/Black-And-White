@@ -2,12 +2,15 @@ package kr.pe.playdata.model.domain;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import kr.pe.playdata.model.dto.MemberDTO.Create;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -35,9 +41,8 @@ public class Member implements UserDetails {
 	/**
 	 * UID값이 달라질경우 같은 클래스라도 호출이 되지 않으므로 지정
 	 */
-	private static final long serialVersionUID = 7863300068250868438L;
-
-
+//	private static final long serialVersionUID = 7863300068250868438L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "member_idx")
@@ -78,6 +83,7 @@ public class Member implements UserDetails {
 	private String tier;
 	
 	@NotNull
+	@ElementCollection(fetch=FetchType.EAGER)
 	private List<String> role = new ArrayList<>();
 	
 	@NotNull
@@ -88,7 +94,18 @@ public class Member implements UserDetails {
 	private List<Post> postList;
 	
 	@Builder
-	public Member(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear, String email, String gender, String region, String tier, List<String> role, int del) {
+	public Member(String memberId, 
+					String pw, 
+					String pwQuestion, 
+					String pwAnswer, 
+					String nickname, 
+					String birthYear, 
+					String email, 
+					String gender, 
+					String region, 
+					String tier, 
+					List<String> role, 
+					int del) {
 		this.memberId = memberId;
 		this.pw = pw;
 		this.pwQuestion = pwQuestion;
@@ -99,7 +116,7 @@ public class Member implements UserDetails {
 		this.gender = gender;
 		this.region = region;
 		this.tier = tier;
-		this.role = role;
+		this.role = Collections.singletonList("ROLE_USER");
 		this.del = 0;
 	}
 	

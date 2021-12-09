@@ -4,6 +4,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import kr.pe.playdata.exception.CAuthenticationEntryPointException;
+import kr.pe.playdata.model.response.CommonResult;
+import kr.pe.playdata.service.ResponseService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,4 +24,5 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
             ServletException {
         response.sendRedirect("/exception/entrypoint");
     }
+    
 }

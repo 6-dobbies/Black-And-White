@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "entryPointException.code",
+    "type": "java.lang.Integer",
+    "description": "A description for 'entryPointException.code'"
+  },
+  {
+    "name": "entryPointException.msg",
+    "type": "java.lang.String",
+    "description": "A description for 'entryPointException.code'"
+  },
+  {
+    "name": "userNotFoundException.code",
+    "type": "java.lang.Integer",
+    "description": "A description for 'entryPointException.code'"
+  },
+  {
+    "name": "userNotFoundException.msg",
+    "type": "java.lang.String",
+    "description": "A description for 'entryPointException.code'"
+  },
+  {
+    "name": "emailSigninFailedException.code",
+    "type": "java.lang.Integer",
+    "description": "A description for 'entryPointException.code'"
+  },
+  {
+    "name": "emailSigninFailedException.msg",
+    "type": "java.lang.String",
+    "description": "A description for 'entryPointException.code'"
+  },
+  {
+    "name": "accessDenied.code",
+    "type": "java.lang.Integer",
+    "description": "A description for 'accessDenied.code'"
+  },
+  {
+    "name": "accessDenied.code",
+    "type": "java.lang.String",
+    "description": "A description for 'accessDenied.code'"
+  }
+]}

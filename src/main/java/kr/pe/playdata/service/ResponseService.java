@@ -60,10 +60,20 @@ public class ResponseService {
         result.setMsg(CommonResponse.FAIL.getMsg());
         return result;
     }
+    
+    public CommonResult getFailResult(Integer Errorcode, String Errormsg) {
+        CommonResult result = new CommonResult();
+        result.setSuccess(false);
+        result.setCode(Errorcode);
+        result.setMsg(Errormsg);
+        return result;
+    }
+    
     // 결과 모델에 api 요청 성공 데이터를 세팅해주는 메소드
     private void setSuccessResult(CommonResult result) {
         result.setSuccess(true);
         result.setCode(CommonResponse.SUCCESS.getCode());
         result.setMsg(CommonResponse.SUCCESS.getMsg());
     }
+	
 }

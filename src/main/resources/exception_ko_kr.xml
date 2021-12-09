@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+# exception.properties
+entryPointException.code=-1002
+entryPointException.msg=You do not have permission to access this resource.
+

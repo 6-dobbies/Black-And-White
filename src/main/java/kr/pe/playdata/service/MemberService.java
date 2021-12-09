@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.pe.playdata.exception.CUserNotFoundException;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.dto.MemberDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
@@ -24,7 +25,7 @@ public class MemberService {
 	@Transactional(readOnly = true)
 	public ResponseDTO.MemberResponse findByMemberIdx(Long memberIdx) {
 		Member entity = memberRepository.findByMemberIdx(memberIdx)
-										.orElseThrow(() -> new IllegalArgumentException("Member with memberIdx: " + memberIdx + " is not valid"));
+										.orElseThrow(() -> new CUserNotFoundException("Member with memberIdx: " + memberIdx + " is not valid"));
 		
 		return new ResponseDTO.MemberResponse(entity);
 	}
@@ -33,7 +34,7 @@ public class MemberService {
 	@Transactional(readOnly = true)
     public ResponseDTO.MemberResponse findByNickname(String nickname) {
         Member entity = memberRepository.findByNickname(nickname)
-        								.orElseThrow(() -> new IllegalArgumentException("Member with nickname: " + nickname + " is not valid"));
+        								.orElseThrow(() -> new CUserNotFoundException("Member with nickname: " + nickname + " is not valid"));
 
         return new ResponseDTO.MemberResponse(entity);
     }
@@ -58,15 +59,15 @@ public class MemberService {
 	
 	// 회원 저장
 	@Transactional
-	public Long saveMember(MemberDTO.Create dto) {
-        return memberRepository.save(dto.toEntity()).getMemberIdx();
+	public Long saveMember(Member member) {
+        return memberRepository.save(member).getMemberIdx();
     }
 	
 	// 회원 정보 수정 - pw, email, region
 	@Transactional
     public Long updateMember(Long memberIdx, MemberDTO.Update dto) {
         Member member = memberRepository.findByMemberIdx(memberIdx)
-        								.orElseThrow(() -> new IllegalArgumentException("Member with memberIdx: " + memberIdx + " is not valid"));
+        								.orElseThrow(() -> new CUserNotFoundException("Member with memberIdx: " + memberIdx + " is not valid"));
 
         member.update(dto.getPw(), dto.getEmail(), dto.getRegion());
 
@@ -77,7 +78,7 @@ public class MemberService {
 	@Transactional
     public void deleteMember(Long memberIdx) {
         Member member = memberRepository.findByMemberIdx(memberIdx)
-                						.orElseThrow(() -> new IllegalArgumentException("Member with memberIdx: " + memberIdx + " is not valid"));
+                						.orElseThrow(() -> new CUserNotFoundException("Member with memberIdx: " + memberIdx + " is not valid"));
 
         member.delete(1);
     }
