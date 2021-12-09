@@ -132,7 +132,7 @@ public class MemberController {
 	@ApiImplicitParams({
         @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = true, dataType = "String", paramType = "header")
 	})
-	@PatchMapping("/members/{memberIdx}")
+	@PatchMapping("/members/{memberIdx}") // @Requestbody를 통해 토큰을 받고 그것을 검증해서 멤버 탈퇴 자격이 있나 검증
     public SingleResult<Long> deleteMember(@PathVariable Long memberIdx) {
 		memberService.deleteMember(memberIdx);
 		

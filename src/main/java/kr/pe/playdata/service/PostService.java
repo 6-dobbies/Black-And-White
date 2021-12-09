@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -78,20 +81,29 @@ public class PostService {
 	}
 
 	@Transactional
-	public Long savePost(PostDTO.Create dto) {
-		Board board = brp.findByBoardIdx(dto.getBoardIdx())
-                .orElseThrow(() -> new IllegalArgumentException("Board with id: " + dto.getBoardIdx() + " is not valid"));
-        Member member = mrp.findByMemberIdx(dto.getMemberIdx())
-                .orElseThrow(() -> new IllegalArgumentException("Member with id: " + dto.getMemberIdx() + " is not valid"));
-
-        return prp.save(dto.toEntity(member, board)).getPostIdx();
+	public Long savePost(Post dto) {
+//		Board board = brp.findByBoardIdx(dto.getBoardIdx())
+//                .orElseThrow(() -> new IllegalArgumentException("Board with id: " + dto.getBoardIdx() + " is not valid"));
+//        Member member = mrp.findByMemberIdx(dto.getMemberIdx())
+//                .orElseThrow(() -> new IllegalArgumentException("Member with id: " + dto.getMemberIdx() + " is not valid"));
+		  return prp.save(dto).getPostIdx();
+//        return prp.save(dto.toEntity(member, board)).getPostIdx();
 	}
 
 	
 	@Transactional
-	public Long updatePost(Long postIdx, PostDTO.Update dto) {
+	public Long updatePost(Long postIdx, String data) throws ParseException {
 		Post post = prp.findByPostIdx(postIdx).orElseThrow(() -> new IllegalArgumentException("Post with postIdx: " + postIdx + " is not valid"));
-		post.update(brp.findByBoardIdx(dto.getCategory()).get(), dto.getTitle(), dto.getContent(), dto.getPostImage());
+		JSONParser jsonParser = new JSONParser();
+		JSONObject json = (JSONObject) jsonParser.parse(data);
+		JSONObject json2 = (JSONObject) json.get("data");
+		Board category = brp.findByCategory((String) json2.get("category")).get();
+		String title = (String) json2.get("title");
+		Member writer = mrp.findByNickname((String) json2.get("writer")).get();
+		String content = (String) json2.get("content");
+		String postImage = (String) json2.get("postImage");
+		
+		post.update(category, title, content, postImage);
 		
 		return postIdx;
 	}

@@ -1,6 +1,10 @@
 package kr.pe.playdata.controller;
 
 import java.util.List;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import kr.pe.playdata.model.domain.Board;
+import kr.pe.playdata.model.domain.Member;
+import kr.pe.playdata.model.domain.Post;
 import kr.pe.playdata.model.dto.PostDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
+import kr.pe.playdata.model.dto.ResponseDTO.BoardResponse;
 import kr.pe.playdata.model.dto.ResponseDTO.PostListResponse;
 import kr.pe.playdata.model.response.ListResult;
 import kr.pe.playdata.model.response.SingleResult;
+import kr.pe.playdata.repository.BoardRepository;
+import kr.pe.playdata.repository.MemberRepository;
+import kr.pe.playdata.service.BoardService;
 import kr.pe.playdata.service.PostService;
 import kr.pe.playdata.service.ResponseService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +38,8 @@ public class PostController {
 
 	@Autowired(required=false)
 	private final PostService psv;
+	private final BoardRepository brp;
+	private final MemberRepository mrp;
 	private final ResponseService rs;
 
 	
@@ -39,7 +53,7 @@ public class PostController {
 		return rs.getListResult(psv.findByTitleContaining(title));
 	}
 
-	@GetMapping("/post/writer/{writer}")
+	@GetMapping("/post/writer/{Nickname}")
 	public ListResult<PostListResponse> getPostListWriter(@PathVariable String Nickname) {
 		return rs.getListResult(psv.findByWriter(Nickname));
 	}
@@ -55,13 +69,25 @@ public class PostController {
 	}
 
 	@PostMapping("/post")
-	public SingleResult<Long> savePost(@RequestBody PostDTO.Create dto) {
+	public SingleResult<Long> savePost(@RequestBody String data) throws ParseException {
+		JSONParser jsonParser = new JSONParser();
+		JSONObject json = (JSONObject) jsonParser.parse(data);
+		JSONObject json2 = (JSONObject) json.get("data");
+		Board category = brp.findByCategory((String) json2.get("category")).get();
+		String title = (String) json2.get("title");
+		Member writer = mrp.findByNickname((String) json2.get("writer")).get();
+		String content = (String) json2.get("content");
+		String postImage = (String) json2.get("postImage");
+		int del = 0;
+		
+		Post dto = Post.builder().category(category).title(title).writer(writer).content(content).postImage(postImage).del(del).build();
+		
 		return rs.getSingleResult(psv.savePost(dto));
 	}
 
-	@PutMapping("/post/update")
-	public SingleResult<Long> updatePost(@PathVariable Long postIdx, @RequestBody PostDTO.Update dto) {
-		return rs.getSingleResult(psv.updatePost(postIdx, dto));
+	@PutMapping("/post/update/{postIdx}")
+	public SingleResult<Long> updatePost(@PathVariable Long postIdx, @RequestBody String data) throws ParseException {
+		return rs.getSingleResult(psv.updatePost(postIdx, data));
 	}
 
 	@PatchMapping("/post/dellist")
