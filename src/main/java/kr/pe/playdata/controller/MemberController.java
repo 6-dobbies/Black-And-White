@@ -92,7 +92,6 @@ public class MemberController {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject json = (JSONObject) jsonParser.parse(Data);
 		JSONObject json2 = (JSONObject) json.get("data");
-		System.out.println(json2);
 		String memberId = (String) json2.get("memberId");
 		String pw = (String) json2.get("memberId");
 		String pwQuestion = (String) json2.get("pwQuestion");
