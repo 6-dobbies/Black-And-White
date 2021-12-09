@@ -65,7 +65,7 @@ public class MemberService {
 	
 	// 회원 정보 수정 - pw, email, region
 	@Transactional
-    public Long updateMember(Long memberIdx, MemberDTO.Update dto) {
+    public Long updateMember(Long memberIdx, Member dto) {
         Member member = memberRepository.findByMemberIdx(memberIdx)
         								.orElseThrow(() -> new CUserNotFoundException("Member with memberIdx: " + memberIdx + " is not valid"));
 

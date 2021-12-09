@@ -115,7 +115,16 @@ public class MemberController {
         @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = true, dataType = "String", paramType = "header")
 	})
 	@PutMapping("/members/{memberIdx}")
-    public SingleResult<Long> updateMember(@PathVariable Long memberIdx, @RequestBody MemberDTO.Update dto) {
+    public SingleResult<Long> updateMember(@PathVariable Long memberIdx, @RequestBody String Data) throws ParseException {
+		JSONParser jsonParser = new JSONParser();
+		JSONObject json = (JSONObject) jsonParser.parse(Data);
+		JSONObject json2 = (JSONObject) json.get("data");
+		
+		String pw = (String) json2.get("memberId");
+		String email = (String) json2.get("email");
+		String region = (String) json2.get("region");
+		
+		Member dto = Member.builder().pw(pw).email(email).region(region).build();
         return rs.getSingleResult(memberService.updateMember(memberIdx, dto));
     }
 	
