@@ -1,6 +1,7 @@
 package kr.pe.playdata.exception;
 
 public class CUserNotFoundException extends RuntimeException {
+	
     public CUserNotFoundException(String msg, Throwable t) {
         super(msg, t);
     }
@@ -12,4 +13,5 @@ public class CUserNotFoundException extends RuntimeException {
     public CUserNotFoundException() {
         super();
     }
+    
 }

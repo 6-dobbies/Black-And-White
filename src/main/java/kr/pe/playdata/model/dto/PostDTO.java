@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 public class PostDTO {
-	
+
 	@Getter
 	public static class Create {
 		private Long memberIdx;
@@ -16,7 +16,7 @@ public class PostDTO {
 		private String content;
 		private String postImage;
 		private int del;
-		
+
 		@Builder
 		public Create(Long memberIdx, Long boardIdx, String title, String content, String postImage) {
 			this.memberIdx = memberIdx;
@@ -26,7 +26,7 @@ public class PostDTO {
 			this.postImage = postImage;
 			this.del = 0;
 		}
-		
+
 		public Post toEntity(Member writer, Board category) {
 			return Post.builder()
 					   .writer(writer)
@@ -38,23 +38,23 @@ public class PostDTO {
 					   .build();
 		}
 	}
-	
+
 	@Getter
 	public static class Update {
 		private Long category;
 		private String title;
 		private String content;
 		private String postImage;
-		
+
 		@Builder
 		public Update(Long category, String title, String content, String postImage) {
 			this.category = category;
 			this.title = title;
 			this.content = content;
-			this.postImage = postImage; 
+			this.postImage = postImage;
 		}
 	}
-	
+
 	@Getter
 	public static class Get {
 		private Member writer;
@@ -62,7 +62,7 @@ public class PostDTO {
 		private String title;
 		private String content;
 		private String postImage;
-		
+
 		public Get(Post entity) {
 			this.writer = entity.getWriter();
 			this.category = entity.getCategory();
@@ -71,7 +71,7 @@ public class PostDTO {
 			this.postImage = entity.getPostImage();
 		}
 	}
-	
+
 	@Getter
 	public static class Delete {
 		private int del;

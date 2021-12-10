@@ -1,6 +1,7 @@
 package kr.pe.playdata.exception;
 
 public class CEmailSigninFailedException extends RuntimeException {
+	
     public CEmailSigninFailedException(String msg, Throwable t) {
         super(msg, t);
     }
@@ -12,4 +13,5 @@ public class CEmailSigninFailedException extends RuntimeException {
     public CEmailSigninFailedException() {
         super();
     }
+    
 }

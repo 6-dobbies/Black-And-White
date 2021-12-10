@@ -13,17 +13,17 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class CustomMemberDetailService implements UserDetailsService {
 
-    private final MemberRepository memberRepository;
+	private final MemberRepository memberRepository;
 
-    public Member loadMemberByMemberId(String memberId) {
-        return memberRepository.findByMemberId(memberId)
-        		.orElseThrow(() -> new IllegalArgumentException("Member with memberId: " + memberId + " is not valid"));
-    }
+	public Member loadMemberByMemberId(String memberId) {
+		return memberRepository.findByMemberId(memberId)
+							   .orElseThrow(() -> new IllegalArgumentException("Member with memberId: " + memberId + " is not valid"));
+	}
 
 	@Override
 	public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
 		return memberRepository.findByMemberId(memberId)
-        		.orElseThrow(() -> new IllegalArgumentException("Member with memberId: " + memberId + " is not valid"));
-    }
-}
+							   .orElseThrow(() -> new IllegalArgumentException("Member with memberId: " + memberId + " is not valid"));
+	}
 
+}
