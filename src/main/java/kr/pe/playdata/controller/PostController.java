@@ -38,31 +38,31 @@ public class PostController {
 	private final MemberRepository memberRepository;
 
 	// 게시글 1개 조회 - postIdx
-	@GetMapping("/post/idx/{postIdx}")
+	@GetMapping("/posts/idx/{postIdx}")
 	public SingleResult<ResponseDTO.PostResponse> getPostOneIdx(@PathVariable Long postIdx) {
 		return responseService.getSingleResult(postService.findByPostIdx(postIdx));
 	}
 
 	// 게시글 list 조회 - category
-	@GetMapping("/post/cate/{category}")
+	@GetMapping("/posts/category/{category}")
 	public ListResult<PostListResponse> getPostListCategory(@PathVariable String category) {
 		return responseService.getListResult(postService.findByCategory(category));
 	}
 
 	// 게시글 list 조회 - nickname
-	@GetMapping("/post/writer/{nickname}")
+	@GetMapping("/posts/writer/{nickname}")
 	public ListResult<PostListResponse> getPostListWriter(@PathVariable String nickname) {
 		return responseService.getListResult(postService.findByWriter(nickname));
 	}
 	
 	// 게시글 list 조회 - title
-	@GetMapping("/post/title/{title}")
+	@GetMapping("/posts/title/{title}")
 	public ListResult<PostListResponse> getPostListTitle(@PathVariable String title) {
 		return responseService.getListResult(postService.findByTitleContaining(title));
 	}
 	
 	// 게시글 list 조회 - content
-	@GetMapping("/post/content/{content}")
+	@GetMapping("/posts/content/{content}")
 	public ListResult<PostListResponse> getPostListContent(@PathVariable String content) {
 		return responseService.getListResult(postService.findByContentContaining(content));
 	}
@@ -91,14 +91,14 @@ public class PostController {
 	}
 
 	// 게시글 수정
-	@PutMapping("/post/update/{postIdx}")
+	@PutMapping("/posts/{postIdx}")
 	public SingleResult<Long> updatePost(@PathVariable Long postIdx, @RequestBody String data) throws ParseException {
 		return responseService.getSingleResult(postService.updatePost(postIdx, data));
 	}
 	
 	// 게시글 list 조회 - del
-	@PatchMapping("/post/dellist")
-	public ListResult<Long> deletePostList(@RequestBody List<Long> dellist) {
+	@PatchMapping("/posts/dellist")
+	public ListResult<Long> deletePostList(@PathVariable List<Long> dellist) {
 		
 		for (Long i : dellist) {
 			postService.deletePost(i);
@@ -108,9 +108,9 @@ public class PostController {
 	}
 	
 	// 게시글 삭제
-	@PatchMapping("/post/del")
-	public SingleResult<Long> deletePost(@RequestBody Long del) {
-		return responseService.getSingleResult(postService.deletePost(del));
+	@PatchMapping("/posts/{postIdx}")
+	public SingleResult<Long> deletePost(@PathVariable Long postIdx) {
+		return responseService.getSingleResult(postService.deletePost(postIdx));
 	}
 
 }

@@ -20,11 +20,11 @@ public class BoardService {
 	
 	// 게시판 1개 조회 - boardIdx
 	@Transactional(readOnly = true)
-	public ResponseDTO.BoardResponse findByBoardIdx(Long boardIdx) throws NotFoundException {
-		Board review = boardRepository.findByBoardIdx(boardIdx)
+	public ResponseDTO.BoardResponse findByBoardIdx(Long boardIdx) {
+		Board entity = boardRepository.findByBoardIdx(boardIdx)
 									  .orElseThrow(() -> new IllegalArgumentException("Board with idx: " + boardIdx + " is not valid"));
 		
-		return new ResponseDTO.BoardResponse(review);
+		return new ResponseDTO.BoardResponse(entity);
 	}
 	
 	// 게시판 1개 조회 - category
