@@ -19,7 +19,7 @@ public class ChessBoardController {
 	private final ChessBoardService cbs;
 	private final ResponseService rs;
 	@GetMapping("/Chess/move")
-	public SingleResult<Long> A(@RequestBody String data) throws ParseException {
+	public SingleResult<Boolean> A(@RequestBody String data) throws ParseException {
 		return rs.getSingleResult(cbs.B(data));
 	}
 	
