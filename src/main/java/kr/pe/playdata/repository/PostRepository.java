@@ -12,9 +12,13 @@ import kr.pe.playdata.model.domain.Post;
 public interface PostRepository extends JpaRepository<Post, Long> {
 
 	Optional<Post> findByPostIdx(Long postIdx);
+
 	List<Post> findByCategory(Board category);
+
 	List<Post> findByWriter(Member writer);
+
 	List<Post> findByTitleContaining(String title);
+
 	List<Post> findByContentContaining(String content);
-	
+
 }

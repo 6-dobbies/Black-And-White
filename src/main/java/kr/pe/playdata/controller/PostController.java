@@ -5,7 +5,6 @@ import java.util.List;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -18,89 +17,100 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.domain.Post;
-import kr.pe.playdata.model.dto.PostDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
-import kr.pe.playdata.model.dto.ResponseDTO.BoardResponse;
 import kr.pe.playdata.model.dto.ResponseDTO.PostListResponse;
 import kr.pe.playdata.model.response.ListResult;
 import kr.pe.playdata.model.response.SingleResult;
 import kr.pe.playdata.repository.BoardRepository;
 import kr.pe.playdata.repository.MemberRepository;
-import kr.pe.playdata.service.BoardService;
 import kr.pe.playdata.service.PostService;
 import kr.pe.playdata.service.ResponseService;
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8081")
 @RequiredArgsConstructor
 @RestController
 public class PostController {
 
-	@Autowired(required=false)
-	private final PostService psv;
-	private final BoardRepository brp;
-	private final MemberRepository mrp;
-	private final ResponseService rs;
+	private final PostService postService;
+	private final ResponseService responseService;
+	private final BoardRepository boardRepository;
+	private final MemberRepository memberRepository;
 
-	
+	// 게시글 1개 조회 - postIdx
 	@GetMapping("/post/idx/{postIdx}")
 	public SingleResult<ResponseDTO.PostResponse> getPostOneIdx(@PathVariable Long postIdx) {
-		return rs.getSingleResult(psv.findByPostIdx(postIdx));
+		return responseService.getSingleResult(postService.findByPostIdx(postIdx));
 	}
 
-	@GetMapping("/post/title/{title}")
-	public ListResult<PostListResponse> getPostListTitle(@PathVariable String title) {
-		return rs.getListResult(psv.findByTitleContaining(title));
-	}
-
-	@GetMapping("/post/writer/{Nickname}")
-	public ListResult<PostListResponse> getPostListWriter(@PathVariable String Nickname) {
-		return rs.getListResult(psv.findByWriter(Nickname));
-	}
-
+	// 게시글 list 조회 - category
 	@GetMapping("/post/cate/{category}")
 	public ListResult<PostListResponse> getPostListCategory(@PathVariable String category) {
-		return rs.getListResult(psv.findByCategory(category));
+		return responseService.getListResult(postService.findByCategory(category));
 	}
 
+	// 게시글 list 조회 - nickname
+	@GetMapping("/post/writer/{nickname}")
+	public ListResult<PostListResponse> getPostListWriter(@PathVariable String nickname) {
+		return responseService.getListResult(postService.findByWriter(nickname));
+	}
+	
+	// 게시글 list 조회 - title
+	@GetMapping("/post/title/{title}")
+	public ListResult<PostListResponse> getPostListTitle(@PathVariable String title) {
+		return responseService.getListResult(postService.findByTitleContaining(title));
+	}
+	
+	// 게시글 list 조회 - content
 	@GetMapping("/post/content/{content}")
 	public ListResult<PostListResponse> getPostListContent(@PathVariable String content) {
-		return rs.getListResult(psv.findByContentContaining(content));
+		return responseService.getListResult(postService.findByContentContaining(content));
 	}
-
+	
+	// 게시글 저장
 	@PostMapping("/post")
 	public SingleResult<Long> savePost(@RequestBody String data) throws ParseException {
+		
 		JSONParser jsonParser = new JSONParser();
 		JSONObject json = (JSONObject) jsonParser.parse(data);
 		JSONObject json2 = (JSONObject) json.get("data");
-		Board category = brp.findByCategory((String) json2.get("category")).get();
+		
+		Board category = boardRepository.findByCategory((String) json2.get("category")).get();
+		Member writer = memberRepository.findByNickname((String) json2.get("writer")).get();
+		
 		String title = (String) json2.get("title");
-		Member writer = mrp.findByNickname((String) json2.get("writer")).get();
 		String content = (String) json2.get("content");
 		String postImage = (String) json2.get("postImage");
 		int del = 0;
-		
-		Post dto = Post.builder().category(category).title(title).writer(writer).content(content).postImage(postImage).del(del).build();
-		
-		return rs.getSingleResult(psv.savePost(dto));
+
+		Post dto = Post.builder()
+					   .category(category).title(title).writer(writer)
+					   .content(content).postImage(postImage).del(del).build();
+
+		return responseService.getSingleResult(postService.savePost(dto));
 	}
 
+	// 게시글 수정
 	@PutMapping("/post/update/{postIdx}")
 	public SingleResult<Long> updatePost(@PathVariable Long postIdx, @RequestBody String data) throws ParseException {
-		return rs.getSingleResult(psv.updatePost(postIdx, data));
+		return responseService.getSingleResult(postService.updatePost(postIdx, data));
 	}
-
+	
+	// 게시글 list 조회 - del
 	@PatchMapping("/post/dellist")
 	public ListResult<Long> deletePostList(@RequestBody List<Long> dellist) {
-		for (Long i:  dellist) {
-			psv.DeletePost(i);
+		
+		for (Long i : dellist) {
+			postService.deletePost(i);
 		}
-		return rs.getListResult(dellist);
+		
+		return responseService.getListResult(dellist);
 	}
-
+	
+	// 게시글 삭제
 	@PatchMapping("/post/del")
 	public SingleResult<Long> deletePost(@RequestBody Long del) {
-		return rs.getSingleResult(psv.DeletePost(del));
+		return responseService.getSingleResult(postService.deletePost(del));
 	}
 
 }

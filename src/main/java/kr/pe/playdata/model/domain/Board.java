@@ -22,24 +22,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@Table(name = "board")
 public class Board {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="board_idx")
+	@Column(name = "board_idx")
 	private Long boardIdx;
-	
+
 	@NotNull
 	private String category;
-	
+
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	@JsonBackReference
-    private List<Post> postList;
-	
+	private List<Post> postList;
+
 	@Builder
 	public Board(String category) {
 		this.category = category;
 	}
-	
+
 }
