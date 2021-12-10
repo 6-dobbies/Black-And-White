@@ -35,7 +35,7 @@ import kr.pe.playdata.service.MemberService;
 import kr.pe.playdata.service.ResponseService;
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin
+@CrossOrigin	// Vue port번호인 8081로 지정해야 됨
 @RequiredArgsConstructor
 @RestController
 public class MemberController {
