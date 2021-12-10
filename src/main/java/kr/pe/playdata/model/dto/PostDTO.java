@@ -56,23 +56,6 @@ public class PostDTO {
 	}
 
 	@Getter
-	public static class Get {
-		private Member writer;
-		private Board category;
-		private String title;
-		private String content;
-		private String postImage;
-
-		public Get(Post entity) {
-			this.writer = entity.getWriter();
-			this.category = entity.getCategory();
-			this.title = entity.getTitle();
-			this.content = entity.getContent();
-			this.postImage = entity.getPostImage();
-		}
-	}
-
-	@Getter
 	public static class Delete {
 		private int del;
 
