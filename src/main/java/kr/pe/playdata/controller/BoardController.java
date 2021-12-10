@@ -3,6 +3,7 @@ package kr.pe.playdata.controller;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.pe.playdata.model.dto.ResponseDTO;
@@ -21,24 +22,17 @@ public class BoardController {
 	private final ResponseService responseService;
 
 	// 게시판 1개 조회 - boardIdx
-	@GetMapping("/Board/boardIdx")
-	public SingleResult<ResponseDTO.BoardResponse> getBoardByBoardIdx(Long boardIdx) {
-
-		try {
+	@GetMapping("/boards/idx/{boardIdx}")
+	public SingleResult<ResponseDTO.BoardResponse> getBoardByBoardIdx(@PathVariable Long boardIdx) {
 			return responseService.getSingleResult(boardService.findByBoardIdx(boardIdx));
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
-
 	}
 
 	// 게시판 1개 조회 - category
-	@GetMapping("/Board/category")
-	public SingleResult<ResponseDTO.BoardResponse> getBoardByCategory(String categoryname) {
+	@GetMapping("/boards/category/{category}")
+	public SingleResult<ResponseDTO.BoardResponse> getBoardByCategory(@PathVariable String category) {
 
 		try {
-			return responseService.getSingleResult(boardService.findByCategory(categoryname));
+			return responseService.getSingleResult(boardService.findByCategory(category));
 		} catch (NotFoundException e) {
 			e.printStackTrace();
 			return null;
@@ -47,7 +41,7 @@ public class BoardController {
 	}
 
 	// 게시판 전체 조회 - category
-	@GetMapping("/Board/categoryAll")
+	@GetMapping("/boards/categoryall")
 	public ListResult<ResponseDTO.BoardListResponse> getBoardAllByCategory() {
 		return responseService.getListResult(boardService.findAllByCategory());
 	}
