@@ -37,22 +37,33 @@ public class ChessBoardService {
 		String[][][] chessBoard = (String[][][]) json2.get("chessBoard");
 		
 		// 받는 명령구문 {{{1},{1},{p}},{{1},{2},{T}}}
-		String[][] order =  (String[][]) json2.get("order");
+		String[][][] order =  (String[][][]) json2.get("order");
 		
-		int A = Integer.parseInt(order[0][0]);
-		int B = Integer.parseInt(order[0][1]);
-		String C = order[0][2];
+		Boolean answer = false;
 		
-		int D = Integer.parseInt(order[1][0]);
-		int E = Integer.parseInt(order[1][1]);
-		String F = order[1][2];
+		return answer;
+		
+		
+		
+		
+		
+	}
+	
+	public String[][] move(String[][][] chessBoard, String[][][] order) {
+		
+		int A = Integer.parseInt(order[0][0][0]);
+		int B = Integer.parseInt(order[0][1][0]);
+		String C = order[0][2][0];
+		
+		int D = Integer.parseInt(order[1][0][0]);
+		int E = Integer.parseInt(order[1][1][0]);
+		String F = order[1][2][0];
 		
 		// 말 움직임 검증
-		if (C(chessBoard, order)==true) {
+		if (moving(chessBoard, order)==true) {
 			// 합법적인 움직임이기에 기물을 움직임 
 //			// String to Integer
 //			Integer.parseInt("1");
-			
 			if (chessBoard[D][E][0] == "T") {
 				
 			}
@@ -72,29 +83,31 @@ public class ChessBoardService {
 		}
 		// 움직인 체스판 검증
 		
-		
-		return null;
+		return changedChessBoard;
 	}
+		
+		
+		
 	
 	// 합법적인 움직임인지 검증
-	public Boolean C(String[][][] chessBoard, String[][] order) {
+	public Boolean moving(String[][][] chessBoard, String[][][] order) {
 		
-		if (order[0][2] == "p" | order[0][2] == "P") {
+		if (order[0][2][0] == "p" | order[0][2][0] == "P") {
 			return pawn.move(chessBoard, order);
 		}
-		else if(order[0][2] == "b" | order[0][2] == "B") {
+		else if(order[0][2][0] == "b" | order[0][2][0] == "B") {
 			return bishop.move(chessBoard, order);
 		}
-		else if(order[0][2] == "k" | order[0][2] == "K") {
+		else if(order[0][2][0] == "k" | order[0][2][0] == "K") {
 			return king.move(chessBoard, order);
 		}
-		else if(order[0][2] == "q" | order[0][2] == "Q") {
+		else if(order[0][2][0] == "q" | order[0][2][0] == "Q") {
 			return queen.move(chessBoard, order);
 		}
-		else if(order[0][2] == "n" | order[0][2] == "N") {
+		else if(order[0][2][0] == "n" | order[0][2][0] == "N") {
 			return knight.move(chessBoard, order);
 		}
-		else if(order[0][2] == "r" | order[0][2] == "R") {
+		else if(order[0][2][0] == "r" | order[0][2][0] == "R") {
 			return rook.move(chessBoard, order);
 		}
 		
