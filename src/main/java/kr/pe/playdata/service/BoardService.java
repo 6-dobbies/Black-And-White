@@ -3,6 +3,7 @@ package kr.pe.playdata.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class BoardService {
+	
+	@Autowired
 	private final BoardRepository boardRepository;
 	
 	@Transactional(readOnly = true)
@@ -25,16 +28,16 @@ public class BoardService {
 	
 	//================================에러==================================//
 	
-	public Board findOne(Long boardIdx) throws NotFoundException {
+	public ResponseDTO.BoardResponse findOneByIdx(Long boardIdx) throws NotFoundException {
 		Board review = boardRepository.findByBoardIdx(boardIdx).orElseThrow(() -> new IllegalArgumentException("Board with idx: " + boardIdx + " is not valid"));
 		
-		return review;
+		return new ResponseDTO.BoardResponse(review);
 	}
 	
 	
-	public Board findOne(String category) throws NotFoundException {
+	public ResponseDTO.BoardResponse findOneByCategory(String category) throws NotFoundException {
 		Board review = boardRepository.findByCategory(category).orElseThrow(() -> new IllegalArgumentException("Board with category: " + category + " is not valid"));
 		
-		return review;
+		return new ResponseDTO.BoardResponse(review);
 	}
 }

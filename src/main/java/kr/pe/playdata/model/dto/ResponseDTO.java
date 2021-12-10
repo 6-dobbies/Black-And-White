@@ -1,5 +1,7 @@
 package kr.pe.playdata.model.dto;
 
+import java.util.List;
+
 import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.domain.Post;
@@ -43,18 +45,26 @@ public class ResponseDTO {
 //	}
 	@Getter
 	public static class BoardListResponse {
+		private Long boardIdx;
 		private String category;
 		
 		public BoardListResponse(Board entity) {
+			this.boardIdx = entity.getBoardIdx();
 			this.category = entity.getCategory();
 		}
 	}
 	
-  @Getter	
+	@Getter	
 	public static class BoardResponse {
-		Boolean success;
-		private Board board;
-
+		private Long boardIdx;
+		private String category;
+		
+		public BoardResponse(Board entity) {
+			this.boardIdx = entity.getBoardIdx();
+			this.category = entity.getCategory();
+		}
+	}
+	
 	@Getter
 	public static class MemberListResponse {
 		private Long memberIdx;
@@ -68,7 +78,7 @@ public class ResponseDTO {
 		private String gender;
 		private String region;
 		private String tier;
-		private String role;
+		private List<String> role;
 		private int del;
 		
 		public MemberListResponse(Member entity) {

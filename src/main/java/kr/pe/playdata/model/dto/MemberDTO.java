@@ -1,5 +1,8 @@
 package kr.pe.playdata.model.dto;
 
+import java.util.Collections;
+import java.util.List;
+
 import kr.pe.playdata.model.domain.Member;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,13 +21,13 @@ public class MemberDTO {
 		private String gender;
 		private String region;
 		private String tier;
-		private String role;
+		private List<String> role;
 		private int del;
 
 		@Builder
 		public Create(String memberId, String pw, String pwQuestion, String pwAnswer, 
 					  String nickname, String birthYear, String email, String gender,
-					  String region, String tier, String role, int del) {
+					  String region, String tier) {
 			this.memberId = memberId;
 			this.pw = pw;
 			this.pwQuestion = pwQuestion;
@@ -35,7 +38,7 @@ public class MemberDTO {
 			this.gender = gender;
 			this.region = region;
 			this.tier = tier;
-			this.role = role;
+			this.role = Collections.singletonList("ROLE_USER");
 			this.del = 0;
 		}
 
