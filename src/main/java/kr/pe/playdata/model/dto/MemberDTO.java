@@ -76,11 +76,6 @@ public class MemberDTO {
 	}
 
 	@Getter
-	public static class Get {
-		private String nickname;
-	}
-
-	@Getter
 	public static class Delete {
 		private int del;
 
