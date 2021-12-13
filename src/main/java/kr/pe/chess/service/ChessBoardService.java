@@ -1,5 +1,6 @@
 package kr.pe.chess.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.simple.JSONObject;
@@ -13,8 +14,6 @@ import kr.pe.chess.objects.Knight;
 import kr.pe.chess.objects.Pawn;
 import kr.pe.chess.objects.Queen;
 import kr.pe.chess.objects.Rook;
-import kr.pe.playdata.model.response.SingleResult;
-import kr.pe.playdata.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -28,42 +27,54 @@ public class ChessBoardService {
 	private final Rook rook;
 	private final Queen queen;
 	
-	public Boolean B(String data) throws ParseException {
+	public List<Boolean> B(String data) throws ParseException {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject json = (JSONObject) jsonParser.parse(data);
 		JSONObject json2 = (JSONObject) json.get("data");
 		
 		// 받는 체스판 모양 {{p,T.....}*8}
+		// 체스판에서 T는 빈칸
 		String[][] chessBoard = (String[][]) json2.get("chessBoard");
 		
 		// 받는 명령구문 {{1,1,p},{1,2,T}}
 		String[][] order =  (String[][]) json2.get("order");
 		
-		Boolean answer = false;
+		// 진영 확인용 데이터
+		String color = (String) json2.get("color");
 		
-		if (check(chessBoard) == true) {
+		// {합법, 체크, 스테일, 체크메이트}
+		List<Boolean> answer = new ArrayList<Boolean>();
+		answer.add(false);
+		answer.add(false);
+		answer.add(false);
+		answer.add(false);
+		
+		if (check(chessBoard) == true | staleMate(chessBoard) == true | checkMate(chessBoard) == true) {
 			// 체크된 체스판이 왔으므로 에러
 			return answer;
 		}
 		
 		// 움직임 검증 후, 해당 명령의 합법성 통보
-		String [][] changedChessBoard = move(chessBoard, order);
+		String [][] changedChessBoard = move(chessBoard, order, color);
 		if (changedChessBoard == chessBoard) {
 			// 체스판이 바뀌지 않았기에 합법적이지 않은 움직임 에러
-			answer = false;
+			answer.set(0, false);
 		}
 		else if (changedChessBoard == null) {
 			// 체스판이 돌려받지 못해서 알고리즘 에러
-			answer = false;
+			answer.set(0, false);
 		}
 		else {
 			// 체스판이 바뀌었으므로 검증 통과
-			answer = true;
+			answer.set(0, false);
 		}
+		answer.set(0, check(changedChessBoard));
+		answer.set(0, staleMate(changedChessBoard));
+		answer.set(0, checkMate(changedChessBoard));
 		return answer;
 	}
 	
-	public String[][] move(String[][] chessBoard, String[][] order) {
+	public String[][] move(String[][] chessBoard, String[][] order, String color) {
 		
 		int A = Integer.parseInt(order[0][0]);
 		int B = Integer.parseInt(order[0][1]);
@@ -76,9 +87,12 @@ public class ChessBoardService {
 		if (chessBoard[D][E]!=F) {
 			return chessBoard;
 		}
-		
+		// 킹은 잡을수있는 대상이 아님 == 비합법적
+		else if (F == "K"| F == "k") {
+			return chessBoard;
+		}
 		// 말 움직임 검증
-		if (moving(chessBoard, order)==true) {
+		else if (moving(chessBoard, order)==true) {
 			// 합법적인 움직임이기에 기물을 움직임 
 //			// String to Integer
 //			Integer.parseInt("1");
@@ -87,12 +101,12 @@ public class ChessBoardService {
 				chessBoard[A][B] = "T";
 			}
 			else if (chessBoard[D][E] == null) {
-				// 체스판 이상 에러송출
+				// 체스판 이상 에러송출 / 나오면 데이터 전송 안됨
 				return chessBoard;
 			}
 			else if (chessBoard[D][E] != "T") {
 				// 빈칸이 아니니깐 움직이면서 해당 말을 잡은 말로.
-				String cap = F;
+				String cap = F; // 잡힌말 처리를 위한 값 이후에 DB에 전송 or 프론트에 넘기기
 				chessBoard[D][E] = C;
 				chessBoard[A][B] = "T";
 			}
@@ -148,13 +162,19 @@ public class ChessBoardService {
 	}
 	
 	public Boolean check(String[][] chessBoard) {
-		if () {
+		if (0==0) {
 			
 		}
+		return false;
+	}
+	
+	public Boolean staleMate(String[][] chessBoard) {
 		
 		return false;
 	}
 	
-	
-	
+	public Boolean checkMate(String[][] chessBoard) {
+		
+		return false;
+	}
 }
