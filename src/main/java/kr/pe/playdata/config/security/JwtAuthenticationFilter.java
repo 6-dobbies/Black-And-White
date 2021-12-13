@@ -12,8 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 
-import kr.pe.playdata.config.security.JwtLoginToken.JwtTokenProvider;
-
 public class JwtAuthenticationFilter extends GenericFilterBean {
 
 	private JwtTokenProvider jwtTokenProvider;

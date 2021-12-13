@@ -20,5 +20,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 	List<Post> findByTitleContaining(String title);
 
 	List<Post> findByContentContaining(String content);
+	
+	List<Post> findByDel(int del);
 
 }

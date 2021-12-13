@@ -17,8 +17,8 @@ import lombok.RequiredArgsConstructor;
 public class ExceptionController {
 
 	@GetMapping(value = "/entrypoint")
-	public CommonResult entrypointException() throws CAuthenticationEntryPointException {
-		throw new CAuthenticationEntryPointException();
+	public CommonResult entrypointException() {
+		throw new CAuthenticationEntryPointException("");
 	}
 
 	@GetMapping(value = "/accessdenied")
