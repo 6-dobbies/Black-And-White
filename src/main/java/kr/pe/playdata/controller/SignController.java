@@ -1,45 +1,72 @@
 package kr.pe.playdata.controller;
 
-import java.util.List;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.pe.playdata.config.security.JwtLoginToken.JwtTokenProvider;
+import kr.pe.playdata.config.security.JwtTokenProvider;
+import kr.pe.playdata.exception.CIdSigninFailedException;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.repository.MemberRepository;
+import kr.pe.playdata.service.MemberService;
+import kr.pe.playdata.service.ResponseService;
 import lombok.RequiredArgsConstructor;
 
 @CrossOrigin(origins = "http://localhost:8081")
-@RequestMapping(value = "/v1")
 @RequiredArgsConstructor
 @RestController
 public class SignController {
 
 	private final JwtTokenProvider jwtTokenProvider;
+	private final ResponseService responseService;
 	private final PasswordEncoder passwordEncoder;
-	private final MemberRepository userJpaRepo;
-	
+	private final MemberService memberService;
+	private final MemberRepository memberRepository;
+
 	// 회원 로그인
 	@PostMapping("/members/login")
-	public String login(@RequestParam String id, @RequestParam String password) {
-		
-		Member member = userJpaRepo.findByMemberId(id)
-								   .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 E-MAIL 입니다."));
-		
-		if (!passwordEncoder.matches(password, member.getPassword())) {
-			throw new IllegalArgumentException("잘못된 비밀번호입니다.");
+	public String login(@RequestBody Member reqMember) {
+
+		Member member = memberRepository.findByMemberId(reqMember.getMemberId()).orElseThrow(() -> new CIdSigninFailedException("Member with memberId: " + reqMember.getMemberId() + " is not valid"));
+
+		if (!reqMember.getPw().equals(member.getPw())) {
+//		if (!passwordEncoder.matches(reqMember.getPw(), member.getPw())) {	// dml insert할 때
+			throw new CIdSigninFailedException("잘못된 비밀번호입니다.");
 		}
 		
-//====== role을 어디서 사용하는지? ====================================================================================================
-		List<String> role = member.getRole();
-		
+//		return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole()));
 		return jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole());
-		
+
 	}
+	
+	
+//	@PostMapping("/members/login")
+//	public SingleResult<String> login(@RequestBody String memberId, String pw) {
+//
+//		Member member = memberRepository.findByMemberId(memberId).orElseThrow(() -> new CIdSigninFailedException("Member with memberId: " + memberId + " is not valid"));
+//
+//		if (!passwordEncoder.matches(pw, member.getPw())) {
+//			throw new CIdSigninFailedException("잘못된 비밀번호입니다.");
+//		}
+//		
+//		return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole()));
+//
+//	}
+	
+	
+//	@PostMapping("/members/login")
+//	public SingleResult<String> login(@RequestParam String memberId, @RequestParam String pw) {
+//
+//		Member member = memberRepository.findByMemberId(memberId).orElseThrow(() -> new CIdSigninFailedException("Member with memberId: " + memberId + " is not valid"));
+//
+//		if (!passwordEncoder.matches(pw, member.getPw())) {
+//			throw new CIdSigninFailedException("잘못된 비밀번호입니다.");
+//		}
+//		
+//		return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole()));
+//
+//	}
 
 }

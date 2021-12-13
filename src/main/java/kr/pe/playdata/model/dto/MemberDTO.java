@@ -84,5 +84,17 @@ public class MemberDTO {
 			this.del = 1;
 		}
 	}
+	
+	@Getter
+	public static class Login {
+		private String memberId;
+		private String pw;
+
+		@Builder
+		public Login(String memberId, String pw) {
+			this.memberId = memberId;
+			this.pw = pw;
+		}
+	}
 
 }
