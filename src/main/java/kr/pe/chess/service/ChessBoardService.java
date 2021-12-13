@@ -49,7 +49,7 @@ public class ChessBoardService {
 		answer.add(false);
 		answer.add(false);
 		
-		if (check(chessBoard) == true | staleMate(chessBoard) == true | checkMate(chessBoard) == true) {
+		if (check(chessBoard, color) == true | staleMate(chessBoard, color) == true | checkMate(chessBoard) == true) {
 			// 체크된 체스판이 왔으므로 에러
 			return answer;
 		}
@@ -68,9 +68,9 @@ public class ChessBoardService {
 			// 체스판이 바뀌었으므로 검증 통과
 			answer.set(0, false);
 		}
-		answer.set(0, check(changedChessBoard));
-		answer.set(0, staleMate(changedChessBoard));
-		answer.set(0, checkMate(changedChessBoard));
+		answer.set(1, check(changedChessBoard, color));
+		answer.set(2, staleMate(changedChessBoard, color));
+		answer.set(3, checkMate(changedChessBoard));
 		return answer;
 	}
 	
@@ -122,12 +122,12 @@ public class ChessBoardService {
 		}
 		// 움직인 체스판 검증
 		String[][] changedChessBoard = chessBoard;
-		if (check(changedChessBoard)==true) {
+		if (check(changedChessBoard, color)==true) {
 			// 체크 확인, true일시 자신이 체크되는것
 			// 따라서 잘못된 움직임이기에 에러 송출후, 무엇에 의해 체크되는지 확인해주거나 할 필요성
 			return null;
 		}
-		else if (check(changedChessBoard)==false) {
+		else if (check(changedChessBoard, color)==false) {
 			return changedChessBoard;
 		}
 		// 몰라 알아서 하셈
@@ -161,15 +161,17 @@ public class ChessBoardService {
 		
 	}
 	
-	public Boolean check(String[][] chessBoard) {
+	public Boolean check(String[][] chessBoard, String color) {
 		if (0==0) {
 			
 		}
 		return false;
 	}
 	
-	public Boolean staleMate(String[][] chessBoard) {
-		
+	public Boolean staleMate(String[][] chessBoard, String color) {
+		if (color == "black") {
+			
+		}
 		return false;
 	}
 	

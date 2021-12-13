@@ -13,14 +13,14 @@ public class Bishop {
 		int E = Integer.parseInt(order[1][1]);
 		String F = order[1][2];
 		
-		String[] black2 = {"k","p","b","r","q","n"};
 		ArrayList<String> black = new ArrayList<>();
+		String[] black2 = {"k","p","b","r","q","n"};
 		for (int i= 0; i<= black2.length; ++i) {
 			black.add(black2[i]);
 		}
 		
-		String[] white2 = {"K","P","B","R","Q","N"};
 		ArrayList<String> white = new ArrayList<>();
+		String[] white2 = {"K","P","B","R","Q","N"};
 		for (int i= 0; i<= white2.length; ++i) {
 			white.add(white2[i]);
 		}
@@ -38,22 +38,22 @@ public class Bishop {
 						for (int i = 1; i < Math.abs(Math.abs(A)-Math.abs(D))-1;i++) {
 							// 움직이려는곳 사이에 무언가 존재할경우 false
 							if ((A-D)<0 & (B-E)<0) {
-								if (chessBoard[A+i][D+i]!="T") {
+								if (chessBoard[A+i][B+i]!="T") {
 									return false;
 								}
 							}
 							else if ((A-D)>0 & (B-E)>0) {
-								if (chessBoard[A-i][D-i]!="T") {
+								if (chessBoard[A-i][B-i]!="T") {
 									return false;
 								}
 							}
 							else if ((A-D)>0 & (B-E)<0) {
-								if (chessBoard[A-i][D+i]!="T") {
+								if (chessBoard[A-i][B+i]!="T") {
 									return false;
 								}
 							}
 							else if ((A-D)<0 & (B-E)>0) {
-								if (chessBoard[A+i][D-i]!="T") {
+								if (chessBoard[A+i][B-i]!="T") {
 									return false;
 								}
 							}

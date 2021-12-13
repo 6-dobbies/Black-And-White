@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.pe.chess.service.ChessBoardService;
 import kr.pe.playdata.model.response.ListResult;
-import kr.pe.playdata.model.response.SingleResult;
 import kr.pe.playdata.service.ResponseService;
 import lombok.RequiredArgsConstructor;
 

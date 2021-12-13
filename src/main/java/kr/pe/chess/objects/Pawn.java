@@ -13,14 +13,14 @@ public class Pawn {
 		int E = Integer.parseInt(order[1][1]);
 		String F = order[1][2];
 		
-		String[] black2 = {"k","p","b","r","q","n"};
 		ArrayList<String> black = new ArrayList<>();
+		String[] black2 = {"k","p","b","r","q","n"};
 		for (int i= 0; i<= black2.length; ++i) {
 			black.add(black2[i]);
 		}
 		
-		String[] white2 = {"K","P","B","R","Q","N"};
 		ArrayList<String> white = new ArrayList<>();
+		String[] white2 = {"K","P","B","R","Q","N"};
 		for (int i= 0; i<= white2.length; ++i) {
 			white.add(white2[i]);
 		}
