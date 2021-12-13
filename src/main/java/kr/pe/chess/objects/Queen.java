@@ -58,14 +58,50 @@ public class Queen {
 						// 대각선 상에 같은편이 없는 칸으로 갈수있음
 						return true;
 					}
-					// 룩 기능
-					else if (0==0) {
-						
-					}
-					else {
+					if (!(white.contains(C) & white.contains(F)) & !(black.contains(C) & black.contains(F))) {
+						// 말 이동 관련
+						// 킹은 모든 방향으로 한칸씩 움직일 수 있음
+						// 룩은 x축 y축 한방양만 가능
+						// x축일경우
+						if (Math.abs(Math.abs(A) - Math.abs(D)) > 0) {
+							// 반복해서 한칸씩 x축을 이동하며 검사,
+							for (int i = 1; i < Math.abs(Math.abs(A) - Math.abs(D)) - 1; i++) {
+								if ((A - D) > 0) {// 왼쪽이동, A-원래위치 D- 움직인 위치, 0보다 작을시 왼쪽이동
+									if (chessBoard[A - i][B] != "T") {
+										return false;
+									}
+								}
+								// 오른쪽이동
+								if (A - D < 0) {
+									if (chessBoard[A + i][B] != "T") {
+										return false;
+									}
+								}
+							}
+							return true;
+						}
+						// y축일경우
+						if (Math.abs(Math.abs(B) - Math.abs(E)) > 0) {
+							// 반복해서 한칸씩 y축을 이동하며 검사
+							for (int i = 1; i < Math.abs(Math.abs(B) - Math.abs(E)) - 1; i++) {
+								if ((B - E) > 0) {// 아래쪽이동, A-원래위치 D- 움직인 위치, 0보다 작을시 왼쪽이동
+									if (chessBoard[A][B - i] != "T") {
+										return false;
+									}
+								}
+								// 윗쪽이동
+								if (B - E < 0) {
+									if (chessBoard[A][B + i] != "T") {
+										return false;
+									}
+								}
+							}
+							return true;
+						}
+					} else {
 						return false;
 					}
-				}
+				} 
 				else {
 					return false;
 				}

@@ -38,22 +38,22 @@ public class Bishop {
 						for (int i = 1; i < Math.abs(Math.abs(A)-Math.abs(D))-1;i++) {
 							// 움직이려는곳 사이에 무언가 존재할경우 false
 							if ((A-D)<0 & (B-E)<0) {
-								if (chessBoard[A+i][D+i]!="T") {
+								if (chessBoard[A+i][B+i]!="T") {
 									return false;
 								}
 							}
 							else if ((A-D)>0 & (B-E)>0) {
-								if (chessBoard[A-i][D-i]!="T") {
+								if (chessBoard[A-i][B-i]!="T") {
 									return false;
 								}
 							}
 							else if ((A-D)>0 & (B-E)<0) {
-								if (chessBoard[A-i][D+i]!="T") {
+								if (chessBoard[A-i][B+i]!="T") {
 									return false;
 								}
 							}
 							else if ((A-D)<0 & (B-E)>0) {
-								if (chessBoard[A+i][D-i]!="T") {
+								if (chessBoard[A+i][B-i]!="T") {
 									return false;
 								}
 							}
