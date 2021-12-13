@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.pe.chess.service.ChessBoardService;
+import kr.pe.playdata.model.response.ListResult;
 import kr.pe.playdata.model.response.SingleResult;
 import kr.pe.playdata.service.ResponseService;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +19,10 @@ public class ChessBoardController {
 
 	private final ChessBoardService cbs;
 	private final ResponseService rs;
-	@GetMapping("/Chess/move")
-	public SingleResult<Boolean> A(@RequestBody String data) throws ParseException {
-		return rs.getSingleResult(cbs.B(data));
-	}
 	
+	@GetMapping("/Chess/move")
+	public ListResult<Boolean> A(@RequestBody String data) throws ParseException {
+		return rs.getListResult(cbs.B(data));
+	}
 
 }
