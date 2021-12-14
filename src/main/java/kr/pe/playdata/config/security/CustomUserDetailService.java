@@ -4,6 +4,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import kr.pe.playdata.exception.CUserNotFoundException;
 import kr.pe.playdata.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -11,9 +12,10 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 	
-	private final MemberRepository memberJpaRepo;
+	private final MemberRepository memberRepository;
 
-	public UserDetails loadUserByUsername(String userPk) {
-		return memberJpaRepo.findById(Long.valueOf(userPk)).orElseThrow(NullPointerException::new);
+	public UserDetails loadUserByUsername(String memberId) {
+		return memberRepository.findById(Long.valueOf(memberId)).orElseThrow(CUserNotFoundException::new);
 	}
+	
 }

@@ -1,7 +1,5 @@
 package kr.pe.playdata.controller;
 
-import java.util.List;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -96,21 +94,16 @@ public class PostController {
 		return responseService.getSingleResult(postService.updatePost(postIdx, data));
 	}
 	
-	// 게시글 list 조회 - del
-	@PatchMapping("/posts/dellist")
-	public ListResult<Long> deletePostList(@PathVariable List<Long> dellist) {
-		
-		for (Long i : dellist) {
-			postService.deletePost(i);
-		}
-		
-		return responseService.getListResult(dellist);
-	}
-	
 	// 게시글 삭제
 	@PatchMapping("/posts/{postIdx}")
 	public SingleResult<Long> deletePost(@PathVariable Long postIdx) {
 		return responseService.getSingleResult(postService.deletePost(postIdx));
+	}
+	
+	// 게시글 list 조회 - del
+	@GetMapping("/posts/del/{del}")
+	public ListResult<PostListResponse> getPostListDel(@PathVariable int del) {
+		return responseService.getListResult(postService.findByDel(del));
 	}
 
 }

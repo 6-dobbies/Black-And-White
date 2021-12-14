@@ -77,7 +77,7 @@ public class Member implements UserDetails {
 	private List<String> role = new ArrayList<>();
 
 	@NotNull
-	private int del;
+	private int del = 0;
 
 	@OneToMany(mappedBy = "writer", cascade = CascadeType.ALL)
 	@JsonBackReference
@@ -120,8 +120,13 @@ public class Member implements UserDetails {
 	}
 
 	@Override
+	public String getPassword() {
+		return null;
+	}
+
+	@Override
 	public String getUsername() {
-		return this.memberId;
+		return null;
 	}
 
 	@Override
@@ -142,11 +147,6 @@ public class Member implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return true;
-	}
-
-	@Override
-	public String getPassword() {
-		return null;
 	}
 
 }

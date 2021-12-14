@@ -41,9 +41,10 @@ public class PostService {
 	public List<ResponseDTO.PostListResponse> findByCategory(String category) {
 		Optional<Board> entity = boardRepository.findByCategory(category);
 		
-		return postRepository.findByCategory(entity.get()).stream()
-														  .map(ResponseDTO.PostListResponse::new)
-												 		  .collect(Collectors.toList());
+		return postRepository.findByCategory(entity.get())
+							 .stream()
+							 .map(ResponseDTO.PostListResponse::new)
+							 .collect(Collectors.toList());
 	}
 	
 	// 게시글 list 조회 - writer
@@ -51,9 +52,10 @@ public class PostService {
 	public List<ResponseDTO.PostListResponse> findByWriter(String nickname) {
 		Optional<Member> entity = memberRepository.findByNickname(nickname);
 		
-		return postRepository.findByWriter(entity.get()).stream()
-														.map(ResponseDTO.PostListResponse::new)
-														.collect(Collectors.toList());
+		return postRepository.findByWriter(entity.get())
+							 .stream()
+							 .map(ResponseDTO.PostListResponse::new)
+							 .collect(Collectors.toList());
 	}
 	
 	// 게시글 list 조회 - title 일부
@@ -119,6 +121,15 @@ public class PostService {
 		post.delete(postIdx);
 		
 		return postIdx;
+	}
+	
+	// 게시글 list 조회 - del
+	@Transactional(readOnly = true)
+	public List<ResponseDTO.PostListResponse> findByDel(int del) {
+		return postRepository.findByDel(del)
+							 .stream()
+							 .map(ResponseDTO.PostListResponse::new)
+							 .collect(Collectors.toList());
 	}
 	
 }

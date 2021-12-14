@@ -101,7 +101,7 @@ public class MemberController {
 		JSONObject json = (JSONObject) jsonParser.parse(Data);
 		JSONObject json2 = (JSONObject) json.get("data");
 
-		String pw = (String) json2.get("memberId");
+		String pw = (String) json2.get("pw");
 		String email = (String) json2.get("email");
 		String region = (String) json2.get("region");
 
