@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.dto.ResponseDTO;
+import kr.pe.playdata.model.dto.ResponseDTO.MemberListResponse;
 import kr.pe.playdata.model.response.ListResult;
 import kr.pe.playdata.model.response.SingleResult;
 import kr.pe.playdata.service.MemberService;
@@ -62,6 +63,7 @@ public class MemberController {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject json = (JSONObject) jsonParser.parse(Data);
 		JSONObject json2 = (JSONObject) json.get("data");
+		
 		String memberId = (String) json2.get("memberId");
 		String pw = (String) json2.get("pw");
 		String pwQuestion = (String) json2.get("pwQuestion");
@@ -117,6 +119,12 @@ public class MemberController {
 		memberService.deleteMember(memberIdx);
 
 		return responseService.getSingleResult(memberIdx);
+	}
+	
+	// 게시글 list 조회 - del
+	@GetMapping("/members/del/{del}")
+	public ListResult<MemberListResponse> getPostListDel(@PathVariable int del) {
+		return responseService.getListResult(memberService.findByDel(del));
 	}
 
 }
