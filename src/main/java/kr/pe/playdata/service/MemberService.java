@@ -83,4 +83,18 @@ public class MemberService {
         member.delete(1);
     }
 
+	public ResponseDTO.MemberResponse findByMemberId(String memberId) {
+		Member entity = memberRepository.findByMemberId(memberId)
+				.orElseThrow(() -> new CUserNotFoundException("Member with memberId: " + memberId + " is not valid"));
+
+		return new ResponseDTO.MemberResponse(entity);
+	}
+
+	public ResponseDTO.MemberResponse findByEmail(String email) {
+		Member entity = memberRepository.findByEmail(email)
+				.orElseThrow(() -> new CUserNotFoundException("Member with email: " + email + " is not valid"));
+
+		return new ResponseDTO.MemberResponse(entity);
+	}
+
 }

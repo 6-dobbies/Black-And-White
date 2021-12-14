@@ -3,8 +3,6 @@ package kr.pe.chess.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.attribute.standard.Destination;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

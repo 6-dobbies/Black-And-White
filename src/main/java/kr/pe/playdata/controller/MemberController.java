@@ -56,6 +56,18 @@ public class MemberController {
 	public SingleResult<ResponseDTO.MemberResponse> getMemberByIdx(@PathVariable Long memberIdx) {
 		return rs.getSingleResult(memberService.findByMemberIdx(memberIdx));
 	}
+	
+	@GetMapping("/members/id/{memberId}") 
+
+	public SingleResult<ResponseDTO.MemberResponse> getMemberById(@PathVariable String memberId) {
+		return rs.getSingleResult(memberService.findByMemberId(memberId));
+	}
+	
+	@GetMapping("/members/email/{memberEmail")
+
+	public SingleResult<ResponseDTO.MemberResponse> getMemberByEmail(@PathVariable String email) {
+		return rs.getSingleResult(memberService.findByEmail(email));
+	}
 
 	// 밑에 nickname 일부 검색해서 조회하는 메서드 있으면 이 메서드는 삭제해도 될 듯...? - service & repository도
 	// 같이 삭제하기
