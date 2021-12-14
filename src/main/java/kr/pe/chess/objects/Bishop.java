@@ -24,7 +24,6 @@ public class Bishop {
 		for (int i= 0; i<= white2.length; ++i) {
 			white.add(white2[i]);
 		}
-		
 		// 하나라도 안맞는것은 합법적이지 않은 움직임
 		if (chessBoard[A][B] == C) {
 			// 움직이는것인지 체크

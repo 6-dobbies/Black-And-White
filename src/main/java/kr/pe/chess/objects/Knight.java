@@ -33,7 +33,7 @@ public class Knight {
 				if (!(white.contains(C) & white.contains(F)) & !(black.contains(C) & black.contains(F))) {
 					// 말 이동 관련
 					// 나이트는 1,2 또는 2,1 비율로 이동 따라서 이동값이 1,2 또는 2,1가 나오게
-					if ( (Math.abs(Math.abs(A)-Math.abs(D))==1 & Math.abs(Math.abs(B)-Math.abs(E))==2) | (Math.abs(Math.abs(A)-Math.abs(D))==2 & Math.abs(Math.abs(B)-Math.abs(E))==1) ) {
+					if ((Math.abs(Math.abs(A)-Math.abs(D))==1 & Math.abs(Math.abs(B)-Math.abs(E))==2) | (Math.abs(Math.abs(A)-Math.abs(D))==2 & Math.abs(Math.abs(B)-Math.abs(E))==1) ) {
 						return true;
 					}
 				}
