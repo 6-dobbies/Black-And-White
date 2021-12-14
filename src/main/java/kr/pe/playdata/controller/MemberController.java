@@ -63,7 +63,7 @@ public class MemberController {
 		JSONObject json = (JSONObject) jsonParser.parse(Data);
 		JSONObject json2 = (JSONObject) json.get("data");
 		String memberId = (String) json2.get("memberId");
-		String pw = (String) json2.get("memberId");
+		String pw = (String) json2.get("pw");
 		String pwQuestion = (String) json2.get("pwQuestion");
 		String pwAnswer = (String) json2.get("pwAnswer");
 		String nickname = (String) json2.get("nickname");
