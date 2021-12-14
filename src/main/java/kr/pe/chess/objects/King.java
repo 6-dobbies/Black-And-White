@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class King {
 
-	public Boolean move(String[][] chessBoard, String[][] order) throws NullPointerException{
+	public Boolean move(String[][] chessBoard, String[][] order) {
 		// 독립시킬 방법이 딱 떠오르지않아서, 다른곳으로 뺄수 있는지 방법이 있는지 
 		// {A=x,B=y,기물이름} 시작위치
 		int A = Integer.parseInt(order[0][0]);
@@ -23,7 +23,6 @@ public class King {
 		// 서로 진영을 확인용 , 선택,도착한 기물의 정보가 백&흑 인지 정확한 확인용 , 체크가 필요할 경우를 위하여 미리 만들어둔것
 		// 현재 사용중인곳 : 같은 진영의 말을 잡으려하는것인지 체크 하는 항목
 		ArrayList<String> black = new ArrayList<>();
-		String[] black2 = {"k","p","b","r","q","n"};
 		for (int i= 0; i<= black2.length; ++i) {
 			black.add(black2[i]);
 		}
@@ -59,5 +58,5 @@ public class King {
 		}
 		return false;
 	}
-
+	
 }
