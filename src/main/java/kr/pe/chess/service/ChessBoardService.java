@@ -37,6 +37,26 @@ public class ChessBoardService {
 	
 	// 기보를 이용하여서 이전 상황을 파악해서, 특수규칙 적용
 	
+	private String [][] ChessBoard = 
+		{		
+				{"r","n","b","k","q","b","n","r"},
+				{"p","p","p","p","p","p","p","p"},
+				{"T","T","T","T","T","T","T","T"},
+				{"T","T","T","T","T","T","T","T"},
+				{"T","T","T","T","T","T","T","T"},
+				{"T","T","T","T","T","T","T","T"},
+				{"P","P","P","P","P","P","P","P"},
+				{"R","N","B","K","Q","B","N","R"}
+			
+		};
+	
+	
+	
+	
+	
+	
+	
+	
 	public List<Boolean> B(String data) throws ParseException {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject json = (JSONObject) jsonParser.parse(data);

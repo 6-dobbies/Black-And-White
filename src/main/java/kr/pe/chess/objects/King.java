@@ -23,6 +23,7 @@ public class King {
 		// 서로 진영을 확인용 , 선택,도착한 기물의 정보가 백&흑 인지 정확한 확인용 , 체크가 필요할 경우를 위하여 미리 만들어둔것
 		// 현재 사용중인곳 : 같은 진영의 말을 잡으려하는것인지 체크 하는 항목
 		ArrayList<String> black = new ArrayList<>();
+		String[] black2 = {"k","p","b","r","q","n"};
 		for (int i= 0; i<= black2.length; ++i) {
 			black.add(black2[i]);
 		}
