@@ -74,7 +74,7 @@ public class PostController {
 		JSONObject json2 = (JSONObject) json.get("data");
 		
 		Board category = boardRepository.findByCategory((String) json2.get("category")).get();
-		Member writer = memberRepository.findByNickname((String) json2.get("writer")).get();
+		Member writer = memberRepository.findByNickname((String) json2.get("writer"));
 		
 		String title = (String) json2.get("title");
 		String content = (String) json2.get("content");

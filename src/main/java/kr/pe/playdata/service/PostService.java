@@ -50,9 +50,9 @@ public class PostService {
 	// 게시글 list 조회 - writer
 	@Transactional(readOnly = true)
 	public List<ResponseDTO.PostListResponse> findByWriter(String nickname) {
-		Optional<Member> entity = memberRepository.findByNickname(nickname);
+		Member entity = memberRepository.findByNickname(nickname);
 		
-		return postRepository.findByWriter(entity.get())
+		return postRepository.findByWriter(entity)
 							 .stream()
 							 .map(ResponseDTO.PostListResponse::new)
 							 .collect(Collectors.toList());
