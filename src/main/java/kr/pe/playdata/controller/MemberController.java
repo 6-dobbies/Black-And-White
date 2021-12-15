@@ -54,6 +54,21 @@ public class MemberController {
 	public ListResult<ResponseDTO.MemberListResponse> getMemberAll() {
 		return responseService.getListResult(memberService.findMemberAll());
 	}
+	
+	// 회원 id 조회
+	@GetMapping("/members/id/{memberId}") 
+
+	public SingleResult<ResponseDTO.MemberResponse> getMemberById(@PathVariable String memberId) {
+		return responseService.getSingleResult(memberService.findByMemberId(memberId));
+	}
+	
+	// 회원 email 조회
+	@GetMapping("/members/email/{memberEmail}")
+
+	public SingleResult<ResponseDTO.MemberResponse> getMemberByEmail(@PathVariable String email) {
+		return responseService.getSingleResult(memberService.findByEmail(email));
+	}
+
 
 	// 회원 저장
 	@PostMapping("/member")

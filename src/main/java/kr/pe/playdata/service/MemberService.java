@@ -63,6 +63,25 @@ public class MemberService {
 							   .collect(Collectors.toList());
 	}
 	
+	// 회원 id 조회
+	@Transactional(readOnly = true)
+	public ResponseDTO.MemberResponse findByMemberId(String memberId) {
+		Member entity = memberRepository.findByMemberId(memberId)
+				.orElseThrow(() -> new CUserNotFoundException("Member with memberId: " + memberId + " is not valid"));
+
+		return new ResponseDTO.MemberResponse(entity);
+	}
+	
+	// 회원 email 조회
+	@Transactional(readOnly = true)
+	public ResponseDTO.MemberResponse findByEmail(String email) {
+		Member entity = memberRepository.findByEmail(email)
+				.orElseThrow(() -> new CUserNotFoundException("Member with email: " + email + " is not valid"));
+
+		return new ResponseDTO.MemberResponse(entity);
+	}
+
+	
 	// 회원 저장
 	@Transactional
 	public Long saveMember(Member member) {
