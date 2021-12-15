@@ -42,13 +42,26 @@ public class ChessBoardService {
 		
 		// 받는 체스판 모양 {{p,T.....}*8}
 		// 체스판에서 T는 빈칸
-		String[][] chessBoard = (String[][]) json2.get("chessBoard");
+		String[] notation = (String[]) json2.get("notation");
 		
 		// 받는 명령구문 {{1,1,p},{1,2,T}}
 		String[][] order =  (String[][]) json2.get("order");
 		
+		String color;
+		
 		// 진영 확인용 데이터
-		String color = (String) json2.get("color");
+		if (notation.length%2 == 0) {
+			color = "white";
+		}
+		else if(notation.length%2 == 1) {
+			color = "black";
+		}
+		
+		// 기본 체스판으로 체스판을 셋팅 
+		String[][] chessBoard = locator.makeChessBoard(chessBase, notation);
+		if (chessBoard == null) {
+			return null;
+		}
 		
 		// {합법, 체크, 스테일, 체크메이트}
 		List<Boolean> answer = new ArrayList<Boolean>();
@@ -74,8 +87,9 @@ public class ChessBoardService {
 		}
 		else {
 			// 체스판이 바뀌었으므로 검증 통과
-			answer.set(0, false);
+			answer.set(0, true);
 		}
+		// 체크, 스테일메이트, 체크메이트 검증후, 합법적인 움직임 기록 
 		answer.set(1, check(changedChessBoard, color));
 		answer.set(3, checkMate(changedChessBoard, color));
 		if (color == "black") {
@@ -380,11 +394,11 @@ public class ChessBoardService {
 					for (int j =0; j<2; j++) {
 						if (indicator(chessBoard,locList[i][j])==null) {
 							// 전부 null일때만 return true
-							check = check+"T";
+							check = check + "T";
 						}
 						else {
 							// 사용가능한 움직임이 존재
-							check = check+"F";
+							check = check + "F";
 						}
 					}
 				}

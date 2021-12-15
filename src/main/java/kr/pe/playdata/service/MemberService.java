@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.pe.playdata.exception.CUserNotFoundException;
 import kr.pe.playdata.model.domain.Member;
-import kr.pe.playdata.model.dto.MemberDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
 import kr.pe.playdata.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -83,13 +82,15 @@ public class MemberService {
         member.delete(1);
     }
 
+	@Transactional
 	public ResponseDTO.MemberResponse findByMemberId(String memberId) {
 		Member entity = memberRepository.findByMemberId(memberId)
 				.orElseThrow(() -> new CUserNotFoundException("Member with memberId: " + memberId + " is not valid"));
 
 		return new ResponseDTO.MemberResponse(entity);
 	}
-
+	
+	@Transactional
 	public ResponseDTO.MemberResponse findByEmail(String email) {
 		Member entity = memberRepository.findByEmail(email)
 				.orElseThrow(() -> new CUserNotFoundException("Member with email: " + email + " is not valid"));

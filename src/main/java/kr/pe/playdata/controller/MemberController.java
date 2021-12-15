@@ -63,7 +63,7 @@ public class MemberController {
 		return rs.getSingleResult(memberService.findByMemberId(memberId));
 	}
 	
-	@GetMapping("/members/email/{memberEmail")
+	@GetMapping("/members/email/{memberEmail}")
 
 	public SingleResult<ResponseDTO.MemberResponse> getMemberByEmail(@PathVariable String email) {
 		return rs.getSingleResult(memberService.findByEmail(email));
