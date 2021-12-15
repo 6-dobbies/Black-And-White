@@ -93,7 +93,7 @@ public class MemberService {
 	public boolean checkNickname(String nickname) {
 		boolean result = false;
 		Member member = memberRepository.findByNickname(nickname);
-		System.out.println(member);
+		
 		if(member == null) {
 			result = true;
 		}
