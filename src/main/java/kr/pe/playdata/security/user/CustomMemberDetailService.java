@@ -17,13 +17,15 @@ public class CustomMemberDetailService implements UserDetailsService {
 
 	public Member loadMemberByMemberId(String memberId) {
 		return memberRepository.findByMemberId(memberId)
-							   .orElseThrow(() -> new IllegalArgumentException("Member with memberId: " + memberId + " is not valid"));
+//							   .orElseThrow(() -> new IllegalArgumentException("Member with memberId: " + memberId + " is not valid"))
+							   ;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
 		return memberRepository.findByMemberId(memberId)
-							   .orElseThrow(() -> new IllegalArgumentException("Member with memberId: " + memberId + " is not valid"));
+//							   .orElseThrow(() -> new IllegalArgumentException("Member with memberId: " + memberId + " is not valid"))
+							   ;
 	}
 
 }

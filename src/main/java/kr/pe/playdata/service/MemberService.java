@@ -108,11 +108,33 @@ public class MemberService {
 							   .collect(Collectors.toList());
 	}
 	
+	// 회원 id 중복 체크
+	public boolean checkMemberId(String memberId) {
+		boolean result = false;
+		Member member = memberRepository.findByMemberId(memberId);
+		
+		if(member == null) {
+			result = true;
+		}
+		return result;
+	}
+	
 	// 회원 nickname 중복 체크
 	public boolean checkNickname(String nickname) {
 		boolean result = false;
 		Member member = memberRepository.findByNickname(nickname);
-		System.out.println(member);
+		
+		if(member == null) {
+			result = true;
+		}
+		return result;
+	}
+	
+	// 회원 email 중복 체크
+	public boolean checkEmail(String email) {
+		boolean result = false;
+		Member member = memberRepository.findByEmail(email);
+		
 		if(member == null) {
 			result = true;
 		}

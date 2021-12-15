@@ -143,10 +143,22 @@ public class MemberController {
 		return responseService.getListResult(memberService.findByDel(del));
 	}
 	
+	// 회원 id 중복 체크
+	@PostMapping("/members/check/memberid")
+	public boolean checkMemberId(@RequestBody MemberDTO.CheckMemberId dto) {
+		return memberService.checkMemberId(dto.getMemberId());
+	}
+	
 	// 회원 nickname 중복 체크
-	@PostMapping("/members/check")
-    public boolean check(@RequestBody MemberDTO.Check dto) {
-        return memberService.checkNickname(dto.getNickname());
+	@PostMapping("/members/check/nickname")
+	public boolean checkNickname(@RequestBody MemberDTO.CheckNickname dto) {
+		return memberService.checkNickname(dto.getNickname());
+	}
+	
+	// 회원 email 중복 체크
+	@PostMapping("/members/check/email")
+    public boolean checkEmail(@RequestBody MemberDTO.CheckEmail dto) {
+        return memberService.checkEmail(dto.getEmail());
     }
 
 }
