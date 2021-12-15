@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Queen {
 
 	public Boolean move(String[][] chessBoard, String[][] order) {
-		int A = Integer.parseInt(order[0][0]);
-		int B = Integer.parseInt(order[0][1]);
+		int A = Integer.parseInt(order[0][0])+1;
+		int B = Integer.parseInt(order[0][1])+1;
 		String C = order[0][2];
 		
-		int D = Integer.parseInt(order[1][0]);
-		int E = Integer.parseInt(order[1][1]);
+		int D = Integer.parseInt(order[1][0])+1;
+		int E = Integer.parseInt(order[1][1])+1;
 		String F = order[1][2];
 		
 		ArrayList<String> black = new ArrayList<>();

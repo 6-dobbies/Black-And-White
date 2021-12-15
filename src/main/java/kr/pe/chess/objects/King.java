@@ -7,17 +7,12 @@ public class King {
 	public Boolean move(String[][] chessBoard, String[][] order) {
 		// 독립시킬 방법이 딱 떠오르지않아서, 다른곳으로 뺄수 있는지 방법이 있는지 
 		// {A=x,B=y,기물이름} 시작위치
-		int A = Integer.parseInt(order[0][0]);
-		int B = Integer.parseInt(order[0][1]);
-		
-		// 선택한 기물정보
+		int A = Integer.parseInt(order[0][0])+1;
+		int B = Integer.parseInt(order[0][1])+1;
 		String C = order[0][2];
 		
-		// {D=x,E=y,기물이름} 도착위치
-		int D = Integer.parseInt(order[1][0]);
-		int E = Integer.parseInt(order[1][1]);
-		
-		// 도착할 기물정보
+		int D = Integer.parseInt(order[1][0])+1;
+		int E = Integer.parseInt(order[1][1])+1;
 		String F = order[1][2];
 		
 		// 서로 진영을 확인용 , 선택,도착한 기물의 정보가 백&흑 인지 정확한 확인용 , 체크가 필요할 경우를 위하여 미리 만들어둔것
@@ -59,5 +54,4 @@ public class King {
 		}
 		return false;
 	}
-	
 }

@@ -34,27 +34,19 @@ public class ChessBoardService {
 	// 			  2. 프론트에 체스판 반환
 	
 	// 기보를 이용하여서 이전 상황을 파악해서, 특수규칙 적용
-	
-	private String [][] ChessBoard = 
+	// 처음에 실수해서 체스판의 백/흑이 뒤집힌 상황
+	private String [][] ChessBoardBase = 
 		{		
-				{"r","n","b","k","q","b","n","r"},
+				{"r","n","b","q","k","b","n","r"},
 				{"p","p","p","p","p","p","p","p"},
 				{"T","T","T","T","T","T","T","T"},
 				{"T","T","T","T","T","T","T","T"},
 				{"T","T","T","T","T","T","T","T"},
 				{"T","T","T","T","T","T","T","T"},
 				{"P","P","P","P","P","P","P","P"},
-				{"R","N","B","K","Q","B","N","R"}
-			
+				{"R","N","B","Q","K","B","N","R"}
 		};
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public List<Boolean> B(String data) throws ParseException {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject json = (JSONObject) jsonParser.parse(data);
@@ -67,7 +59,7 @@ public class ChessBoardService {
 		// 받는 명령구문 {{1,1,p},{1,2,T}}
 		String[][] order =  (String[][]) json2.get("order");
 		
-		String color;
+		String color = "";
 		
 		// 진영 확인용 데이터
 		if (notation.length%2 == 0) {
@@ -78,7 +70,7 @@ public class ChessBoardService {
 		}
 		
 		// 기본 체스판으로 체스판을 셋팅 
-		String[][] chessBoard = locator.makeChessBoard(chessBase, notation);
+		String[][] chessBoard = locator.makeChessBoard(ChessBoardBase, notation);
 		if (chessBoard == null) {
 			return null;
 		}
@@ -90,13 +82,13 @@ public class ChessBoardService {
 		answer.add(false);
 		answer.add(false);
 		
-		if (check(chessBoard, color) == true | staleMate(chessBoard, color) == true | checkMate(chessBoard, color) == true) {
+		if (check(chessBoard, color) == true | staleMate(chessBoard, color, notation) == true | checkMate(chessBoard, color, notation) == true) {
 			// 체크된 체스판이 왔으므로 에러
 			return answer;
 		}
 		
 		// 움직임 검증 후, 해당 명령의 합법성 통보
-		String [][] changedChessBoard = move(chessBoard, order, color);
+		String [][] changedChessBoard = move(chessBoard, order, color, notation);
 		if (changedChessBoard == chessBoard) {
 			// 체스판이 바뀌지 않았기에 합법적이지 않은 움직임 에러
 			answer.set(0, false);
@@ -111,25 +103,25 @@ public class ChessBoardService {
 		}
 		// 체크, 스테일메이트, 체크메이트 검증후, 합법적인 움직임 기록 
 		answer.set(1, check(changedChessBoard, color));
-		answer.set(3, checkMate(changedChessBoard, color));
+		answer.set(3, checkMate(changedChessBoard, color, notation));
 		if (color == "black") {
 			color = "white";
 		}
 		else if (color == "white") {
 			color = "black";
 		}
-		answer.set(2, staleMate(changedChessBoard, color)); // 체크메이트일때도 같이 작동할것임
+		answer.set(2, staleMate(changedChessBoard, color, notation)); // 체크메이트일때도 같이 작동할것임
 		return answer;
 	}
 	
-	public String[][] move(String[][] chessBoard, String[][] order, String color) {
+	public String[][] move(String[][] chessBoard, String[][] order, String color, String[] notation) {
 		
-		int A = Integer.parseInt(order[0][0]);
-		int B = Integer.parseInt(order[0][1]);
+		int A = Integer.parseInt(order[0][0])+1;
+		int B = Integer.parseInt(order[0][1])+1;
 		String C = order[0][2];
 		
-		int D = Integer.parseInt(order[1][0]);
-		int E = Integer.parseInt(order[1][1]);
+		int D = Integer.parseInt(order[1][0])+1;
+		int E = Integer.parseInt(order[1][1])+1;
 		String F = order[1][2];
 		
 		if (chessBoard[D][E]!=F) {
@@ -140,7 +132,7 @@ public class ChessBoardService {
 			return chessBoard;
 		}
 		// 말 움직임 검증
-		else if (moving(chessBoard, order) == true) {
+		else if (moving(chessBoard, order, notation) == true) {
 			// 합법적인 움직임이기에 기물을 움직임 
 //			// String to Integer
 //			Integer.parseInt("1");
@@ -158,11 +150,94 @@ public class ChessBoardService {
 				chessBoard[D][E] = C;
 				chessBoard[A][B] = "T";
 			}
+			
 			else {
 				// 에러 (몰?루)
 				System.out.println("이거 뜨면 다 뜯어 고쳐야 됨");
 				return null;
 			}
+		}
+		// 캐슬링 특수규칙
+		// moving 밖에있어서 따로 검증
+		else if (order[0][0]=="4" & (order[0][1]=="0" | order[0][1]=="7") & order[0][2]=="k" & (order[1][1]=="1" | order[1][1]=="6")) {
+			// 퀸사이드 뒤집혀있음
+			Boolean castlingK = true;
+			Boolean castlingR = true;
+			if (order[1][0] =="1") {
+				if (color == "white") {
+					for (int i=0; i<notation.length; i++) {
+						if (notation[i].substring(0,1)=="K") {
+							castlingK = false;
+						}
+						else if (notation[i].substring(0,2)=="Rh") {
+							castlingR = false;
+						}
+					}
+					if (castlingK & castlingR) {
+						chessBoard[7][4] ="T";
+						chessBoard[7][6] ="K";
+						chessBoard[7][5] ="R";
+						chessBoard[7][7] ="T";
+					}
+				}
+				else if (color == "black") {
+					for (int i=0; i<notation.length; i++) {
+						if (notation[i].substring(0,1)=="k") {
+							castlingK = false;
+						}
+						else if (notation[i].substring(0,2)=="rh") {
+							castlingR = false;
+						}
+					}
+					if (castlingK & castlingR) {
+						chessBoard[0][4] ="T";
+						chessBoard[0][6] ="k";
+						chessBoard[0][5] ="r";
+						chessBoard[0][7] ="T";
+					}
+				}
+			}
+			// 킹사이드 뒤집혀있음
+			else if (order[1][0] =="6") {
+				if (color == "white") {
+					for (int i=0; i<notation.length; i++) {
+						if (notation[i].substring(0,1)=="K") {
+							castlingK = false;
+						}
+						else if (notation[i].substring(0,2)=="Ra") {
+							castlingR = false;
+						}
+					}
+					if (castlingK & castlingR) {
+						chessBoard[7][4] ="T";
+						chessBoard[7][1] ="K";
+						chessBoard[7][3] ="R";
+						chessBoard[7][0] ="T";
+					}
+				}
+				else if (color == "black") {
+					for (int i=0; i<notation.length; i++) {
+						if (notation[i].substring(0,1)=="k") {
+							castlingK = false;
+						}
+						else if (notation[i].substring(0,2)=="Ra") {
+							castlingR = false;
+						}
+					}
+					if (castlingK & castlingR) {
+						chessBoard[0][4] ="T";
+						chessBoard[0][1] ="k";
+						chessBoard[0][3] ="r";
+						chessBoard[0][0] ="T";
+					}
+				}
+			}
+		}
+		// 프로모션용 코드
+		// 
+		else if (order[0][2].substring(0,1).toLowerCase()=="p" & (order[0][1]=="0"|order[0][1]=="7")) {
+			chessBoard[A][B] = "T";
+			chessBoard[D][E] = order[0][2].substring(0,1);
 		}
 		else {
 			// 합법적인 움직임이 아닙니다. 에러 송출
@@ -184,10 +259,10 @@ public class ChessBoardService {
 	}
 		
 	// 합법적인 움직임인지 검증
-	public Boolean moving(String[][] chessBoard, String[][] order) {
+	public Boolean moving(String[][] chessBoard, String[][] order, String[] notation) {
 		
 		if (order[0][2] == "p" | order[0][2] == "P") {
-			return pawn.move(chessBoard, order);
+			return pawn.move(chessBoard, order, notation);
 		}
 		else if(order[0][2] == "b" | order[0][2] == "B") {
 			return bishop.move(chessBoard, order);
@@ -220,7 +295,7 @@ public class ChessBoardService {
 		int x2 = Integer.parseInt(locator.locate(chessBoard,"K")[0][0]);
 		int y2 = Integer.parseInt(locator.locate(chessBoard,"K")[0][1]);
 		
-//			직선상에 R이나 Q가 위치
+//		직선상에 R이나 Q가 위치
 		if (color == "black") {
 			for (int i = 0; i<8; i++) {
 					row = row + chessBoard[i][y1];
@@ -252,7 +327,7 @@ public class ChessBoardService {
 		// 필요없는 공백표시 제거
 		row.replace("T", "");
 		column.replace("T", "");
-		// 폰 체크 확인 (공백 필요)
+		// 폰 체크 확인 (대각선 공백 필요)
 		if (color == "black") {
 			if (diagonPlus.contains("kP")) {
 				return true;
@@ -333,7 +408,7 @@ public class ChessBoardService {
 		return false;
 	}
 	
-	public Boolean staleMate(String[][] chessBoard, String color) {
+	public Boolean staleMate(String[][] chessBoard, String color, String[] notation) {
 		// 킹의 위치
 		int x1 = Integer.parseInt(locator.locate(chessBoard,"k")[0][0]);
 		int y1 = Integer.parseInt(locator.locate(chessBoard,"k")[0][1]);
@@ -412,7 +487,7 @@ public class ChessBoardService {
 				}
 				for (int i =0; i<6;i++) {
 					for (int j =0; j<2; j++) {
-						if (indicator(chessBoard,locList[i][j])==null) {
+						if (indicator(chessBoard,locList[i][j],notation)==null) {
 							// 전부 null일때만 return true
 							check = check + "T";
 						}
@@ -437,7 +512,7 @@ public class ChessBoardService {
 				}
 				for (int i =0; i<6;i++) {
 					for (int j =0; j<2; j++) {
-						if (indicator(chessBoard,locList[i][j])==null) {
+						if (indicator(chessBoard,locList[i][j],notation)==null) {
 							// 전부 null일때만 return true
 							check = check+"T";
 						}
@@ -457,7 +532,7 @@ public class ChessBoardService {
 			return false;
 		}		
 	
-	public Boolean checkMate(String[][] chessBoard, String color) {
+	public Boolean checkMate(String[][] chessBoard, String color, String[] notation) {
 		// 체크면서, 킹이 움직일곳이 없고, 막아줄 말도 없을때
 		// 체크 확인
 		if (check(chessBoard, color) == true) {
@@ -465,7 +540,7 @@ public class ChessBoardService {
 			// 가진 모든 말의 이동경로중 막아줄 수 있는 경로 찾기
 			// 바꾼 위치에서 체크 확인 후 아니라면 다시 경로 찾게 while문 or for문으로 구성
 			// 스테일 메이트가 모든말의 움직임 가능성이 있는지 체크하는것이 되었으므로 가능
-			if (staleMate(chessBoard, color) == true) {
+			if (staleMate(chessBoard, color, notation) == true) {
 				return true;
 			}
 			return false;
@@ -474,7 +549,7 @@ public class ChessBoardService {
 	}
 	
 	// 말의 위치와 정보를 받아서 말이 움직일수있는 범위 표시
-		public String[][] indicator(String[][] chessBoard, String[] loc) {
+		public String[][] indicator(String[][] chessBoard, String[] loc, String[] notation) {
 			
 			String[] black2 = {"k","p","b","r","q","n"};
 			ArrayList<String> black = new ArrayList<>();
@@ -503,7 +578,7 @@ public class ChessBoardService {
 				int x1 = location[i][0];
 				int y1 = location[i][0];
 				String[][] order = {{loc[0],loc[1],loc[2]},{Integer.toString(x1),Integer.toString(y1),chessBoard[x1][y1]}};
-				if (moving(chessBoard, order)==true) {
+				if (moving(chessBoard, order, notation)==true) {
 					destination[i][0]=Integer.toString(x1);
 					destination[i][1]=Integer.toString(y1);
 					destination[i][2]=chessBoard[x1][y1];

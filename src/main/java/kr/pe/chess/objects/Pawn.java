@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Pawn {
 
-	public Boolean move(String[][] chessBoard, String[][] order) {
-		int A = Integer.parseInt(order[0][0]);
-		int B = Integer.parseInt(order[0][1]);
+	public Boolean move(String[][] chessBoard, String[][] order, String[] notation) {
+		int A = Integer.parseInt(order[0][0])+1;
+		int B = Integer.parseInt(order[0][1])+1;
 		String C = order[0][2];
 		
-		int D = Integer.parseInt(order[1][0]);
-		int E = Integer.parseInt(order[1][1]);
+		int D = Integer.parseInt(order[1][0])+1;
+		int E = Integer.parseInt(order[1][1])+1;
 		String F = order[1][2];
 		
 		ArrayList<String> black = new ArrayList<>();
@@ -63,36 +63,9 @@ public class Pawn {
 					return false;
 				}
 			}
-			// 프로모션을 위해 움직이지않으면서 바꿀 말을 지정한 명령어를 받음
-			// 프론트에서 프로모션의 경우 바로 진행되지않고 명령을 한차례 더 내리게 만들어야됨
-			else if ( A == D & B == E & ((black.contains(C) & B == 8) | (white.contains(C) & B==1) )) {
-				// 프로모션 구현 아마 여기서 하는것보다 프론트에서 하는게 나을듯
-				if ((white.contains(C) & white.contains(F) | (black.contains(C) & black.contains(F)) & (F == "k" | F == "K"))) {
-					if (white.contains(C) & (A-D)==0 & (B-E)==1 & F=="T") {
-						return true;
-					}
-					else if (black.contains(C) & (A-D)==0 & (E-B)==1 & F=="T") {
-						return true;
-					}
-					// 대각선에 무언가 있을 경우
-					else if (Math.abs(Math.abs(A) - Math.abs(D)) == 1 & Math.abs(Math.abs(B) - Math.abs(E)) == 1) {
-						if (white.contains(C) & B-E == 1) {
-							return true;
-						}
-						else if(black.contains(C) & B-E == -1) {
-							return true;
-						}
-						return false;
-					}
-				}
-				else {
-					return false;
-				}
-			}
 			else {
 				return false;
 			}
-			
 		}
 		return false;
 	}
