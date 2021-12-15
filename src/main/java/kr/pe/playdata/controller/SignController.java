@@ -27,7 +27,9 @@ public class SignController {
 	@PostMapping("/members/login")
 	public SingleResult<String> login(@RequestBody Member reqMember) {
 
-		Member member = memberRepository.findByMemberId(reqMember.getMemberId()).orElseThrow(() -> new CIdSigninFailedException("Member with memberId: " + reqMember.getMemberId() + " is not valid"));
+		Member member = memberRepository.findByMemberId(reqMember.getMemberId())
+//										.orElseThrow(() -> new CIdSigninFailedException("Member with memberId: " + reqMember.getMemberId() + " is not valid"))
+										;
 
 		if (!reqMember.getPw().equals(member.getPw())) {
 //		if (!passwordEncoder.matches(reqMember.getPw(), member.getPw())) {	// dml insert할 때
