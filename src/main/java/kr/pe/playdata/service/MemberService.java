@@ -1,20 +1,14 @@
 package kr.pe.playdata.service;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.pe.playdata.config.security.JwtTokenProvider;
-import kr.pe.playdata.exception.CIdSigninFailedException;
 import kr.pe.playdata.exception.CUserNotFoundException;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.dto.ResponseDTO;
-import kr.pe.playdata.model.response.SingleResult;
 import kr.pe.playdata.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -22,10 +16,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class MemberService {
 	
-	private final JwtTokenProvider jwtTokenProvider;
 	private final MemberRepository memberRepository;
-	private final PasswordEncoder passwordEncoder;
-	private final ResponseService responseService;
 	
 	// 회원 1명 조회 - memberIdx
 	@Transactional(readOnly = true)
@@ -36,14 +27,14 @@ public class MemberService {
 		return new ResponseDTO.MemberResponse(entity);
 	}
 	
-	// 회원 1명 조회 - nickname
-	@Transactional(readOnly = true)
-    public ResponseDTO.MemberResponse findByNickname(String nickname) {
-        Member entity = memberRepository.findByNickname(nickname)
-        								.orElseThrow(() -> new CUserNotFoundException("Member with nickname: " + nickname + " is not valid"));
-
-        return new ResponseDTO.MemberResponse(entity);
-    }
+//	// 회원 1명 조회 - nickname
+//	@Transactional(readOnly = true)
+//    public ResponseDTO.MemberResponse findByNickname(String nickname) {
+//        Member entity = memberRepository.findByNickname(nickname)
+//        								.orElseThrow(() -> new CUserNotFoundException("Member with nickname: " + nickname + " is not valid"));
+//
+//        return new ResponseDTO.MemberResponse(entity);
+//    }
 	
 	// 회원 list 조회 - nickname 일부
 	@Transactional(readOnly = true)
@@ -108,16 +99,24 @@ public class MemberService {
         member.delete(1);
     }
 	
-//	// 로그인
-//	public SingleResult<String> login(String memberId, String pw) {
-//		
-//		Member member = memberRepository.findByMemberIdAndPw(memberId, pw)
-//										.orElseThrow(() -> new CIdSigninFailedException("Member with memberId: " + memberId + " is not valid"));
-//		
-//		if (!passwordEncoder.matches(pw, member.getPw()))
-//            throw new CIdSigninFailedException();
-//
-//        return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole()));
-//	}
+	// 회원 list 조회 - del
+	@Transactional(readOnly = true)
+	public List<ResponseDTO.MemberListResponse> findByDel(int del) {
+		return memberRepository.findByDel(del)
+							   .stream()
+							   .map(ResponseDTO.MemberListResponse::new)
+							   .collect(Collectors.toList());
+	}
+	
+	// 회원 nickname 중복 체크
+	public boolean checkNickname(String nickname) {
+		boolean result = false;
+		Member member = memberRepository.findByNickname(nickname);
+		System.out.println(member);
+		if(member == null) {
+			result = true;
+		}
+		return result;
+	}
 
 }
