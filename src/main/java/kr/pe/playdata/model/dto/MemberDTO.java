@@ -98,8 +98,18 @@ public class MemberDTO {
 	}
 	
 	@Getter
-	public static class Check {
+	public static class CheckMemberId {
+		private String memberId;
+	}
+	
+	@Getter
+	public static class CheckNickname {
 		private String nickname;
+	}
+	
+	@Getter
+	public static class CheckEmail {
+		private String email;
 	}
 
 }
