@@ -96,5 +96,10 @@ public class MemberDTO {
 			this.pw = pw;
 		}
 	}
+	
+	@Getter
+	public static class Check {
+		private String nickname;
+	}
 
 }

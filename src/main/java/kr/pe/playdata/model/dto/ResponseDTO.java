@@ -20,6 +20,9 @@ public class ResponseDTO {
 		private String email;
 		private String gender;
 		private String region;
+		private String tier;
+		private List<String> role;
+		private int del;
 
 		public MemberResponse(Member entity) {
 			this.memberId = entity.getMemberId();
@@ -31,6 +34,9 @@ public class ResponseDTO {
 			this.email = entity.getEmail();
 			this.gender = entity.getGender();
 			this.region = entity.getRegion();
+			this.tier = entity.getTier();
+			this.role = entity.getRole();
+			this.del = entity.getDel();
 		}
 	}
 

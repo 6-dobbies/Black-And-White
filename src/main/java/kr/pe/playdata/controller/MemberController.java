@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.pe.playdata.model.domain.Member;
+import kr.pe.playdata.model.dto.MemberDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
+import kr.pe.playdata.model.dto.ResponseDTO.MemberListResponse;
 import kr.pe.playdata.model.response.ListResult;
 import kr.pe.playdata.model.response.SingleResult;
 import kr.pe.playdata.service.MemberService;
@@ -37,11 +39,11 @@ public class MemberController {
 		return responseService.getSingleResult(memberService.findByMemberIdx(memberIdx));
 	}
 
-	// 회원 1명 조회 - nickname
-	@GetMapping("/members/nickname/{nickname}")
-	public SingleResult<ResponseDTO.MemberResponse> getMemberByNickname(@PathVariable String nickname) {
-		return responseService.getSingleResult(memberService.findByNickname(nickname));
-	}
+//	// 회원 1명 조회 - nickname
+//	@GetMapping("/members/nickname/{nickname}")
+//	public SingleResult<ResponseDTO.MemberResponse> getMemberByNickname(@PathVariable String nickname) {
+//		return responseService.getSingleResult(memberService.findByNickname(nickname));
+//	}
 
 	// 회원 list 조회 - nickname 일부
 	@GetMapping("/members/nicknamecon/{nickname}")
@@ -62,6 +64,7 @@ public class MemberController {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject json = (JSONObject) jsonParser.parse(Data);
 		JSONObject json2 = (JSONObject) json.get("data");
+		
 		String memberId = (String) json2.get("memberId");
 		String pw = (String) json2.get("pw");
 		String pwQuestion = (String) json2.get("pwQuestion");
@@ -118,5 +121,17 @@ public class MemberController {
 
 		return responseService.getSingleResult(memberIdx);
 	}
+	
+	// 회원 list 조회 - del
+	@GetMapping("/members/del/{del}")
+	public ListResult<MemberListResponse> getMemberListDel(@PathVariable int del) {
+		return responseService.getListResult(memberService.findByDel(del));
+	}
+	
+	// 회원 nickname 중복 체크
+	@PostMapping("/members/check")
+    public boolean check(@RequestBody MemberDTO.Check dto) {
+        return memberService.checkNickname(dto.getNickname());
+    }
 
 }
