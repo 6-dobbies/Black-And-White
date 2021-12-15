@@ -27,14 +27,14 @@ public class MemberService {
 		return new ResponseDTO.MemberResponse(entity);
 	}
 	
-	// 회원 1명 조회 - nickname
-	@Transactional(readOnly = true)
-    public ResponseDTO.MemberResponse findByNickname(String nickname) {
-        Member entity = memberRepository.findByNickname(nickname)
-        								.orElseThrow(() -> new CUserNotFoundException("Member with nickname: " + nickname + " is not valid"));
-
-        return new ResponseDTO.MemberResponse(entity);
-    }
+//	// 회원 1명 조회 - nickname
+//	@Transactional(readOnly = true)
+//    public ResponseDTO.MemberResponse findByNickname(String nickname) {
+//        Member entity = memberRepository.findByNickname(nickname)
+//        								.orElseThrow(() -> new CUserNotFoundException("Member with nickname: " + nickname + " is not valid"));
+//
+//        return new ResponseDTO.MemberResponse(entity);
+//    }
 	
 	// 회원 list 조회 - nickname 일부
 	@Transactional(readOnly = true)
@@ -80,13 +80,24 @@ public class MemberService {
         member.delete(1);
     }
 	
-	// 게시글 list 조회 - del
+	// 회원 list 조회 - del
 	@Transactional(readOnly = true)
 	public List<ResponseDTO.MemberListResponse> findByDel(int del) {
 		return memberRepository.findByDel(del)
 							   .stream()
 							   .map(ResponseDTO.MemberListResponse::new)
 							   .collect(Collectors.toList());
+	}
+	
+	// 회원 nickname 중복 체크
+	public boolean checkNickname(String nickname) {
+		boolean result = false;
+		Member member = memberRepository.findByNickname(nickname);
+		System.out.println(member);
+		if(member == null) {
+			result = true;
+		}
+		return result;
 	}
 
 }
