@@ -1,5 +1,6 @@
 package kr.pe.playdata.model.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import kr.pe.playdata.model.domain.Board;
@@ -116,18 +117,22 @@ public class ResponseDTO {
 
 	@Getter
 	public static class PostListResponse {
-		private Long memberIdx;
+		private String writer;
 		private Long postIdx;
 		private String title;
 		private String content;
 		private String postImage;
+		private LocalDateTime created;
+		private LocalDateTime updated;
 
 		public PostListResponse(Post entity) {
-			this.memberIdx = entity.getWriter().getMemberIdx();
+			this.writer = entity.getWriter().getNickname();
 			this.postIdx = entity.getPostIdx();
 			this.title = entity.getTitle();
 			this.content = entity.getContent();
 			this.postImage = entity.getPostImage();
+			this.created = entity.getCreated();
+			this.updated = entity.getUpdated();
 		}
 	}
 
