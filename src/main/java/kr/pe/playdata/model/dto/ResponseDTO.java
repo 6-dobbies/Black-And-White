@@ -12,6 +12,7 @@ public class ResponseDTO {
 
 	@Getter
 	public static class MemberResponse {
+		private Long memberIdx;
 		private String memberId;
 		private String pw;
 		private String pwQuestion;
@@ -24,8 +25,8 @@ public class ResponseDTO {
 		private String tier;
 		private List<String> role;
 		private int del;
-
 		public MemberResponse(Member entity) {
+			this.memberIdx = entity.getMemberIdx();
 			this.memberId = entity.getMemberId();
 			this.pw = entity.getPw();
 			this.pwQuestion = entity.getPwQuestion();
