@@ -33,7 +33,8 @@ public class SignController {
 
 		if (!reqMember.getPw().equals(member.getPw())) {
 //		if (!passwordEncoder.matches(reqMember.getPw(), member.getPw())) {	// dml insert할 때
-			throw new CIdSigninFailedException("잘못된 비밀번호입니다.");
+//			throw new CIdSigninFailedException("잘못된 비밀번호입니다.");
+			throw new CIdSigninFailedException();
 		}
 		
 		return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole()));

@@ -12,6 +12,7 @@ public class ResponseDTO {
 
 	@Getter
 	public static class MemberResponse {
+		private Long memberIdx;
 		private String memberId;
 		private String pw;
 		private String pwQuestion;
@@ -26,6 +27,7 @@ public class ResponseDTO {
 		private int del;
 
 		public MemberResponse(Member entity) {
+			this.memberIdx = entity.getMemberIdx();
 			this.memberId = entity.getMemberId();
 			this.pw = entity.getPw();
 			this.pwQuestion = entity.getPwQuestion();
@@ -98,20 +100,24 @@ public class ResponseDTO {
 
 	@Getter
 	public static class PostResponse {
-		private Long memberIdx;
+		private String writer;
 		private Long postIdx;
 		private String category;
 		private String title;
 		private String content;
 		private String postImage;
+		private LocalDateTime created;
+		private LocalDateTime updated;
 
 		public PostResponse(Post entity) {
-			this.memberIdx = entity.getWriter().getMemberIdx();
+			this.writer = entity.getWriter().getNickname();
 			this.postIdx = entity.getPostIdx();
 			this.category = entity.getCategory().getCategory();
 			this.title = entity.getTitle();
 			this.content = entity.getContent();
 			this.postImage = entity.getPostImage();
+			this.created = entity.getCreated();
+			this.updated = entity.getUpdated();
 		}
 	}
 
