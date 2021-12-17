@@ -113,6 +113,12 @@ public class Member implements UserDetails {
 
 		return this;
 	}
+	
+	public Member tempoPw(String pw) {
+		this.pw = pw;
+
+		return this;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

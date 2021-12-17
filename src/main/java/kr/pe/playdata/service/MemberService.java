@@ -1,6 +1,7 @@
 package kr.pe.playdata.service;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -90,6 +91,7 @@ public class MemberService {
 	}
 	
 	// 회원 id 중복 체크
+	@Transactional(readOnly = true)
 	public boolean checkMemberId(String memberId) {
 		boolean result = false;
 		Member member = memberRepository.findByMemberId(memberId);
@@ -101,6 +103,7 @@ public class MemberService {
 	}
 	
 	// 회원 nickname 중복 체크
+	@Transactional(readOnly = true)
 	public boolean checkNickname(String nickname) {
 		boolean result = false;
 		Member member = memberRepository.findByNickname(nickname);
@@ -112,6 +115,7 @@ public class MemberService {
 	}
 	
 	// 회원 email 중복 체크
+	@Transactional(readOnly = true)
 	public boolean checkEmail(String email) {
 		boolean result = false;
 		Member member = memberRepository.findByEmail(email);
@@ -120,6 +124,34 @@ public class MemberService {
 			result = true;
 		}
 		return result;
+	}
+	
+	// 회원 memberId 찾기 - email, birthYear
+	@Transactional(readOnly = true)
+	public String findMemberIdByEmailAndBirthYear(String email, String birthYear) {
+		Member member = memberRepository.findByEmail(email);
+		
+		if(birthYear.equals(member.getBirthYear())) {
+			return member.getMemberId();
+		}
+		return "이메일 또는 출생연도가 일치하지 않습니다:(";
+	}
+	
+	// 회원 임시 pw 발급
+	@Transactional
+	public String tempoPw(String memberId, String pwQuestion, String pwAnswer) {
+		Member member = memberRepository.findByMemberId(memberId);
+		Random random = new Random();
+		
+		if(pwQuestion.equals(member.getPwQuestion())) {
+			if(pwAnswer.equals(member.getPwAnswer())) {
+				int temporPw = random.nextInt(999999);
+				member.tempoPw(Integer.toString(temporPw));
+				return member.getMemberId();
+			}
+			return "아이디 또는 질문 또는 답변이 일치하지 않습니다:(";
+		}
+		return "아이디 또는 질문 또는 답변이 일치하지 않습니다:(";
 	}
 
 }
