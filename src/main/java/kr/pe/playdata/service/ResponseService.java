@@ -65,7 +65,7 @@ public class ResponseService {
 		return result;
 	}
 	
-	// 주석 필요합 =============================================================================================================================
+	// 에러 결과만 처리
 	public CommonResult getFailResult(Integer errorcode, String errormsg) {
 		CommonResult result = new CommonResult();
 		result.setSuccess(false);
