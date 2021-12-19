@@ -32,7 +32,7 @@ public class MailController {
 		memberService.tempoPw(dto.getMemberId(), dto.getPwQuestion(), dto.getPwAnswer());
 		mailService.sendEmail(member.getEmail(), "임시 비밀번호 안내 메일입니다:)", "임시로 발급된 비밀번호는 " + member.getPw() + "입니다.");
 
-		return responseService.getSingleResult("테스트:)");
+		return responseService.getSingleResult("메일이 발송되었습니다");
 		
 	}
 
