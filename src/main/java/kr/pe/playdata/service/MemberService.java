@@ -137,19 +137,16 @@ public class MemberService {
 		return "이메일 또는 출생연도가 일치하지 않습니다:(";
 	}
 	
-	// 회원 임시 pw 발급
+	// 회원 임시 pw 발급 & 이메일 발송
 	@Transactional
 	public String tempoPw(String memberId, String pwQuestion, String pwAnswer) {
 		Member member = memberRepository.findByMemberId(memberId);
 		Random random = new Random();
-		
-		if(pwQuestion.equals(member.getPwQuestion())) {
-			if(pwAnswer.equals(member.getPwAnswer())) {
-				int temporPw = random.nextInt(999999);
-				member.tempoPw(Integer.toString(temporPw));
-				return member.getMemberId();
-			}
-			return "아이디 또는 질문 또는 답변이 일치하지 않습니다:(";
+
+		if (pwQuestion.equals(member.getPwQuestion()) || pwAnswer.equals(member.getPwAnswer())) {
+			int temporPw = random.nextInt(999999);
+			member.tempoPw(Integer.toString(temporPw));
+			return member.getMemberId();
 		}
 		return "아이디 또는 질문 또는 답변이 일치하지 않습니다:(";
 	}
