@@ -152,10 +152,10 @@ public class MemberController {
 		return responseService.getSingleResult(memberService.findMemberIdByEmailAndBirthYear(dto.getEmail(), dto.getBirthYear()));
 	}
 	
-	// 회원 임시 pw 발급
-	@PatchMapping("/members/temporary")
-	public SingleResult<String> tempoPw(@RequestBody MemberDTO.TempoPw dto) {
-		return responseService.getSingleResult(memberService.tempoPw(dto.getMemberId(), dto.getPwQuestion(), dto.getPwAnswer()));
-	}
+//	// 회원 임시 pw 발급
+//	@PatchMapping("/members/temporary")
+//	public SingleResult<String> tempoPw(@RequestBody MemberDTO.TempoPw dto) {
+//		return responseService.getSingleResult(memberService.tempoPw(dto.getMemberId(), dto.getPwQuestion(), dto.getPwAnswer()));
+//	}
 
 }

@@ -143,7 +143,7 @@ public class MemberService {
 		Member member = memberRepository.findByMemberId(memberId);
 		Random random = new Random();
 
-		if (pwQuestion.equals(member.getPwQuestion()) || pwAnswer.equals(member.getPwAnswer())) {
+		if (pwQuestion.equals(member.getPwQuestion()) && pwAnswer.equals(member.getPwAnswer())) {
 			int temporPw = random.nextInt(999999);
 			member.tempoPw(Integer.toString(temporPw));
 			return member.getMemberId();
