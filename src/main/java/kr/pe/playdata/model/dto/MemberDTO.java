@@ -124,5 +124,14 @@ public class MemberDTO {
 		private String pwQuestion;
 		private String pwAnswer;
 	}
+	
+	@Getter
+	public static class SendMail {
+		private String memberId;
+		private String pwQuestion;
+		private String pwAnswer;
+		private String email;
+		private String pw;
+	}
 
 }
