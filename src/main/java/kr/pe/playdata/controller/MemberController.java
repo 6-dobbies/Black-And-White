@@ -129,25 +129,25 @@ public class MemberController {
 	}
 	
 	// 회원 id 중복 체크
-	@GetMapping("/members/check/memberid")
+	@PostMapping("/members/check/memberid")
 	public boolean checkMemberId(@RequestBody MemberDTO.CheckMemberId dto) {
 		return memberService.checkMemberId(dto.getMemberId());
 	}
 	
 	// 회원 nickname 중복 체크
-	@GetMapping("/members/check/nickname")
+	@PostMapping("/members/check/nickname")
 	public boolean checkNickname(@RequestBody MemberDTO.CheckNickname dto) {
 		return memberService.checkNickname(dto.getNickname());
 	}
 	
 	// 회원 email 중복 체크
-	@GetMapping("/members/check/email")
+	@PostMapping("/members/check/email")
     public boolean checkEmail(@RequestBody MemberDTO.CheckEmail dto) {
         return memberService.checkEmail(dto.getEmail());
     }
 	
 	// 회원 아이디 찾기 - email, birthYear
-	@GetMapping("/members/find/memberid")
+	@PostMapping("/members/find/memberid")
 	public SingleResult<String> findMemberIdByEmailAndBirthYear(@RequestBody MemberDTO.FindMemberId dto) {
 		return responseService.getSingleResult(memberService.findMemberIdByEmailAndBirthYear(dto.getEmail(), dto.getBirthYear()));
 	}
