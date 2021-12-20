@@ -145,5 +145,17 @@ public class MemberController {
     public boolean checkEmail(@RequestBody MemberDTO.CheckEmail dto) {
         return memberService.checkEmail(dto.getEmail());
     }
+	
+	// 회원 아이디 찾기 - email, birthYear
+	@PostMapping("/members/find/memberid")
+	public SingleResult<String> findMemberIdByEmailAndBirthYear(@RequestBody MemberDTO.FindMemberId dto) {
+		return responseService.getSingleResult(memberService.findMemberIdByEmailAndBirthYear(dto.getEmail(), dto.getBirthYear()));
+	}
+	
+//	// 회원 임시 pw 발급
+//	@PatchMapping("/members/temporary")
+//	public SingleResult<String> tempoPw(@RequestBody MemberDTO.TempoPw dto) {
+//		return responseService.getSingleResult(memberService.tempoPw(dto.getMemberId(), dto.getPwQuestion(), dto.getPwAnswer()));
+//	}
 
 }

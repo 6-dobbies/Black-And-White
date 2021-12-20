@@ -111,5 +111,27 @@ public class MemberDTO {
 	public static class CheckEmail {
 		private String email;
 	}
+	
+	@Getter
+	public static class FindMemberId {
+		private String email;
+		private String birthYear;
+	}
+
+	@Getter
+	public static class TempoPw {
+		private String memberId;
+		private String pwQuestion;
+		private String pwAnswer;
+	}
+	
+	@Getter
+	public static class SendMail {
+		private String memberId;
+		private String pwQuestion;
+		private String pwAnswer;
+		private String email;
+		private String pw;
+	}
 
 }
