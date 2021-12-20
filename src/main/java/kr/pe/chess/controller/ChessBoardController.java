@@ -1,5 +1,7 @@
 package kr.pe.chess.controller;
 
+import java.io.IOException;
+
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +28,12 @@ public class ChessBoardController {
 	@GetMapping("/chess/move")
 	public ListResult<Boolean> movePiece(@RequestBody String data) throws ParseException {
 		return rs.getListResult(cbs.B(data));
+	}
+	
+	// 일단 AI와의 대전을 위해 자바알고리즘 건너뛰는 메소드
+	@GetMapping("/chess/move")
+	public SingleResult<String> movePiece2(@RequestBody String data) throws ParseException, IOException {
+		return rs.getSingleResult(cbs.PyChessOnly(data));
 	}
 	
 	// 해당 기보를 이용한 체스판 반환

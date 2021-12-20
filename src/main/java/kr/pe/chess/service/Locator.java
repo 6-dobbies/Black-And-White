@@ -34,6 +34,7 @@ public class Locator {
 	
 	public String[][] makeChessBoard(String[][] chessBase, String[] notation) {
 		String[][] chessBoard = chessBase;
+		// ArrayList로 변환
 		ArrayList<String> x = new ArrayList<>();
 		String[] x2 = {"a","b","c","d","e","f","g","h"};    //Ke8, e3, Ke8+#
 		for (int i =0; i<x2.length; i++) {
@@ -256,5 +257,95 @@ public class Locator {
 			
 		// 변환된 체스판 반환
 		return chessBoard;
+	}
+	
+	
+	// 일반적인 좌표를 이용한 notation을 위한것 - python과 연결하기위함
+	public String[] notationParser(String[] notation) throws ParseException {		
+		// ArrayList로 변환
+		ArrayList<String> x = new ArrayList<>();
+		String[] x2 = {"a","b","c","d","e","f","g","h"};    //Ke8, e3, Ke8+#
+		for (int i =0; i<x2.length; i++) {
+			x.add(x2[i]);
+		}
+		ArrayList<String> x3 = new ArrayList<>();
+		String[] x4 = {"1","2","3","4","5","6","7","8"};    //Ke8, e3, Ke8+#
+		for (int i =0; i<x4.length; i++) {
+			x3.add(x4[i]);
+		}
+		
+		String A = "";
+		String[] B = {};
+		String[][] convertedNotation = {};
+		
+		// 받은 notation 분리
+		for (int i =0; i<notation.length;i++) {
+			A = notation[i];
+			// 분리된 notation 글자별로 나누기
+			for (int j =0; j<A.length()-1;i++) {
+				B[j] = A.substring(j,j+1);
+				// 좌표값일때
+				if(x.contains(B[j])) {
+					convertedNotation[i][j] = B[j];
+				}
+				// 숫자일때 체스판이 위아래로 뒤집혀있기 때문에 명령을 거꾸로 뒤집어주기
+				else if(x3.contains(B[j])) {
+					convertedNotation[i][j] = Integer.toString(8-Integer.parseInt(B[j]));
+				}
+				// 말 정보일때
+				else if(!x.contains(B[j])) {
+					continue;
+				}
+			}
+		}
+		
+		String[] convertedNotation2 = {};
+		// 한줄로 보내기위해 합치기
+		for (int i =0; i<convertedNotation.length;i++) {
+			for (int j =0; j<convertedNotation[i].length;j++) {
+				convertedNotation2[i]+=convertedNotation[i][j];
+			}
+		}
+		return convertedNotation2;
+	}
+	
+	
+	public String orderParser(String order) throws ParseException {		
+		// ArrayList로 변환
+		ArrayList<String> x = new ArrayList<>();
+		String[] x2 = {"a","b","c","d","e","f","g","h"};    //Ke8, e3, Ke8+#
+		for (int i =0; i<x2.length; i++) {
+			x.add(x2[i]);
+		}
+		ArrayList<String> x3 = new ArrayList<>();
+		String[] x4 = {"1","2","3","4","5","6","7","8"};    //Ke8, e3, Ke8+#
+		for (int i =0; i<x4.length; i++) {
+			x3.add(x4[i]);
+		}
+		
+		String A = "";
+		String[] B = {};
+		String convertedOrder = "";
+		
+		// 받은 notation 분리
+		for (int i =0; i<order.length();i++) {
+			A = order.substring(i,i+1);
+			
+			// 분리된 notation 글자별로 나누기
+			B[i] = A;
+			if(x.contains(B[i])) {
+				convertedOrder += B[i];
+			}
+			// 숫자일때 체스판이 위아래로 뒤집혀있기 때문에 명령을 거꾸로 뒤집어주기
+			else if(x3.contains(B[i])) {
+				convertedOrder += Integer.toString(8-Integer.parseInt(B[i]));
+			}
+			// 말 정보일때
+			else if(!x.contains(B[i])) {
+				continue;
+			}
+		}
+			
+		return convertedOrder;
 	}
 }

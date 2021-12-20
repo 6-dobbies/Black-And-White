@@ -1,11 +1,21 @@
 package kr.pe.chess.service;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONString;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Service;
 
 import kr.pe.chess.objects.Bishop;
@@ -53,13 +63,14 @@ public class ChessBoardService {
 		JSONObject json2 = (JSONObject) json.get("data");
 		
 		// 받는 체스판 모양 {{p,T.....}*8}
-		// 체스판에서 T는 빈칸
+		// 체스판에서 T는 빈칸으로 지정
+		// notation은 String 리스트
 		String[] notation = (String[]) json2.get("notation");
 		
 		// 받는 명령구문 {{1,1,p},{1,2,T}}
 		String[][] order =  (String[][]) json2.get("order");
 		
-		String color = "";
+		String color = (String) json2.get("color");
 		
 		// 진영 확인용 데이터
 		if (notation.length%2 == 0) {
@@ -549,41 +560,155 @@ public class ChessBoardService {
 	}
 	
 	// 말의 위치와 정보를 받아서 말이 움직일수있는 범위 표시
-		public String[][] indicator(String[][] chessBoard, String[] loc, String[] notation) {
-			
-			String[] black2 = {"k","p","b","r","q","n"};
-			ArrayList<String> black = new ArrayList<>();
-			for (int i= 0; i<= black2.length; ++i) {
-				black.add(black2[i]);
-			}
-			
-			ArrayList<String> white = new ArrayList<>();
-			String[] white2 = {"K","P","B","R","Q","N"};
-			for (int i= 0; i<= white2.length; ++i) {
-				white.add(white2[i]);
-			}
-			// loc으로 지정된 말의 움직임 범위를 모두 지정해주는 함수
-			int[][] location = {{}};
-			// location 지정해야 됨
-			for (int i = 0; i<64; i++) {
-				for (int j = 0; j<8; j++) {
-					for (int h = 0; h<8; h++) {
-						location[i][0]= j;
-						location[i][1]= h;
-					}
-				}
-			}
-			String[][] destination = null;
-			for ( int i = 0; i<64; i++) {
-				int x1 = location[i][0];
-				int y1 = location[i][0];
-				String[][] order = {{loc[0],loc[1],loc[2]},{Integer.toString(x1),Integer.toString(y1),chessBoard[x1][y1]}};
-				if (moving(chessBoard, order, notation)==true) {
-					destination[i][0]=Integer.toString(x1);
-					destination[i][1]=Integer.toString(y1);
-					destination[i][2]=chessBoard[x1][y1];
-				}
-			}
-			return destination;
+	public String[][] indicator(String[][] chessBoard, String[] loc, String[] notation) {
+		
+		String[] black2 = {"k","p","b","r","q","n"};
+		ArrayList<String> black = new ArrayList<>();
+		for (int i= 0; i<= black2.length; ++i) {
+			black.add(black2[i]);
 		}
+		
+		ArrayList<String> white = new ArrayList<>();
+		String[] white2 = {"K","P","B","R","Q","N"};
+		for (int i= 0; i<= white2.length; ++i) {
+			white.add(white2[i]);
+		}
+		// loc으로 지정된 말의 움직임 범위를 모두 지정해주는 함수
+		int[][] location = {{}};
+		// location 지정해야 됨
+		for (int i = 0; i<64; i++) {
+			for (int j = 0; j<8; j++) {
+				for (int h = 0; h<8; h++) {
+					location[i][0]= j;
+					location[i][1]= h;
+				}
+			}
+		}
+		String[][] destination = null;
+		for ( int i = 0; i<64; i++) {
+			int x1 = location[i][0];
+			int y1 = location[i][0];
+			String[][] order = {{loc[0],loc[1],loc[2]},{Integer.toString(x1),Integer.toString(y1),chessBoard[x1][y1]}};
+			if (moving(chessBoard, order, notation)==true) {
+				destination[i][0]=Integer.toString(x1);
+				destination[i][1]=Integer.toString(y1);
+				destination[i][2]=chessBoard[x1][y1];
+			}
+		}
+		return destination;
+	}
+	
+	
+	public String PyChessOnly(String data) throws ParseException, IOException {
+		JSONParser jsonParser = new JSONParser();
+		JSONObject json = (JSONObject) jsonParser.parse(data);
+		JSONObject json2 = (JSONObject) json.get("data");
+		
+		// 받는 명령구문 {{1,1,p},{1,2,T}}
+		String order =  (String) json2.get("order");
+		String[] notation = (String[]) json2.get("notation");
+		String option =  (String) json2.get("option");
+		//난이도 조절용 (miniMax의 depth결정 0~4, 5이상은 응답에 시간이 오래 걸림)
+		String dif = (String) json2.get("dif");
+		
+		String parseOrder = "";
+		String[] parseNotation = {};
+		
+		if (notation == null) {
+			parseOrder = locator.orderParser(order);
+		}
+		else if (notation != null) {
+			parseOrder = locator.orderParser(order);
+			parseNotation = locator.notationParser(notation);
+		}
+		
+		// uri 조절용 값 같은 VM에서 돌리면 상관없음
+		String uri = "http://localhost:5000/";
+		// 서버에 전송할 방식 결정(uri로)
+		if (option == "setGame") {
+			uri += "setgame";
+		}
+		else if (option == "move") {
+			uri += "move";
+		}
+		// 다른걸 사용하면 쓸데는 없어보이지만 일단 만듬
+		else if (option == "setGameMove") {
+			uri += "setgamemove";
+		}
+		// 새게임 시작
+		else if (option == "new") {
+			uri += "game";
+		}
+		
+		URL url = new URL(uri);
+		// 파이썬 서버에 전송준비
+		String inputLine=null;
+        StringBuffer stringBuffer=new StringBuffer();
+        
+		HttpURLConnection conn=(HttpURLConnection)url.openConnection();
+		conn.setDoOutput(true);
+        conn.setDoInput(true);
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Accept-Charset", "UTF-8");
+        // 서버의 응답 대기 10초
+        conn.setConnectTimeout(10000);
+        conn.setReadTimeout(10000);
+        
+        
+        
+        // 보낼 json형식 만들기
+        String C = "";
+        for (int i=0; i<parseNotation.length;i++) {
+        	if (i==parseNotation.length-1) {
+        		C += "\""+parseNotation[i]+"\"";
+        	}
+        	else {
+        		C += "\""+parseNotation[i]+"\""+",";
+        	}
+        }
+        String A = "\"order\" : \"" + parseOrder + "\"";
+        String B = "\"notation\" : \""+ C +"\"";
+        String dif2 = "\"dif\" : \""+ dif +"\"";
+        String jsons = "";
+        if (option == "setgamemove") {
+        	jsons = "{"+A+","+B+","+dif2+"}";
+        }
+        else if (option == "setgame") {
+        	jsons = "{"+B+"}";
+        }
+        else if (option == "move") {
+        	jsons = "{"+A+","+dif2+"}";
+        }
+        else if (option == "new") {
+        	jsons = "{\"data\" : \"a\"}";
+        }
+
+        // json 객체 생성
+        JSONObject jObject = (JSONObject) jsonParser.parse(jsons);
+        // 보내기
+        BufferedWriter bWriter=new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(),"UTF-8"));
+        bWriter.write(jObject.toString());
+        // 데이터 전송후 데이터 삭제
+        bWriter.flush();
+        // 받기
+        BufferedReader bReader=new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
+        while((inputLine=bReader.readLine())!=null){
+            stringBuffer.append(inputLine);
+        }
+        
+        bWriter.close();
+        bReader.close();
+        conn.disconnect();
+		
+		// 파이썬 서버에서 돌려받은 값 리턴
+        // 돌려받은값 = stringBuffer
+        // StringBuffer를 필요한 형식으로 전환 == 성공/실패값 == string
+        String buffer = stringBuffer.toString();
+        
+        // 스트링으로 전환되는지 확인 필수
+		return buffer;
+	}
+	
+	
 }
