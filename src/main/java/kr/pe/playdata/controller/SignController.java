@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.pe.playdata.config.security.JwtTokenProvider;
 import kr.pe.playdata.exception.CIdSigninFailedException;
 import kr.pe.playdata.model.domain.Member;
+import kr.pe.playdata.model.dto.MemberDTO;
 import kr.pe.playdata.model.response.SingleResult;
 import kr.pe.playdata.repository.MemberRepository;
 import kr.pe.playdata.service.ResponseService;
@@ -25,11 +26,9 @@ public class SignController {
 
 	// 회원 로그인
 	@PostMapping("/members/login")
-	public SingleResult<String> login(@RequestBody Member reqMember) {
+	public SingleResult<String> login(@RequestBody MemberDTO.Login reqMember) {
 
-		Member member = memberRepository.findByMemberId(reqMember.getMemberId())
-//										.orElseThrow(() -> new CIdSigninFailedException("Member with memberId: " + reqMember.getMemberId() + " is not valid"))
-										;
+		Member member = memberRepository.findByMemberId(reqMember.getMemberId());
 
 		if (!reqMember.getPw().equals(member.getPw())) {
 //		if (!passwordEncoder.matches(reqMember.getPw(), member.getPw())) {	// dml insert할 때

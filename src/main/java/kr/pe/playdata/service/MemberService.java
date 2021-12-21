@@ -134,16 +134,15 @@ public class MemberService {
 	
 	// 회원 임시 pw 발급 & 이메일 발송
 	@Transactional(rollbackFor = Exception.class)
-	public String tempoPw(String memberId, String pwQuestion, String pwAnswer) {
+	public ResponseDTO.MemberResponse tempoPw(String memberId, String pwQuestion, String pwAnswer) {
 		Member member = memberRepository.findByMemberId(memberId);
 		Random random = new Random();
 
 		if (pwQuestion.equals(member.getPwQuestion()) && pwAnswer.equals(member.getPwAnswer())) {
-			int temporPw = random.nextInt(999999);
-			member.tempoPw(Integer.toString(temporPw));
-			return member.getEmail();
+			member.tempoPw(Integer.toString(random.nextInt(999999)));
+			return new ResponseDTO.MemberResponse(member);
 		}
-		return "false";
+		return null;
 	}
 
 }
