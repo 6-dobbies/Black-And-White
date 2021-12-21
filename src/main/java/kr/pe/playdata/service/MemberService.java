@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.pe.playdata.exception.CUserNotFoundException;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.dto.ResponseDTO;
 import kr.pe.playdata.repository.MemberRepository;
@@ -22,20 +21,18 @@ public class MemberService {
 	// 회원 1명 조회 - memberIdx
 	@Transactional(readOnly = true)
 	public ResponseDTO.MemberResponse findByMemberIdx(Long memberIdx) {
-		Member entity = memberRepository.findByMemberIdx(memberIdx)
-										.orElseThrow(() -> new CUserNotFoundException("Member with memberIdx: " + memberIdx + " is not valid"));
+		Member entity = memberRepository.findByMemberIdx(memberIdx);
 		
 		return new ResponseDTO.MemberResponse(entity);
 	}
 	
-//	// 회원 1명 조회 - nickname
-//	@Transactional(readOnly = true)
-//    public ResponseDTO.MemberResponse findByNickname(String nickname) {
-//        Member entity = memberRepository.findByNickname(nickname)
-//        								.orElseThrow(() -> new CUserNotFoundException("Member with nickname: " + nickname + " is not valid"));
-//
-//        return new ResponseDTO.MemberResponse(entity);
-//    }
+	// 회원 1명 조회 - nickname
+	@Transactional(readOnly = true)
+    public ResponseDTO.MemberResponse findByNickname(String nickname) {
+        Member entity = memberRepository.findByNickname(nickname);
+
+        return new ResponseDTO.MemberResponse(entity);
+    }
 	
 	// 회원 list 조회 - nickname 일부
 	@Transactional(readOnly = true)
@@ -56,16 +53,15 @@ public class MemberService {
 	}
 	
 	// 회원 저장
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Long saveMember(Member member) {
         return memberRepository.save(member).getMemberIdx();
     }
 	
 	// 회원 정보 수정 - pw, email, region
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
     public Long updateMember(Long memberIdx, Member dto) {
-        Member member = memberRepository.findByMemberIdx(memberIdx)
-        								.orElseThrow(() -> new CUserNotFoundException("Member with memberIdx: " + memberIdx + " is not valid"));
+        Member member = memberRepository.findByMemberIdx(memberIdx);
 
         member.update(dto.getPw(), dto.getEmail(), dto.getRegion());
 
@@ -73,10 +69,9 @@ public class MemberService {
     }
 	
 	// 회원 탈퇴
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
     public void deleteMember(Long memberIdx) {
-        Member member = memberRepository.findByMemberIdx(memberIdx)
-                						.orElseThrow(() -> new CUserNotFoundException("Member with memberIdx: " + memberIdx + " is not valid"));
+        Member member = memberRepository.findByMemberIdx(memberIdx);
 
         member.delete(1);
     }
@@ -138,7 +133,7 @@ public class MemberService {
 	}
 	
 	// 회원 임시 pw 발급 & 이메일 발송
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public String tempoPw(String memberId, String pwQuestion, String pwAnswer) {
 		Member member = memberRepository.findByMemberId(memberId);
 		Random random = new Random();
@@ -146,9 +141,9 @@ public class MemberService {
 		if (pwQuestion.equals(member.getPwQuestion()) && pwAnswer.equals(member.getPwAnswer())) {
 			int temporPw = random.nextInt(999999);
 			member.tempoPw(Integer.toString(temporPw));
-			return member.getMemberId();
+			return member.getEmail();
 		}
-		return "아이디 또는 질문 또는 답변이 일치하지 않습니다:(";
+		return "false";
 	}
 
 }

@@ -42,8 +42,8 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(CIdSigninFailedException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    protected CommonResult emailSigninFailed(HttpServletRequest request, CIdSigninFailedException e) {
-        return responseService.getFailResult(Integer.valueOf(getMessage("emailSigninFailed.code")), getMessage("emailSigninFailed.msg"));
+    protected CommonResult idSigninFailed(HttpServletRequest request, CIdSigninFailedException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("idSigninFailed.code")), getMessage("idSigninFailed.msg"));
     }
 
     @ExceptionHandler(CAuthenticationEntryPointException.class)

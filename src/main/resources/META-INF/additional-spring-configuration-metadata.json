@@ -20,12 +20,12 @@
     "description": "A description for 'entryPointException.code'"
   },
   {
-    "name": "emailSigninFailedException.code",
+    "name": "idSigninFailedException.code",
     "type": "java.lang.Integer",
     "description": "A description for 'entryPointException.code'"
   },
   {
-    "name": "emailSigninFailedException.msg",
+    "name": "idSigninFailedException.msg",
     "type": "java.lang.String",
     "description": "A description for 'entryPointException.code'"
   },
