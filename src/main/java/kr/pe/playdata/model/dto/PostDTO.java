@@ -14,16 +14,14 @@ public class PostDTO {
 		private Long boardIdx;
 		private String title;
 		private String content;
-		private String postImage;
 		private int del;
 
 		@Builder
-		public Create(Long memberIdx, Long boardIdx, String title, String content, String postImage) {
+		public Create(Long memberIdx, Long boardIdx, String title, String content) {
 			this.memberIdx = memberIdx;
 			this.boardIdx = boardIdx;
 			this.title = title;
 			this.content = content;
-			this.postImage = postImage;
 			this.del = 0;
 		}
 
@@ -33,7 +31,6 @@ public class PostDTO {
 					   .category(category)
 					   .title(title)
 					   .content(content)
-					   .postImage(postImage)
 					   .del(del)
 					   .build();
 		}
@@ -44,14 +41,12 @@ public class PostDTO {
 		private Long category;
 		private String title;
 		private String content;
-		private String postImage;
 
 		@Builder
-		public Update(Long category, String title, String content, String postImage) {
+		public Update(Long category, String title, String content) {
 			this.category = category;
 			this.title = title;
 			this.content = content;
-			this.postImage = postImage;
 		}
 	}
 

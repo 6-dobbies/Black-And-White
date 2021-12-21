@@ -59,10 +59,10 @@ public class MemberController {
 
 	// 회원 저장
 	@PostMapping("/member")
-	public SingleResult<Long> saveMember(@RequestBody String Data) throws ParseException {
+	public SingleResult<Long> saveMember(@RequestBody String data) throws ParseException {
 		
 		JSONParser jsonParser = new JSONParser();
-		JSONObject json = (JSONObject) jsonParser.parse(Data);
+		JSONObject json = (JSONObject) jsonParser.parse(data);
 		JSONObject json2 = (JSONObject) json.get("data");
 		
 		String memberId = (String) json2.get("memberId");
@@ -74,7 +74,6 @@ public class MemberController {
 		String gender = (String) json2.get("gender");
 		String email = (String) json2.get("email");
 		String region = (String) json2.get("region");
-		String tier = (String) json2.get("tier");
 		int del = 0;
 		List<String> role = Collections.singletonList("normal");
 
@@ -88,7 +87,6 @@ public class MemberController {
 						   .email(email)
 						   .gender(gender)
 						   .region(region)
-						   .tier(tier)
 						   .role(role)
 						   .del(del)
 						   .build();
@@ -151,11 +149,5 @@ public class MemberController {
 	public SingleResult<String> findMemberIdByEmailAndBirthYear(@RequestBody MemberDTO.FindMemberId dto) {
 		return responseService.getSingleResult(memberService.findMemberIdByEmailAndBirthYear(dto.getEmail(), dto.getBirthYear()));
 	}
-	
-//	// 회원 임시 pw 발급
-//	@PatchMapping("/members/temporary")
-//	public SingleResult<String> tempoPw(@RequestBody MemberDTO.TempoPw dto) {
-//		return responseService.getSingleResult(memberService.tempoPw(dto.getMemberId(), dto.getPwQuestion(), dto.getPwAnswer()));
-//	}
 
 }
