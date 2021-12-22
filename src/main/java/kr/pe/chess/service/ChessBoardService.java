@@ -611,16 +611,17 @@ public class ChessBoardService {
 		//난이도 조절용 (miniMax의 depth결정 0~4, 5이상은 응답에 시간이 오래 걸림)
 		String dif = (String) json2.get("dif");
 		
-		String parseOrder = "";
-		String[] parseNotation = {};
+		// 파이썬 말고 자바알고리즘이랑 통신할때 필요
+//		String parseOrder = "";
+//		String[] parseNotation = {};
 		
-		if (notation == null) {
-			parseOrder = locator.orderParser(order);
-		}
-		else if (notation != null) {
-			parseOrder = locator.orderParser(order);
-			parseNotation = locator.notationParser(notation);
-		}
+//		if (notation == null) {
+//			parseOrder = locator.orderParser(order);
+//		}
+//		else if (notation != null) {
+//			parseOrder = locator.orderParser(order);
+//			parseNotation = locator.notationParser(notation);
+//		}
 		
 		// uri 조절용 값 같은 VM에서 돌리면 상관없음
 		String uri = "http://localhost:5000/";
@@ -659,15 +660,15 @@ public class ChessBoardService {
         
         // 보낼 json형식 만들기
         String C = "";
-        for (int i=0; i<parseNotation.length;i++) {
-        	if (i==parseNotation.length-1) {
-        		C += "\""+parseNotation[i]+"\"";
+        for (int i=0; i<notation.length;i++) {
+        	if (i==notation.length-1) {
+        		C += "\""+notation[i]+"\"";
         	}
         	else {
-        		C += "\""+parseNotation[i]+"\""+",";
+        		C += "\""+notation[i]+"\""+",";
         	}
         }
-        String A = "\"order\" : \"" + parseOrder + "\"";
+        String A = "\"order\" : \"" + order + "\"";
         String B = "\"notation\" : \""+ C +"\"";
         String dif2 = "\"dif\" : \""+ dif +"\"";
         String jsons = "";
