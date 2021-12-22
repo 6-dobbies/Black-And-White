@@ -1,7 +1,6 @@
 package kr.pe.playdata.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -183,11 +182,11 @@ public class MemberService {
 		if (reqMember.getPw().equals(member.getPw())) {
 			
 			String token = jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole());
-			Long memberIdx = member.getMemberIdx();
-			int ismanager = 0;
+			String memberIdx = Long.toString(member.getMemberIdx());
+			boolean ismanager = false;
 			
 			if(member.getRole().contains("manager")) {
-				ismanager = 1;
+				ismanager = true;
 			}
 			
 			return new MemberDTO.Authenticate(token, memberIdx, ismanager);

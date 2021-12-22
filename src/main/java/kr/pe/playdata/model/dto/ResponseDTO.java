@@ -2,7 +2,6 @@ package kr.pe.playdata.model.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
