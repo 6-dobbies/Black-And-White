@@ -74,16 +74,15 @@ public class PostController {
 		JSONObject json2 = (JSONObject) json.get("data");
 		
 		Board category = boardRepository.findByCategory((String) json2.get("category")).get();
-		Member writer = memberRepository.findByNickname((String) json2.get("writer")).get();
+		Member writer = memberRepository.findByMemberIdx((Long) json2.get("writer")).get();
 		
 		String title = (String) json2.get("title");
 		String content = (String) json2.get("content");
-		String postImage = (String) json2.get("postImage");
 		int del = 0;
 
 		Post dto = Post.builder()
 					   .category(category).title(title).writer(writer)
-					   .content(content).postImage(postImage).del(del).build();
+					   .content(content).del(del).build();
 
 		return responseService.getSingleResult(postService.savePost(dto));
 		

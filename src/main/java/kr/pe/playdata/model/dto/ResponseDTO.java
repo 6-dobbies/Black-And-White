@@ -2,6 +2,7 @@ package kr.pe.playdata.model.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
@@ -43,6 +44,15 @@ public class ResponseDTO {
 			this.del = entity.getDel();
 		}
 	}
+	
+//	@Getter
+//	public static class OptionalMemberResponse {
+//		private Member member;
+//		
+//		public OptionalMemberResponse(Optional<Member> entity) {
+//			this.member = entity.get();
+//		}
+//	}
 
 	@Getter
 	public static class MemberListResponse {

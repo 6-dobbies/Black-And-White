@@ -92,6 +92,7 @@ public class MemberController {
 						   .build();
 		
 		return responseService.getSingleResult(memberService.saveMember(dto));
+		
 	}
 
 	// 회원 정보 수정 - pw, email, region
@@ -109,6 +110,7 @@ public class MemberController {
 		Member dto = Member.builder().pw(pw).email(email).region(region).build();
 		
 		return responseService.getSingleResult(memberService.updateMember(memberIdx, dto));
+		
 	}
 
 	// 회원 탈퇴
@@ -118,6 +120,7 @@ public class MemberController {
 		memberService.deleteMember(memberIdx);
 
 		return responseService.getSingleResult(memberIdx);
+		
 	}
 	
 	// 회원 list 조회 - del
@@ -152,7 +155,7 @@ public class MemberController {
 	
 	// 회원 로그인
 	@PostMapping("/members/login")
-	public SingleResult<String> login(@RequestBody MemberDTO.Login dto) {
+	public SingleResult<MemberDTO.Authenticate> login(@RequestBody MemberDTO.Login dto) {
 		return responseService.getSingleResult(memberService.login(dto));
 	}
 

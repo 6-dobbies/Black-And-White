@@ -17,17 +17,20 @@ public class SwaggerConfig {
     @Bean
     public Docket swaggerApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-        		.apiInfo(swaggerInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("kr.pe.playdata.controller"))
-                .build()
-                .useDefaultResponseMessages(false); 
+	        		.apiInfo(swaggerInfo()).select()
+	                .apis(RequestHandlerSelectors.basePackage("kr.pe.playdata.controller"))
+	                .build()
+	                .useDefaultResponseMessages(false); 
     }
 
     private ApiInfo swaggerInfo() {
         return new ApiInfoBuilder().title("PIGNIC API Doc 입니다")
-                .description("Swagger Doc 학습을 위한 기본 문서 작성중 ")
-                .license("license : playdata").licenseUrl("http://www.google.com")
-                .version("1").build();
+	                .description("Swagger Doc 학습을 위한 기본 문서 작성중 ")
+	                .license("license : playdata").licenseUrl("http://www.google.com")
+	                .version("1").build();
     }
     
+    
+    // jsonParser 사용을 @Bean으로 등록해서 singleton 방식으로 사용하기
+    // jsonParser이외 다른 방법 찾기
 }

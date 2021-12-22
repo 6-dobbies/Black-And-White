@@ -1,6 +1,7 @@
 package kr.pe.playdata.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -40,7 +41,7 @@ public class MemberService {
     public ResponseDTO.MemberResponse findByNickname(String nickname) {
 		
         Member entity = memberRepository.findByNickname(nickname).orElseThrow(CUserNotFoundException::new);
-
+        
         return new ResponseDTO.MemberResponse(entity);
         
     }
@@ -82,7 +83,7 @@ public class MemberService {
     }
 	
 	// 회원 탈퇴
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional
     public void deleteMember(Long memberIdx) {
 		
         Member member = memberRepository.findByMemberIdx(memberIdx).orElseThrow(CUserNotFoundException::new);
@@ -105,9 +106,8 @@ public class MemberService {
 	public boolean checkMemberId(String memberId) {
 		
 		boolean result = false;
-		Member member = memberRepository.findByMemberId(memberId).orElseThrow(CUserNotFoundException::new);
 		
-		if(member == null) {
+		if(memberRepository.findByMemberId(memberId) == null) {
 			result = true;
 		}
 		
@@ -120,9 +120,8 @@ public class MemberService {
 	public boolean checkNickname(String nickname) {
 		
 		boolean result = false;
-		Member member = memberRepository.findByNickname(nickname).orElseThrow(CUserNotFoundException::new);
 		
-		if(member == null) {
+		if(memberRepository.findByNickname(nickname) == null) {
 			result = true;
 		}
 		
@@ -135,9 +134,8 @@ public class MemberService {
 	public boolean checkEmail(String email) {
 		
 		boolean result = false;
-		Member member = memberRepository.findByEmail(email).orElseThrow(CUserNotFoundException::new);
 		
-		if(member == null) {
+		if(memberRepository.findByEmail(email) == null) {
 			result = true;
 		}
 		
@@ -177,16 +175,26 @@ public class MemberService {
 	
 	// 회원 로그인
 	@PostMapping("/members/login")
-	public String login(@RequestBody MemberDTO.Login reqMember) {
+	public MemberDTO.Authenticate login(@RequestBody MemberDTO.Login reqMember) {
 
 		Member member = memberRepository.findByMemberId(reqMember.getMemberId()).orElseThrow(CUserNotFoundException::new);
 
 //		if (!passwordEncoder.matches(reqMember.getPw(), member.getPw())) {	// dml을 직접 insert하면 pw가 encoded되지 않은 값
-		if (!reqMember.getPw().equals(member.getPw())) {
-			throw new CIdSigninFailedException();
+		if (reqMember.getPw().equals(member.getPw())) {
+			
+			String token = jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole());
+			Long memberIdx = member.getMemberIdx();
+			int ismanager = 0;
+			
+			if(member.getRole().contains("manager")) {
+				ismanager = 1;
+			}
+			
+			return new MemberDTO.Authenticate(token, memberIdx, ismanager);
+			
 		}
-
-		return jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole());
+		
+		throw new CIdSigninFailedException();
 
 	}
 

@@ -70,13 +70,11 @@ public class Member implements UserDetails {
 	@NotNull
 	private String region;
 
-//	@NotNull
-//	private String tier;
-
 	@NotNull
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> role = new ArrayList<>();
 
+	// 컨벤션 - isenabled (is 뒤에는 긍정 > default = 1)============================================================
 	@NotNull
 	private int del = 0;
 
