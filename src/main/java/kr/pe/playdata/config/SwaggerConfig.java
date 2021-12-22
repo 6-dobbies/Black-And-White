@@ -30,4 +30,7 @@ public class SwaggerConfig {
                 .version("1").build();
     }
     
+    
+    // jsonParser 사용을 @Bean으로 등록해서 singleton 방식으로 사용하기
+    // jsonParser이외 다른 방법 찾기
 }

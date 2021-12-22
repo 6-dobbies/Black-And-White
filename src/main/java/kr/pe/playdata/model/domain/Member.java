@@ -77,6 +77,7 @@ public class Member implements UserDetails {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> role = new ArrayList<>();
 
+	// 컨벤션 - isenabled (is 뒤에는 긍정 > default = 1)============================================================
 	@NotNull
 	private int del = 0;
 
