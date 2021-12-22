@@ -38,6 +38,18 @@ public class MemberController {
 	public SingleResult<ResponseDTO.MemberResponse> getMemberByIdx(@PathVariable Long memberIdx) {
 		return responseService.getSingleResult(memberService.findByMemberIdx(memberIdx));
 	}
+	
+	@GetMapping("/members/id/{memberId}") 
+
+	public SingleResult<ResponseDTO.MemberResponse> getMemberById(@PathVariable String memberId) {
+		return rs.getSingleResult(memberService.findByMemberId(memberId));
+	}
+	
+	@GetMapping("/members/email/{memberEmail}")
+
+	public SingleResult<ResponseDTO.MemberResponse> getMemberByEmail(@PathVariable String email) {
+		return rs.getSingleResult(memberService.findByEmail(email));
+	}
 
 //	// 회원 1명 조회 - nickname
 //	@GetMapping("/members/nickname/{nickname}")
