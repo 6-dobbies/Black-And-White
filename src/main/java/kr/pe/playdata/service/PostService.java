@@ -10,6 +10,9 @@ import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.pe.playdata.exception.CBoardNotFoundException;
+import kr.pe.playdata.exception.CPostNotFoundException;
+import kr.pe.playdata.exception.CUserNotFoundException;
 import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.domain.Post;
@@ -30,32 +33,37 @@ public class PostService {
 	// 게시글 1개 조회 - postIdx
 	@Transactional(readOnly = true)
 	public ResponseDTO.PostResponse findByPostIdx(Long postIdx) {
-		Post entity = postRepository.findByPostIdx(postIdx)
-									.orElseThrow(() -> new IllegalArgumentException("Post with postIdx: " + postIdx + " is not valid"));
+		
+		Post entity = postRepository.findByPostIdx(postIdx).orElseThrow(CPostNotFoundException::new);
 		
 		return new ResponseDTO.PostResponse(entity);
+		
 	}
 	
 	// 게시글 list 조회 - category
 	@Transactional(readOnly = true)
 	public List<ResponseDTO.PostListResponse> findByCategory(String category) {
-		Optional<Board> entity = boardRepository.findByCategory(category);
 		
-		return postRepository.findByCategory(entity.get())
+		Board entity = boardRepository.findByCategory(category).orElseThrow(CBoardNotFoundException::new);
+		
+		return postRepository.findByCategory(entity)
 							 .stream()
 							 .map(ResponseDTO.PostListResponse::new)
 							 .collect(Collectors.toList());
+		
 	}
 	
 	// 게시글 list 조회 - writer
 	@Transactional(readOnly = true)
 	public List<ResponseDTO.PostListResponse> findByWriter(String nickname) {
-		Member entity = memberRepository.findByNickname(nickname);
+		
+		Member entity = memberRepository.findByNickname(nickname).orElseThrow(CUserNotFoundException::new);
 		
 		return postRepository.findByWriter(entity)
 							 .stream()
 							 .map(ResponseDTO.PostListResponse::new)
 							 .collect(Collectors.toList());
+		
 	}
 	
 	// 게시글 list 조회 - title 일부
@@ -95,8 +103,7 @@ public class PostService {
 	@Transactional(rollbackFor = Exception.class)
 	public Long updatePost(Long postIdx, String data) throws ParseException {
 		
-		Post post = postRepository.findByPostIdx(postIdx)
-								  .orElseThrow(() -> new IllegalArgumentException("Post with postIdx: " + postIdx + " is not valid"));
+		Post post = postRepository.findByPostIdx(postIdx).orElseThrow(CPostNotFoundException::new);
 		
 		JSONParser jsonParser = new JSONParser();
 		JSONObject json = (JSONObject) jsonParser.parse(data);
@@ -110,17 +117,19 @@ public class PostService {
 		post.update(category, title, content, postImage);
 		
 		return postIdx;
+		
 	}
 	
 	// 게시글 삭제
 	@Transactional(rollbackFor = Exception.class)
 	public Long deletePost(Long postIdx) {
-		Post post = postRepository.findByPostIdx(postIdx)
-								  .orElseThrow(() -> new IllegalArgumentException("Post with postIdx: " + postIdx + " is not valid"));
+		
+		Post post = postRepository.findByPostIdx(postIdx).orElseThrow(CPostNotFoundException::new);
 		
 		post.delete(postIdx);
 		
 		return postIdx;
+		
 	}
 	
 	// 게시글 list 조회 - del

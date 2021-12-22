@@ -12,8 +12,7 @@ class BlackAndWhiteApplicationTests {
 	@Test
 	void contextLoads() {
 		
-		String[] A = {"a","B","c"};
-		System.out.println(A);
+		
 		
 		
 	}
