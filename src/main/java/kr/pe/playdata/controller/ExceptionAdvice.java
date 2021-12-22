@@ -42,8 +42,8 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(CIdSigninFailedException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    protected CommonResult emailSigninFailed(HttpServletRequest request, CIdSigninFailedException e) {
-        return responseService.getFailResult(Integer.valueOf(getMessage("emailSigninFailed.code")), getMessage("emailSigninFailed.msg"));
+    protected CommonResult idSigninFailed(HttpServletRequest request, CIdSigninFailedException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("idSigninFailed.code")), getMessage("idSigninFailed.msg"));
     }
 
     @ExceptionHandler(CAuthenticationEntryPointException.class)
@@ -74,6 +74,7 @@ public class ExceptionAdvice {
     private String getMessage(String code) {
         return getMessage(code, null);
     }
+    
     // code정보, 추가 argument로 현재 locale에 맞는 메시지를 조회합니다.
     private String getMessage(String code, Object[] args) {
         return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());

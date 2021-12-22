@@ -47,9 +47,6 @@ public class Post {
 	@NotNull
 	private String content;
 
-	@Column(name = "post_image")
-	private String postImage;
-
 	@CreationTimestamp
 	@Column(nullable = false, updatable = false)
 	private LocalDateTime created;
@@ -67,7 +64,6 @@ public class Post {
 		this.category = category;
 		this.title = title;
 		this.content = content;
-		this.postImage = postImage;
 		this.del = del;
 	}
 
@@ -75,7 +71,6 @@ public class Post {
 		this.category = category;
 		this.title = title;
 		this.content = content;
-		this.postImage = postImage;
 
 		return this;
 	}

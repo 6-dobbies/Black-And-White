@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -69,8 +70,8 @@ public class Member implements UserDetails {
 	@NotNull
 	private String region;
 
-	@NotNull
-	private String tier;
+//	@NotNull
+//	private String tier;
 
 	@NotNull
 	@ElementCollection(fetch = FetchType.EAGER)
@@ -82,10 +83,14 @@ public class Member implements UserDetails {
 	@OneToMany(mappedBy = "writer", cascade = CascadeType.ALL)
 	@JsonBackReference
 	private List<Post> postList;
+	
+	@OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+	@JsonBackReference
+	private Tier tier;
 
 	@Builder
 	public Member(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, String birthYear,
-				  String email, String gender, String region, String tier, List<String> role, int del) {
+				  String email, String gender, String region, Tier tier, List<String> role, int del) {
 		this.memberId = memberId;
 		this.pw = pw;
 		this.pwQuestion = pwQuestion;

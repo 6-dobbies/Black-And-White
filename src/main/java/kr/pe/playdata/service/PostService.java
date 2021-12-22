@@ -86,13 +86,13 @@ public class PostService {
 	}
 	
 	// 게시글 저장
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Long savePost(Post dto) {
 		  return postRepository.save(dto).getPostIdx();
 	}
 
 	// 게시글 수정
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Long updatePost(Long postIdx, String data) throws ParseException {
 		
 		Post post = postRepository.findByPostIdx(postIdx)
@@ -113,7 +113,7 @@ public class PostService {
 	}
 	
 	// 게시글 삭제
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Long deletePost(Long postIdx) {
 		Post post = postRepository.findByPostIdx(postIdx)
 								  .orElseThrow(() -> new IllegalArgumentException("Post with postIdx: " + postIdx + " is not valid"));

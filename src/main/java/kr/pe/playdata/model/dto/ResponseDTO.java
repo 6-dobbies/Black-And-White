@@ -6,6 +6,7 @@ import java.util.List;
 import kr.pe.playdata.model.domain.Board;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.domain.Post;
+import kr.pe.playdata.model.domain.Tier;
 import lombok.Getter;
 
 public class ResponseDTO {
@@ -22,7 +23,7 @@ public class ResponseDTO {
 		private String email;
 		private String gender;
 		private String region;
-		private String tier;
+		private Tier tier;
 		private List<String> role;
 		private int del;
 		public MemberResponse(Member entity) {
@@ -54,7 +55,7 @@ public class ResponseDTO {
 		private String email;
 		private String gender;
 		private String region;
-		private String tier;
+		private Tier tier;
 		private List<String> role;
 		private int del;
 
@@ -104,7 +105,6 @@ public class ResponseDTO {
 		private String category;
 		private String title;
 		private String content;
-		private String postImage;
 		private LocalDateTime created;
 		private LocalDateTime updated;
 
@@ -114,7 +114,6 @@ public class ResponseDTO {
 			this.category = entity.getCategory().getCategory();
 			this.title = entity.getTitle();
 			this.content = entity.getContent();
-			this.postImage = entity.getPostImage();
 			this.created = entity.getCreated();
 			this.updated = entity.getUpdated();
 		}
@@ -124,20 +123,37 @@ public class ResponseDTO {
 	public static class PostListResponse {
 		private String writer;
 		private Long postIdx;
+		private String category;
 		private String title;
 		private String content;
-		private String postImage;
 		private LocalDateTime created;
 		private LocalDateTime updated;
 
 		public PostListResponse(Post entity) {
 			this.writer = entity.getWriter().getNickname();
 			this.postIdx = entity.getPostIdx();
+			this.category = entity.getCategory().getCategory();
 			this.title = entity.getTitle();
 			this.content = entity.getContent();
-			this.postImage = entity.getPostImage();
 			this.created = entity.getCreated();
 			this.updated = entity.getUpdated();
+		}
+	}
+
+	@Getter
+	public static class TierResponse {
+		private String member;
+		private int win;
+		private int draw;
+		private int loss;
+		private int play;
+
+		public TierResponse(Tier entity) {
+			this.member = entity.getMember().getNickname();
+			this.win = entity.getWin();
+			this.draw = entity.getDraw();
+			this.loss = entity.getLoss();
+			this.play = entity.getWin() + entity.getDraw() + entity.getLoss();
 		}
 	}
 

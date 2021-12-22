@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import kr.pe.playdata.model.domain.Member;
+import kr.pe.playdata.model.domain.Tier;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -20,13 +21,13 @@ public class MemberDTO {
 		private String email;
 		private String gender;
 		private String region;
-		private String tier;
+		private Tier tier;
 		private List<String> role;
 		private int del;
 
 		@Builder
 		public Create(String memberId, String pw, String pwQuestion, String pwAnswer, String nickname, 
-					  String birthYear, String email, String gender, String region, String tier) {
+					  String birthYear, String email, String gender, String region, Tier tier) {
 			this.memberId = memberId;
 			this.pw = pw;
 			this.pwQuestion = pwQuestion;
@@ -123,6 +124,7 @@ public class MemberDTO {
 		private String memberId;
 		private String pwQuestion;
 		private String pwAnswer;
+		private String pw;
 	}
 	
 	@Getter
