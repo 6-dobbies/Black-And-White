@@ -145,18 +145,4 @@ public class MemberService {
 		return null;
 	}
 
-	@Transactional
-	public ResponseDTO.MemberResponse findByMemberId(String memberId) {
-		Member entity = memberRepository.findByMemberId(memberId);
-
-		return new ResponseDTO.MemberResponse(entity);
-	}
-	
-	@Transactional
-	public ResponseDTO.MemberResponse findByEmail(String email) {
-		Member entity = memberRepository.findByEmail(email);
-
-		return new ResponseDTO.MemberResponse(entity);
-	}
-
 }
