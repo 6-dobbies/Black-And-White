@@ -39,11 +39,11 @@ public class MemberController {
 		return responseService.getSingleResult(memberService.findByMemberIdx(memberIdx));
 	}
 
-//	// 회원 1명 조회 - nickname
-//	@GetMapping("/members/nickname/{nickname}")
-//	public SingleResult<ResponseDTO.MemberResponse> getMemberByNickname(@PathVariable String nickname) {
-//		return responseService.getSingleResult(memberService.findByNickname(nickname));
-//	}
+	// 회원 1명 조회 - nickname
+	@GetMapping("/members/nickname/{nickname}")
+	public SingleResult<ResponseDTO.MemberResponse> getMemberByNickname(@PathVariable String nickname) {
+		return responseService.getSingleResult(memberService.findByNickname(nickname));
+	}
 
 	// 회원 list 조회 - nickname 일부
 	@GetMapping("/members/nicknamecon/{nickname}")
@@ -148,6 +148,12 @@ public class MemberController {
 	@PostMapping("/members/find/memberid")
 	public SingleResult<String> findMemberIdByEmailAndBirthYear(@RequestBody MemberDTO.FindMemberId dto) {
 		return responseService.getSingleResult(memberService.findMemberIdByEmailAndBirthYear(dto.getEmail(), dto.getBirthYear()));
+	}
+	
+	// 회원 로그인
+	@PostMapping("/members/login")
+	public SingleResult<String> login(@RequestBody MemberDTO.Login dto) {
+		return responseService.getSingleResult(memberService.login(dto));
 	}
 
 }

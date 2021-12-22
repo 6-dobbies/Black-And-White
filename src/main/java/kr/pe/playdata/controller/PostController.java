@@ -74,7 +74,7 @@ public class PostController {
 		JSONObject json2 = (JSONObject) json.get("data");
 		
 		Board category = boardRepository.findByCategory((String) json2.get("category")).get();
-		Member writer = memberRepository.findByNickname((String) json2.get("writer"));
+		Member writer = memberRepository.findByNickname((String) json2.get("writer")).get();
 		
 		String title = (String) json2.get("title");
 		String content = (String) json2.get("content");
@@ -86,6 +86,7 @@ public class PostController {
 					   .content(content).postImage(postImage).del(del).build();
 
 		return responseService.getSingleResult(postService.savePost(dto));
+		
 	}
 
 	// 게시글 수정
