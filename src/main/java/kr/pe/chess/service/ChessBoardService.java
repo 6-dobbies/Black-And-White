@@ -640,6 +640,10 @@ public class ChessBoardService {
 		else if (option == "new") {
 			uri += "game";
 		}
+		// 현재 체스판에서 ai움직임
+		else if (option == "aimove") {
+			uri += "aimove";
+		}
 		
 		URL url = new URL(uri);
 		// 파이썬 서버에 전송준비
@@ -684,6 +688,7 @@ public class ChessBoardService {
         else if (option == "new") {
         	jsons = "{\"data\" : \"a\"}";
         }
+        
 
         // json 객체 생성
         JSONObject jObject = (JSONObject) jsonParser.parse(jsons);

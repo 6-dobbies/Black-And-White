@@ -147,16 +147,14 @@ public class MemberService {
 
 	@Transactional
 	public ResponseDTO.MemberResponse findByMemberId(String memberId) {
-		Member entity = memberRepository.findByMemberId(memberId)
-				.orElseThrow(() -> new CUserNotFoundException("Member with memberId: " + memberId + " is not valid"));
+		Member entity = memberRepository.findByMemberId(memberId);
 
 		return new ResponseDTO.MemberResponse(entity);
 	}
 	
 	@Transactional
 	public ResponseDTO.MemberResponse findByEmail(String email) {
-		Member entity = memberRepository.findByEmail(email)
-				.orElseThrow(() -> new CUserNotFoundException("Member with email: " + email + " is not valid"));
+		Member entity = memberRepository.findByEmail(email);
 
 		return new ResponseDTO.MemberResponse(entity);
 	}
