@@ -70,9 +70,6 @@ public class Member implements UserDetails {
 	@NotNull
 	private String region;
 
-//	@NotNull
-//	private String tier;
-
 	@NotNull
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> role = new ArrayList<>();

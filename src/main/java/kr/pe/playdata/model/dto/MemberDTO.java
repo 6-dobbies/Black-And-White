@@ -135,5 +135,19 @@ public class MemberDTO {
 		private String email;
 		private String pw;
 	}
+	
+	@Getter
+	public static class Authenticate {
+		private String token;
+		private Long memberIdx;
+		private int ismanager;
+		
+		@Builder
+		public Authenticate(String token, Long memberIdx, int ismanager) {
+			this.token = token;
+			this.memberIdx = memberIdx;
+			this.ismanager = ismanager;
+		}
+	}
 
 }
