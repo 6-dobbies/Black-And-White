@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +28,7 @@ public class Tier {
 
 	@NotNull
 	@OneToOne
+	@JsonBackReference
 	@JoinColumn(name = "member")
 	private Member member;
 

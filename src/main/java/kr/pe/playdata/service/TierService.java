@@ -21,9 +21,9 @@ public class TierService {
 	
 	// 회원 전적 조회
 	@Transactional(readOnly = true)
-	public String findByMember(String nickname) {
+	public String findByMemberIdx(Long memberIdx) {
 		
-		Member entity = memberRepository.findByNickname(nickname).orElseThrow(CUserNotFoundException::new);
+		Member entity = memberRepository.findByMemberIdx(memberIdx).orElseThrow(CUserNotFoundException::new);
 		Tier tier = tierRepository.findByMember(entity);
 		TierResponse membertier = new ResponseDTO.TierResponse(tier);
 		
