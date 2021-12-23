@@ -35,8 +35,18 @@
     "description": "A description for 'accessDenied.code'"
   },
   {
-    "name": "accessDenied.code",
+    "name": "accessDenied.msg",
     "type": "java.lang.String",
     "description": "A description for 'accessDenied.code'"
+  },
+  {
+    "name": "unKnown.code",
+    "type": "java.lang.Integer",
+    "description": "A description for 'unKnown.code'"
+  },
+  {
+    "name": "unKnown.msg",
+    "type": "java.lang.String",
+    "description": "A description for 'unKnown.code'"
   }
 ]}

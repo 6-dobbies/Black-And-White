@@ -15,6 +15,7 @@ import kr.pe.playdata.exception.CUserNotFoundException;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.dto.MemberDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
+import kr.pe.playdata.repository.CheckRepository;
 import kr.pe.playdata.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -23,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class MemberService {
 	
 	private final MemberRepository memberRepository;
+	private final CheckRepository checkRepository;
 	private final JwtTokenProvider jwtTokenProvider;
 	
 	// 회원 1명 조회 - memberIdx
@@ -103,10 +105,11 @@ public class MemberService {
 	// 회원 id 중복 체크
 	@Transactional(readOnly = true)
 	public boolean checkMemberId(String memberId) {
-		
+
 		boolean result = false;
-		
-		if(memberRepository.findByMemberId(memberId) == null) {
+		List<Member> member = checkRepository.findByMemberId(memberId);
+
+		if (member.size() == 0) {
 			result = true;
 		}
 		
@@ -117,15 +120,16 @@ public class MemberService {
 	// 회원 nickname 중복 체크
 	@Transactional(readOnly = true)
 	public boolean checkNickname(String nickname) {
-		
+
 		boolean result = false;
-		
-		if(memberRepository.findByNickname(nickname) == null) {
+		List<Member> member = checkRepository.findByNickname(nickname);
+
+		if (member.size() == 0) {
 			result = true;
 		}
 		
 		return result;
-		
+
 	}
 	
 	// 회원 email 중복 체크
@@ -133,8 +137,9 @@ public class MemberService {
 	public boolean checkEmail(String email) {
 		
 		boolean result = false;
-		
-		if(memberRepository.findByEmail(email) == null) {
+		List<Member> member = checkRepository.findByEmail(email);
+
+		if (member.size() == 0) {
 			result = true;
 		}
 		
