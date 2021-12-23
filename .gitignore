@@ -17,6 +17,10 @@ yarn-error.log
 .settings
 .springBeans
 .sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+**/application.properties
 
 ### IntelliJ IDEA ###
 .idea

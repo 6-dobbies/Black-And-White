@@ -22,7 +22,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -79,11 +80,11 @@ public class Member implements UserDetails {
 	private int del = 0;
 
 	@OneToMany(mappedBy = "writer", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonManagedReference
 	private List<Post> postList;
 	
 	@OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonManagedReference
 	private Tier tier;
 
 	@Builder

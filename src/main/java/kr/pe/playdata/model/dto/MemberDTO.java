@@ -139,11 +139,11 @@ public class MemberDTO {
 	@Getter
 	public static class Authenticate {
 		private String token;
-		private Long memberIdx;
-		private int ismanager;
+		private String memberIdx;
+		private boolean ismanager;
 		
 		@Builder
-		public Authenticate(String token, Long memberIdx, int ismanager) {
+		public Authenticate(String token, String memberIdx, boolean ismanager) {
 			this.token = token;
 			this.memberIdx = memberIdx;
 			this.ismanager = ismanager;

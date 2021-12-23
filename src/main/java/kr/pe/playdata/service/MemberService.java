@@ -1,7 +1,6 @@
 package kr.pe.playdata.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -16,6 +15,7 @@ import kr.pe.playdata.exception.CUserNotFoundException;
 import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.dto.MemberDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
+import kr.pe.playdata.repository.CheckRepository;
 import kr.pe.playdata.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class MemberService {
 	
 	private final MemberRepository memberRepository;
+	private final CheckRepository checkRepository;
 	private final JwtTokenProvider jwtTokenProvider;
 	
 	// 회원 1명 조회 - memberIdx
@@ -104,10 +105,11 @@ public class MemberService {
 	// 회원 id 중복 체크
 	@Transactional(readOnly = true)
 	public boolean checkMemberId(String memberId) {
-		
+
 		boolean result = false;
-		
-		if(memberRepository.findByMemberId(memberId) == null) {
+		List<Member> member = checkRepository.findByMemberId(memberId);
+
+		if (member.size() == 0) {
 			result = true;
 		}
 		
@@ -118,15 +120,16 @@ public class MemberService {
 	// 회원 nickname 중복 체크
 	@Transactional(readOnly = true)
 	public boolean checkNickname(String nickname) {
-		
+
 		boolean result = false;
-		
-		if(memberRepository.findByNickname(nickname) == null) {
+		List<Member> member = checkRepository.findByNickname(nickname);
+
+		if (member.size() == 0) {
 			result = true;
 		}
 		
 		return result;
-		
+
 	}
 	
 	// 회원 email 중복 체크
@@ -134,8 +137,9 @@ public class MemberService {
 	public boolean checkEmail(String email) {
 		
 		boolean result = false;
-		
-		if(memberRepository.findByEmail(email) == null) {
+		List<Member> member = checkRepository.findByEmail(email);
+
+		if (member.size() == 0) {
 			result = true;
 		}
 		
@@ -183,11 +187,11 @@ public class MemberService {
 		if (reqMember.getPw().equals(member.getPw())) {
 			
 			String token = jwtTokenProvider.createToken(String.valueOf(member.getMemberIdx()), member.getRole());
-			Long memberIdx = member.getMemberIdx();
-			int ismanager = 0;
+			String memberIdx = Long.toString(member.getMemberIdx());
+			boolean ismanager = false;
 			
 			if(member.getRole().contains("manager")) {
-				ismanager = 1;
+				ismanager = true;
 			}
 			
 			return new MemberDTO.Authenticate(token, memberIdx, ismanager);
