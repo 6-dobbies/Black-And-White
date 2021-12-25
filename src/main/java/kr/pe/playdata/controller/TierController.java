@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.pe.playdata.model.domain.Tier;
+import kr.pe.playdata.model.dto.ResponseDTO.TierListResponse;
+import kr.pe.playdata.model.response.ListResult;
 import kr.pe.playdata.model.response.SingleResult;
 import kr.pe.playdata.service.ResponseService;
 import kr.pe.playdata.service.TierService;
@@ -21,9 +23,15 @@ public class TierController {
 	private final TierService tierService;
 	
 	// 회원 전적 조회
+//	@GetMapping("/members/tier/{memberIdx}")
+//	public SingleResult<String> getTier(@PathVariable Long memberIdx) {
+//		return responseService.getSingleResult(tierService.findByMemberIdx(memberIdx));
+//	}
+	
+	// 회원 전적 조회
 	@GetMapping("/members/tier/{memberIdx}")
-	public SingleResult<String> getTier(@PathVariable Long memberIdx) {
-		return responseService.getSingleResult(tierService.findByMemberIdx(memberIdx));
+	public ListResult<TierListResponse> getTier(@PathVariable Long memberIdx) {
+		return responseService.getListResult(tierService.findByMember(memberIdx));
 	}
 	
 	// 회원 가입시 전적 저장

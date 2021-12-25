@@ -166,5 +166,22 @@ public class ResponseDTO {
 			this.play = entity.getWin() + entity.getDraw() + entity.getLoss();
 		}
 	}
+	
+	@Getter
+	public static class TierListResponse {
+		private String member;
+		private int win;
+		private int draw;
+		private int loss;
+		private int play;
+
+		public TierListResponse(Tier entity) {
+			this.member = entity.getMember().getNickname();
+			this.win = entity.getWin();
+			this.draw = entity.getDraw();
+			this.loss = entity.getLoss();
+			this.play = entity.getWin() + entity.getDraw() + entity.getLoss();
+		}
+	}
 
 }
