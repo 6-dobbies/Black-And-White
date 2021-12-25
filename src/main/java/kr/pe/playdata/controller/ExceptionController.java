@@ -10,7 +10,8 @@ import kr.pe.playdata.exception.CAuthenticationEntryPointException;
 import kr.pe.playdata.model.response.CommonResult;
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin(origins = "http://localhost:8081")
+//@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://ec2-13-125-131-254.ap-northeast-2.compute.amazonaws.com:8081")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/exception")
