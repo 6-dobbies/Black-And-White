@@ -1,7 +1,5 @@
 package kr.pe.playdata.controller;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +10,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.pe.playdata.model.domain.Board;
-import kr.pe.playdata.model.domain.Member;
-import kr.pe.playdata.model.domain.Post;
 import kr.pe.playdata.model.dto.ResponseDTO;
 import kr.pe.playdata.model.dto.ResponseDTO.PostListResponse;
 import kr.pe.playdata.model.response.ListResult;
 import kr.pe.playdata.model.response.SingleResult;
-import kr.pe.playdata.repository.BoardRepository;
-import kr.pe.playdata.repository.MemberRepository;
 import kr.pe.playdata.service.PostService;
 import kr.pe.playdata.service.ResponseService;
 import lombok.RequiredArgsConstructor;
@@ -33,8 +26,6 @@ public class PostController {
 
 	private final PostService postService;
 	private final ResponseService responseService;
-	private final BoardRepository boardRepository;
-	private final MemberRepository memberRepository;
 
 	// 게시글 1개 조회 - postIdx
 	@GetMapping("/posts/idx/{postIdx}")
@@ -69,24 +60,7 @@ public class PostController {
 	// 게시글 저장
 	@PostMapping("/post")
 	public SingleResult<Long> savePost(@RequestBody String data) throws ParseException {
-		
-		JSONParser jsonParser = new JSONParser();
-		JSONObject json = (JSONObject) jsonParser.parse(data);
-		JSONObject json2 = (JSONObject) json.get("data");
-		
-		Board category = boardRepository.findByCategory((String) json2.get("category")).get();
-		Member writer = memberRepository.findByMemberIdx((Long) Long.parseLong((String) json2.get("writer"))).get();
-		
-		String title = (String) json2.get("title");
-		String content = (String) json2.get("content");
-		int del = 0;
-
-		Post dto = Post.builder()
-					   .category(category).title(title).writer(writer)
-					   .content(content).del(del).build();
-
-		return responseService.getSingleResult(postService.savePost(dto));
-		
+		return responseService.getSingleResult(postService.savePost(data));
 	}
 
 	// 게시글 수정
