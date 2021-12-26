@@ -1,10 +1,5 @@
 package kr.pe.playdata.controller;
 
-import java.util.Collections;
-import java.util.List;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +10,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.pe.playdata.model.domain.Member;
 import kr.pe.playdata.model.dto.MemberDTO;
 import kr.pe.playdata.model.dto.ResponseDTO;
 import kr.pe.playdata.model.dto.ResponseDTO.MemberListResponse;
@@ -61,57 +55,13 @@ public class MemberController {
 	// 회원 저장
 	@PostMapping("/member")
 	public SingleResult<Long> saveMember(@RequestBody String data) throws ParseException {
-		
-		JSONParser jsonParser = new JSONParser();
-		JSONObject json = (JSONObject) jsonParser.parse(data);
-		JSONObject json2 = (JSONObject) json.get("data");
-		
-		String memberId = (String) json2.get("memberId");
-		String pw = (String) json2.get("pw");
-		String pwQuestion = (String) json2.get("pwQuestion");
-		String pwAnswer = (String) json2.get("pwAnswer");
-		String nickname = (String) json2.get("nickname");
-		String birthYear = (String) json2.get("birthYear");
-		String gender = (String) json2.get("gender");
-		String email = (String) json2.get("email");
-		String region = (String) json2.get("region");
-		int del = 0;
-		List<String> role = Collections.singletonList("normal");
-
-		Member dto = Member.builder()
-						   .memberId(memberId)
-						   .pw(pw)
-						   .pwQuestion(pwQuestion)
-						   .pwAnswer(pwAnswer)
-						   .nickname(nickname)
-						   .birthYear(birthYear)
-						   .email(email)
-						   .gender(gender)
-						   .region(region)
-						   .role(role)
-						   .del(del)
-						   .build();
-		
-		return responseService.getSingleResult(memberService.saveMember(dto));
-		
+		return responseService.getSingleResult(memberService.saveMember(data));
 	}
 
 	// 회원 정보 수정 - pw, email, region
 	@PutMapping("/members/{memberIdx}")
-	public SingleResult<Long> updateMember(@PathVariable Long memberIdx, @RequestBody String Data) throws ParseException {
-		
-		JSONParser jsonParser = new JSONParser();
-		JSONObject json = (JSONObject) jsonParser.parse(Data);
-		JSONObject json2 = (JSONObject) json.get("data");
-
-		String pw = (String) json2.get("pw");
-		String email = (String) json2.get("email");
-		String region = (String) json2.get("region");
-
-		Member dto = Member.builder().pw(pw).email(email).region(region).build();
-		
-		return responseService.getSingleResult(memberService.updateMember(memberIdx, dto));
-		
+	public SingleResult<Long> updateMember(@PathVariable Long memberIdx, @RequestBody String data) throws ParseException {
+		return responseService.getSingleResult(memberService.updateMember(memberIdx, data));
 	}
 
 	// 회원 탈퇴

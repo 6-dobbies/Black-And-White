@@ -1,9 +1,13 @@
 package kr.pe.playdata.service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,21 +71,51 @@ public class MemberService {
 	
 	// 회원 저장
 	@Transactional(rollbackFor = Exception.class)
-	public Long saveMember(Member member) {
-        return memberRepository.save(member).getMemberIdx();
-    }
+	public Long saveMember(String data) throws ParseException {
+
+		JSONParser jsonParser = new JSONParser();
+		JSONObject json = (JSONObject) jsonParser.parse(data);
+		JSONObject json2 = (JSONObject) json.get("data");
+
+		String memberId = (String) json2.get("memberId");
+		String pw = (String) json2.get("pw");
+		String pwQuestion = (String) json2.get("pwQuestion");
+		String pwAnswer = (String) json2.get("pwAnswer");
+		String nickname = (String) json2.get("nickname");
+		String birthYear = (String) json2.get("birthYear");
+		String gender = (String) json2.get("gender");
+		String email = (String) json2.get("email");
+		String region = (String) json2.get("region");
+		int del = 0;
+		List<String> role = Collections.singletonList("normal");
+
+		Member dto = Member.builder().memberId(memberId).pw(pw).pwQuestion(pwQuestion).pwAnswer(pwAnswer)
+				.nickname(nickname).birthYear(birthYear).email(email).gender(gender).region(region).role(role).del(del)
+				.build();
+
+		return memberRepository.save(dto).getMemberIdx();
+
+	}
 	
 	// 회원 정보 수정 - pw, email, region
 	@Transactional(rollbackFor = Exception.class)
-    public Long updateMember(Long memberIdx, Member dto) {
+	public Long updateMember(Long memberIdx, String data) throws ParseException {
 		
-        Member member = memberRepository.findByMemberIdx(memberIdx).orElseThrow(CUserNotFoundException::new);
+		Member member = memberRepository.findByMemberIdx(memberIdx).orElseThrow(CUserNotFoundException::new);
+		
+		JSONParser jsonParser = new JSONParser();
+		JSONObject json = (JSONObject) jsonParser.parse(data);
+		JSONObject json2 = (JSONObject) json.get("data");
 
-        member.update(dto.getPw(), dto.getEmail(), dto.getRegion());
+		String pw = (String) json2.get("pw");
+		String email = (String) json2.get("email");
+		String region = (String) json2.get("region");
 
-        return memberIdx;
-        
-    }
+		member.update(pw, email, region);
+		
+		return memberIdx;
+
+	}
 	
 	// 회원 탈퇴
 	@Transactional
@@ -170,6 +204,7 @@ public class MemberService {
 
 		if (pwQuestion.equals(member.getPwQuestion()) && pwAnswer.equals(member.getPwAnswer())) {
 			member.tempoPw(Integer.toString(random.nextInt(999999)));
+			
 			return new ResponseDTO.MemberResponse(member);
 		}
 		

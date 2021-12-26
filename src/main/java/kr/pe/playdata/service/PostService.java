@@ -94,8 +94,23 @@ public class PostService {
 	
 	// 게시글 저장
 	@Transactional(rollbackFor = Exception.class)
-	public Long savePost(Post dto) {
-		  return postRepository.save(dto).getPostIdx();
+	public Long savePost(String data) throws ParseException {
+
+		JSONParser jsonParser = new JSONParser();
+		JSONObject json = (JSONObject) jsonParser.parse(data);
+		JSONObject json2 = (JSONObject) json.get("data");
+
+		Board category = boardRepository.findByCategory((String) json2.get("category")).get();
+		Member writer = memberRepository.findByMemberIdx((Long) Long.parseLong((String) json2.get("writer"))).get();
+
+		String title = (String) json2.get("title");
+		String content = (String) json2.get("content");
+		int del = 0;
+
+		Post dto = Post.builder().category(category).title(title).writer(writer).content(content).del(del).build();
+
+		return postRepository.save(dto).getPostIdx();
+
 	}
 
 	// 게시글 수정
