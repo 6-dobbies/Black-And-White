@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class JwtTokenProvider {
 
 	private String secretKey = "dobbyisfree";
-	private long tokenValidTime = 2 * 60 * 60 * 1000L;		// 토큰 유효시간 2시간 (2시간 * 60분 * 60초)
+	private long tokenValidTime = 24 * 60 * 60 * 1000L;		// 토큰 유효시간 24시간 (24시간 * 60분 * 60초)
 	private final UserDetailsService userDetailsService;
 
 	// 객체 초기화, secretKey를 Base64로 인코딩한다.
