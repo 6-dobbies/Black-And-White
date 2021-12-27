@@ -136,7 +136,7 @@ public class MemberService {
 							   .collect(Collectors.toList());
 	}
 	
-	// 회원 id 중복 체크
+	// 회원 id 중복 체크 - true면 사용 가능
 	@Transactional(readOnly = true)
 	public boolean checkMemberId(String memberId) {
 
@@ -151,7 +151,7 @@ public class MemberService {
 		
 	}
 	
-	// 회원 nickname 중복 체크
+	// 회원 nickname 중복 체크 - true면 사용 가능
 	@Transactional(readOnly = true)
 	public boolean checkNickname(String nickname) {
 
@@ -166,7 +166,7 @@ public class MemberService {
 
 	}
 	
-	// 회원 email 중복 체크
+	// 회원 email 중복 체크 - true면 사용 가능
 	@Transactional(readOnly = true)
 	public boolean checkEmail(String email) {
 		
