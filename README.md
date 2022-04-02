@@ -1,28 +1,21 @@
 # Black-And-White
-
-### 🔥 Final Project - 스프링 부트, Vue, ML 등
-
-# ♟Final Project : Chess Game with AI & OpenCV
+### ♟Final Project : Chess Game with AI & OpenCV
 
         🕹체스 게임 학습하는 AI 모델 & 체스판을 인식하는 OpenCV 웹 사이트
+
+<br><br>
 
 ## 🙌 조원
 
 King 기물에 숨겨진 양말을 찾기 위해 체스 게임에 뛰어든 집요정 도비들..
-> 🐻 [권대안](https://github.com/ptkeb)
-🐉 [김아라](https://github.com/mggr27)
-💩 [김한나](https://github.com/aNnaHmiK)
-🦥 [마유진](https://github.com/YoojinMa)
-🧎🏼‍♂️ [이상민](https://github.com/minstitia)
-🦮 [정은진](https://github.com/chaeljin)
+> 🐻 [권대안](https://github.com/ptkeb) : 게임 알고리즘 개발 & Back-end 개발<br>
+> 🐉 [김아라](https://github.com/mggr27) : Front-end 개발<br>
+> 💩 [김한나](https://github.com/aNnaHmiK) : OpenCV API & Back-end 개발<br>
+> 🦥 [마유진](https://github.com/YoojinMa) : Back-end 개발 & Front-end 개발<br>
+> 🧎🏼‍♂️ &#160;&#160;[이상민](https://github.com/minstitia) : Front-end 개발<br>
+> 🦮 [정은진](https://github.com/chaeljin) : OpenCV API
 
-<br>
-
-## 🗽 깃허브 Organization
-
-- [https://github.com/6-Dobbies](https://github.com/6-Dobbies)
-
-<br>
+<br><br>
 
 ## 🥅 프로젝트 배경
 
@@ -32,7 +25,7 @@ King 기물에 숨겨진 양말을 찾기 위해 체스 게임에 뛰어든 집�
 - 영상 처리는 직관적으로 인공지능을 입문하기에 좋음
 - OpenCV는 사실상 표준의 지위를 가지고 있고 기능이 방대해 다양하게 활용하기 좋음
 
-<br>
+<br><br>
 
 ## ⚽ 프로젝트 목적
 
@@ -40,65 +33,53 @@ King 기물에 숨겨진 양말을 찾기 위해 체스 게임에 뛰어든 집�
 - 체스게임 제작으로 학습 효과를 높이고 기술력을 보여주기에도 좋음
 - 교육용 체스게임 등으로 확장성이 좋음
 
-<br>
+<br><br>
 
-## 👩🏻‍💻👨🏻‍💻 기술셋🔌
+## 🛠 기술셋
 
-**👀**Front  (Vue & Javascript)
+**👀** Front
 
-![vue.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0003925c-1cfb-44cc-ac16-0e38dc3705d1/vue.jpg)
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/VUE.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
 
-![javascript.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/638f9f64-780d-4f9a-b1f2-62fff9b9a70f/javascript.png)
+**🖇** Back - Web
 
-**🧠**Back - Web  (Java & SpringBoot & flask)
+<img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white"> <img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=Gradle&logoColor=white">
 
-![java.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8d298ba2-5df9-4b4f-a167-0d744209cd3f/java.png)
+**🧠** Back - Model
 
-![springboot.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5e20626d-6452-47ef-b3d2-e369fff5b196/springboot.jpg)
+<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white"> <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white">
 
-![flask.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/33a3b179-7a23-464a-82a6-1465f94b7f35/flask.png)
+**💾** DB
 
-**🧠**Back - Model  (python & TensorFlow)
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 
-![python.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d5b7b653-3f45-4a5f-a73a-4d10e694f2d2/python.png)
+**🧲** API
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ae60f90f-1b4a-446d-b246-b164e0738dc5/Untitled.png)
+<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=OpenCV&logoColor=white">
 
-**💾**DB  ( MySQL )
+**🌏** Server
 
-![mysql.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c78305a9-18c7-4d43-a5c8-b3743ed2d6e9/mysql.png)
+<img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=for-the-badge&logo=Amazon AWS&logoColor=white"> <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white"> <img src="https://img.shields.io/badge/PuTTY-0403f7?style=for-the-badge&logo=del.icio.us&logoColor=white">
 
-**🧲**API  (OpenCV)
-
-![opencv.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e7865137-9698-484c-a9dd-bde0ea566319/opencv.png)
-
-**🌏**Server  ( Google Cloud & Ubuntu )
-
-![googlecloud.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/16a07035-6c85-429e-a0d2-87224b8ae8c0/googlecloud.png)
-
-![ubuntu.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/744a374d-93a6-4fd5-a944-de3254caad76/ubuntu.png)
-
-<br>
+<br><br>
 
 ## 🏁 프로젝트 구조
 
 - Flow Chart
-    
-    ![구조.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a67be026-9000-4acc-a8cf-d457a088b5b0/구조.png)
+    ![image](https://user-images.githubusercontent.com/87063129/161378555-f349a850-4c10-4512-ab6f-6d25e5a2750e.png)
     
 
 - 사용자 시나리오
-    
-    ![서비스시나리오.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/17c3e5b9-1c7f-49f8-9eef-44f84ad7e95c/서비스시나리오.png)
+    ![image](https://user-images.githubusercontent.com/87063129/161378575-bee418a5-95d1-4149-af63-0fd1575fcf8a.png)
 
-<br>
+<br><br>
 
-## 📅 일정(WBS)⌛
+## 📅 일정(WBS)
 
 [https://docs.google.com/spreadsheets/d/1eZodaEQS0tWHjsE0x5pd7vNinZRVdlmsPTzmOwfB1QA/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1eZodaEQS0tWHjsE0x5pd7vNinZRVdlmsPTzmOwfB1QA/edit?usp=sharing)
 
-<br>
+<br><br>
 
 ## 🗃 DB 구조 모델링
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/19d588c5-1436-420f-980b-b268a889bc6c/Untitled.png)
+![image](https://user-images.githubusercontent.com/87063129/161379113-a988ff6a-4f61-4471-b2f3-7f837de8d73d.png)
