@@ -83,3 +83,11 @@ King 기물에 숨겨진 양말을 찾기 위해 체스 게임에 뛰어든 집�
 ## 🗃 DB 구조 모델링
 
 ![image](https://user-images.githubusercontent.com/87063129/161379113-a988ff6a-4f61-4471-b2f3-7f837de8d73d.png)
+
+<br>
+
+## 📝 Restful API
+
+[https://documenter.getpostman.com/view/17292826/UVR7JnV6](https://documenter.getpostman.com/view/17292826/UVR7JnV6)
+
+<br><br>
